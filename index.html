@@ -648,6 +648,24 @@
   .mini-add button:hover{background:var(--blue-deep)}
   .hint-inline{font-size:.74rem;color:var(--ink-soft);margin-top:6px}
 
+  /* ---------- v2.3: professional invoice download button ----------
+     Primary navy, one brief double-pulse on appear (then still) —
+     noticeable without nagging. */
+  .dl-btn{background:var(--ink)!important;color:#fff!important;font-weight:600;
+    border:none!important;box-shadow:0 4px 14px rgba(24,31,59,.28);
+    animation:dlPulse 1.5s ease-in-out 2}
+  .dl-btn .dl-arrow{display:inline-block;margin-right:9px;color:var(--amber);font-weight:700}
+  @keyframes dlPulse{
+    0%,100%{box-shadow:0 4px 14px rgba(24,31,59,.28),0 0 0 0 rgba(42,85,162,.35)}
+    50%{box-shadow:0 4px 14px rgba(24,31,59,.28),0 0 0 9px rgba(42,85,162,0)}}
+  .dl-btn:hover{background:var(--blue-deep)!important}
+  .btn-outline{background:transparent!important;color:var(--blue-deep)!important;
+    border:1.5px solid var(--blue-deep)!important;font-weight:600}
+  .btn-outline:hover{background:#eef2fb!important}
+  .btn-text{background:transparent!important;color:var(--ink-soft)!important;border:none!important;
+    box-shadow:none!important;text-decoration:underline;text-underline-offset:3px;font-weight:500}
+  .btn-text:hover{color:var(--ink)!important}
+
   /* Respect reduced-motion preference */
   @media(prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
@@ -955,12 +973,21 @@
       <p>WhatsApp: <span id="footWhatsapp">+880 1XXX-XXXXXX</span><br><span id="footHours">Mon–Sat, 10am–8pm</span></p>
     </div>
   </div>
-  <div class="foot-bottom">© 2026 EONS IT Solutions · v2.1 · Demo store. Staff: add <b>#admin</b> to the page URL to access Orders &amp; Manage Store.</div>
+  <div class="foot-bottom">© 2026 EONS IT Solutions · v2.3 · Demo store. Staff: add <b>#admin</b> to the page URL to access Orders &amp; Manage Store.</div>
 </footer>
 
 <script>
 /* ============================================================
    EONS STORE — VERSION HISTORY
+   v2.3 (2026-07-03)
+     • Success screen refined to a professional finish: navy primary
+       download button with a brief (non-looping) pulse, caption text
+       removed, clear button hierarchy (primary / outline / text)
+   v2.2 (2026-07-03)
+     • Order tracking link embedded in both PDF invoices (clickable)
+       and the courier WhatsApp text
+     • Success screen: "Download invoice (PDF)" promoted to the top
+       with an eye-catching pulsing style; "Track my order" moved below
    v2.1 (2026-07-03)
      • Order-success screen redesigned: compact copy, no redundant
        lines, modal header switches to "Order placed", scrolls to top
@@ -976,7 +1003,7 @@
    v1.0 (2026-07-02)
      • Initial EONS release: full storefront + staff dashboard
    ============================================================ */
-const APP_VERSION = "2.1";
+const APP_VERSION = "2.3";
 
 /* ============================================================
    CONFIG
@@ -1481,9 +1508,9 @@ function placeOrder(){
       <div class="row total"><span>Total (COD)</span><span>${money(t.total)}</span></div>
     </div>
     <p style="text-align:center;font-size:.9rem;line-height:1.55;color:var(--ink);background:#f3faf5;border:1px solid #cfe8d8;border-radius:12px;padding:11px 14px;margin-bottom:14px">We'll call <b>${phone}</b> shortly to confirm — pay cash on delivery.</p>
-    <button class="checkout-btn track-cta" onclick="closeModal('checkoutModal');openTrack('${orderId}');location.hash='#track/${orderId}'">Track my order</button>
-    <button class="checkout-btn" style="margin-top:10px;background:var(--card);color:var(--ink);border:1px solid var(--line)" onclick="downloadCustomerInvoice('${orderId}')">Download invoice (PDF)</button>
-    <button class="checkout-btn" style="margin-top:10px;background:var(--card);color:var(--ink);border:1px solid var(--line)" onclick="closeModal('checkoutModal');showShop()">Continue shopping</button>
+    <button class="checkout-btn dl-btn" onclick="downloadCustomerInvoice('${orderId}')"><span class="dl-arrow">↓</span>Download invoice (PDF)</button>
+    <button class="checkout-btn btn-outline" style="margin-top:10px" onclick="closeModal('checkoutModal');openTrack('${orderId}');location.hash='#track/${orderId}'">Track my order</button>
+    <button class="checkout-btn btn-text" style="margin-top:4px" onclick="closeModal('checkoutModal');showShop()">Continue shopping</button>
   `;
   // Make sure the confirmation starts at the top, never cut off mid-screen
   const mc = document.querySelector("#checkoutModal .modal-card");
@@ -2601,6 +2628,7 @@ function buildInvoiceText(o){
   if(bm.discount) t += `Coupon ${bm.coupon}: -${moneyTk(bm.discount)}\n`;
   if(bm.zone) t += `Delivery (${bm.zone}): ${moneyTk(bm.delivery)}\n`;
   t += `*Collect on delivery (COD): ${moneyTk(o.total)}*\n`;
+  t += `\nTrack: ${trackUrl(o.id)}`;
   t += `\nFrom: ${STORE_NAME}, ${STORE_PHONE}\nPickup: ${STORE_ADDR}`;
   return t;
 }
@@ -2691,6 +2719,10 @@ function downloadInvoice(id){
   doc.text("COLLECT ON DELIVERY", colPrice, y, {align:"right"});
   doc.setTextColor(176,141,79);
   doc.text(moneyTk(o.total), colAmt, y, {align:"right"});
+
+  // v2.2: tracking link for the parcel (clickable)
+  doc.setFont("helvetica","normal"); doc.setFontSize(9); doc.setTextColor(42,85,162);
+  doc.textWithLink(`Track this order: ${trackUrl(o.id)}`, L, H-56, {url: trackUrl(o.id)});
 
   // ---- Footer ----
   doc.setFont("helvetica","normal"); doc.setFontSize(8); doc.setTextColor(140,130,118);
@@ -2784,6 +2816,13 @@ function downloadCustomerInvoice(id){
   doc.setFont("helvetica","normal"); doc.setFontSize(9.5); doc.setTextColor(90,83,76);
   doc.text(`Thank you for your order! Our team will call you on ${o.phone} to confirm`, L+14, y+19);
   doc.text(`before delivery. No payment is needed until your order arrives.`, L+14, y+34);
+
+  // v2.2: live order-tracking link (clickable in the PDF)
+  y += 62; doc.setFillColor(234,240,251); doc.roundedRect(L, y, R-L, 46, 6, 6, "F");
+  doc.setFont("helvetica","bold"); doc.setFontSize(10); doc.setTextColor(42,85,162);
+  doc.text("TRACK YOUR ORDER", L+14, y+18);
+  doc.setFont("helvetica","normal"); doc.setFontSize(9.5);
+  doc.textWithLink(trackUrl(o.id), L+14, y+34, {url: trackUrl(o.id)});
 
   // Footer
   doc.setFont("helvetica","normal"); doc.setFontSize(8); doc.setTextColor(140,130,118);
