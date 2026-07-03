@@ -589,6 +589,65 @@
     .cart-btn .cart-label{display:none}   /* icon-only bag on very small screens */
   }
 
+  /* ---------- v2: fly-to-bag animation ---------- */
+  .fly-img{position:fixed;z-index:200;border-radius:10px;object-fit:cover;pointer-events:none;
+    box-shadow:0 10px 30px rgba(24,31,59,.4);border:2px solid #fff;
+    transition:top .75s cubic-bezier(.45,-.05,.35,1), left .75s cubic-bezier(.45,-.05,.35,1),
+      width .75s ease, height .75s ease, opacity .75s ease, transform .75s ease}
+  .cart-btn.bump{animation:bagBump .5s ease}
+  @keyframes bagBump{0%{transform:scale(1)}35%{transform:scale(1.22) rotate(-3deg)}
+    70%{transform:scale(.94)}100%{transform:scale(1)}}
+  .cart-count.pop{animation:countPop .4s ease}
+  @keyframes countPop{0%{transform:scale(1)}50%{transform:scale(1.6)}100%{transform:scale(1)}}
+
+  /* ---------- v2: coupon box in the bag drawer ---------- */
+  .coupon-row{display:flex;gap:8px;margin-bottom:12px}
+  .coupon-row input{flex:1;padding:10px 12px;border:1px solid var(--line);border-radius:10px;
+    font-family:"IBM Plex Mono",monospace;font-size:.82rem;text-transform:uppercase;letter-spacing:.06em}
+  .coupon-row input:focus{outline:none;border-color:var(--blue)}
+  .coupon-row button{background:var(--blue-deep);color:#fff;border-radius:10px;padding:10px 16px;
+    font-size:.8rem;font-weight:600;flex-shrink:0}
+  .coupon-row button:hover{background:var(--ink)}
+  .coupon-chip{display:flex;align-items:center;justify-content:space-between;background:#eef6ee;
+    border:1px solid #cfe3d2;color:#2c6a44;border-radius:10px;padding:8px 12px;margin-bottom:12px;
+    font-size:.8rem}
+  .coupon-chip b{font-family:"IBM Plex Mono",monospace}
+  .coupon-chip .x{cursor:pointer;font-weight:700;padding:0 4px}
+  .coupon-err{color:#a14b46;font-size:.76rem;margin:-6px 0 10px}
+  .row.dim span:last-child{color:var(--ink-soft);font-size:.8rem}
+  .row.disc span:last-child{color:#2c6a44;font-weight:600}
+
+  /* ---------- v2: checkout zone select + live summary ---------- */
+  #coZone{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;
+    background:var(--card);font-family:inherit;font-size:.9rem;color:var(--ink)}
+  #coZone:focus{outline:none;border-color:var(--blue)}
+  .co-summary{background:#f0f4fc;border:1px solid var(--line);border-radius:12px;
+    padding:12px 14px;margin-top:14px}
+  .co-summary .row{display:flex;justify-content:space-between;font-size:.86rem;padding:3px 0}
+  .co-summary .row.total{font-weight:700;font-size:1rem;border-top:1px dashed var(--line);
+    margin-top:6px;padding-top:8px}
+  .co-summary .row.total span:last-child{font-family:"IBM Plex Mono",monospace}
+
+  /* ---------- v2: admin zone & coupon manager ---------- */
+  .mini-list{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+  .mini-row{display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--line);
+    border-radius:10px;padding:9px 12px;font-size:.85rem;flex-wrap:wrap}
+  .mini-row b{font-family:"IBM Plex Mono",monospace}
+  .mini-row .grow{flex:1;min-width:120px}
+  .mini-row input{padding:7px 10px;border:1px solid var(--line);border-radius:8px;font-size:.82rem}
+  .mini-row .charge-in{width:90px;font-family:"IBM Plex Mono",monospace}
+  .mini-btn{font-size:.72rem;letter-spacing:.04em;padding:6px 12px;border-radius:8px;border:1px solid var(--line);
+    background:var(--card);transition:.15s}
+  .mini-btn:hover{border-color:var(--blue)}
+  .mini-btn.del:hover{border-color:#c0564f;color:#c0564f}
+  .mini-btn.on{background:#eef6ee;border-color:#cfe3d2;color:#2c6a44;font-weight:600}
+  .mini-btn.off{background:#f4f6fb;color:var(--ink-soft)}
+  .mini-add{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .mini-add input,.mini-add select{padding:9px 11px;border:1px solid var(--line);border-radius:9px;font-size:.83rem}
+  .mini-add button{background:var(--ink);color:#fff;border-radius:9px;padding:9px 16px;font-size:.8rem}
+  .mini-add button:hover{background:var(--blue-deep)}
+  .hint-inline{font-size:.74rem;color:var(--ink-soft);margin-top:6px}
+
   /* Respect reduced-motion preference */
   @media(prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
@@ -625,7 +684,7 @@
       <a class="admin-link staff-only" onclick="staffLogout()" title="Sign out of staff mode">Sign out</a>
       <button class="cart-btn" onclick="openCart()" title="View your cart" aria-label="Open cart">
         <span class="bag-ico">🛒</span>
-        <span class="cart-label">Cart</span>
+        <span class="cart-label">Bag</span>
         <span class="cart-count" id="cartCount" style="display:none">0</span>
       </button>
       <button class="icon-btn menu-toggle" id="menuToggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
@@ -730,6 +789,31 @@
   </div>
 
   <div class="panel" style="margin-top:22px">
+    <h3>Delivery charges by location</h3>
+    <p class="hint">Customers pick their area at checkout and the charge is added to their bill automatically. Edit a charge and it applies to new orders instantly.</p>
+    <div class="mini-list" id="zoneList"></div>
+    <div class="mini-add">
+      <input id="zName" placeholder="Area name (e.g. Chattogram)" style="flex:1;min-width:160px">
+      <input id="zCharge" type="number" placeholder="Charge ৳" class="charge-in" style="width:110px">
+      <button onclick="addZone()">+ Add area</button>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-top:22px">
+    <h3>Coupons &amp; promotions</h3>
+    <p class="hint">Create a code, share it on Facebook / Instagram / WhatsApp, and switch it off anytime. Percent coupons discount the subtotal; flat coupons take a fixed amount off.</p>
+    <div class="mini-list" id="couponList"></div>
+    <div class="mini-add">
+      <input id="cpCode" placeholder="CODE (e.g. EID15)" style="width:140px;text-transform:uppercase;font-family:'IBM Plex Mono',monospace">
+      <select id="cpType"><option value="percent">% off</option><option value="flat">৳ flat off</option></select>
+      <input id="cpValue" type="number" placeholder="Value" style="width:90px">
+      <input id="cpMin" type="number" placeholder="Min spend ৳ (optional)" style="width:170px">
+      <button onclick="addCoupon()">+ Create coupon</button>
+    </div>
+    <p class="hint-inline">Tip: mention the minimum spend in your social post so customers aren't surprised.</p>
+  </div>
+
+  <div class="panel" style="margin-top:22px">
     <h3>Store info &amp; contact</h3>
     <p class="hint">This text shows in the footer at the bottom of your site. Update it anytime — changes appear instantly.</p>
     <label>Footer tagline</label>
@@ -809,7 +893,10 @@
   </div>
   <div class="drawer-body" id="cartBody"></div>
   <div class="drawer-foot">
+    <div id="couponArea"></div>
     <div class="row"><span>Subtotal</span><span id="subtotal">৳0</span></div>
+    <div class="row disc" id="discountRow" style="display:none"><span>Coupon discount</span><span id="discountAmt">−৳0</span></div>
+    <div class="row dim"><span>Delivery</span><span>by location, at checkout</span></div>
     <div class="row total"><span>Total</span><span id="total">৳0</span></div>
     <button class="checkout-btn" id="checkoutBtn" onclick="openCheckout()" disabled>Confirm order</button>
   </div>
@@ -868,10 +955,25 @@
       <p>WhatsApp: <span id="footWhatsapp">+880 1XXX-XXXXXX</span><br><span id="footHours">Mon–Sat, 10am–8pm</span></p>
     </div>
   </div>
-  <div class="foot-bottom">© 2026 EONS IT Solutions · Demo store. Staff: add <b>#admin</b> to the page URL to access Orders &amp; Manage Store.</div>
+  <div class="foot-bottom">© 2026 EONS IT Solutions · v2.0 · Demo store. Staff: add <b>#admin</b> to the page URL to access Orders &amp; Manage Store.</div>
 </footer>
 
 <script>
+/* ============================================================
+   EONS STORE — VERSION HISTORY
+   v2.0 (2026-07-03)
+     • Delivery charge by location (zones managed in admin panel)
+     • Coupon system (percent / flat, min-spend, on-off) managed in admin
+     • Fly-to-bag animation on "Add to bag" + bag button bump
+     • "Cart" renamed to "Bag" across the UI
+     • Order records now store subtotal, delivery, coupon & discount;
+       breakdown shown in checkout, tracking page, invoices, Telegram,
+       and the Excel export
+   v1.0 (2026-07-02)
+     • Initial EONS release: full storefront + staff dashboard
+   ============================================================ */
+const APP_VERSION = "2.0";
+
 /* ============================================================
    CONFIG
    ============================================================ */
@@ -970,6 +1072,20 @@ let orders = [];          // {id, name, phone, addr, note, items, total, status,
 // Categories — the single source of truth for both the shop menu and the admin form
 let categories = ["Laptops","Components","Networking","Peripherals","Power"];
 
+/* ---------- v2: delivery zones (admin-managed, charge varies by location) ---------- */
+let deliveryZones = [
+  {name:"Inside Dhaka",  charge:60},
+  {name:"Dhaka Suburbs", charge:100},
+  {name:"Outside Dhaka", charge:130},
+];
+
+/* ---------- v2: coupons (admin-managed; share the codes on social media) ---------- */
+let coupons = [
+  {code:"EONS10",     type:"percent", value:10,  minSpend:0,     active:true},
+  {code:"WELCOME500", type:"flat",    value:500, minSpend:5000,  active:true},
+];
+let appliedCoupon = null;   // code string of the currently applied coupon
+
 const money = n => "৳" + Number(n).toLocaleString("en-IN");
 const moneyTk = n => "Tk " + Number(n).toLocaleString("en-IN");   // PDF/Excel-safe (no broken glyph)
 const $ = id => document.getElementById(id);
@@ -1054,22 +1170,109 @@ function renderShop(){
         <div class="card-desc">${p.desc}</div>
         <div class="card-foot">
           <div class="price">${p.old>p.price?`<small>${money(p.old)}</small>`:""}${money(p.price)}</div>
-          <button class="add-btn" onclick="event.stopPropagation();addToCart(${p.id})">Add</button>
+          <button class="add-btn" onclick="event.stopPropagation();addToCart(${p.id},event)">Add</button>
         </div>
       </div>
     </article>`;
   }).join("");
 }
 
+/* ---------- v2: money math for bag + checkout ---------- */
+function findCoupon(code){
+  if(!code) return null;
+  return coupons.find(c => c.active && c.code.toUpperCase() === String(code).toUpperCase()) || null;
+}
+function couponDiscount(c, sub){
+  if(!c || sub < (c.minSpend||0)) return 0;
+  return c.type === "percent" ? Math.round(sub * c.value / 100) : Math.min(c.value, sub);
+}
+function couponLabel(c){
+  return c.type === "percent" ? `${c.value}% off` : `${money(c.value)} off`
+    + (c.minSpend ? "" : "");
+}
+/* One source of truth for Subtotal / Discount / Delivery / Total */
+function cartTotals(zoneName){
+  const items = Object.values(cart);
+  const sub = items.reduce((s,i)=>s+i.price*i.qty,0);
+  const c = findCoupon(appliedCoupon);
+  if(appliedCoupon && !c) appliedCoupon = null;              // coupon was turned off by admin
+  const discount = couponDiscount(c, sub);
+  const zone = deliveryZones.find(z=>z.name===zoneName) || null;
+  const delivery = zone ? zone.charge : 0;
+  return {sub, discount, delivery, zone, coupon: discount>0 ? c.code : null,
+          total: Math.max(0, sub - discount) + delivery};
+}
+/* Breakdown for saved orders (falls back gracefully for v1 orders) */
+function orderMoney(o){
+  const sub = o.subtotal != null ? o.subtotal : o.items.reduce((s,i)=>s+i.price*i.qty,0);
+  return {sub, discount:o.discount||0, delivery:o.deliveryCharge||0, zone:o.deliveryZone||null, coupon:o.coupon||null};
+}
+
+function applyCoupon(){
+  const code = ($("couponInput")?.value||"").trim();
+  if(!code) return;
+  const c = findCoupon(code);
+  const sub = Object.values(cart).reduce((s,i)=>s+i.price*i.qty,0);
+  if(!c){ $("couponMsg").textContent = "That coupon code isn't valid."; renderCart(); return; }
+  if(sub < (c.minSpend||0)){
+    appliedCoupon = null; renderCart();
+    $("couponMsg").textContent = `${c.code} needs a minimum order of ${money(c.minSpend)}.`;
+    return;
+  }
+  appliedCoupon = c.code;
+  renderCart();
+}
+function removeCoupon(){ appliedCoupon = null; renderCart(); }
+
 /* ---------- Cart ---------- */
-function addToCart(id){
+function addToCart(id, ev){
   const p = products.find(x=>x.id===id);
   if(!p || p.stock<=0) return;
   const inCart = cart[id]?.qty || 0;
   if(inCart >= p.stock){ toast(`Only ${p.stock} of ${p.name} in stock`); return; }
   cart[id] = {...p, img: primaryImage(p), qty: inCart+1};
-  renderCart(); toast(`${p.name} added to bag`);
+  renderCart();
+  flyToBag(ev, p);          // v2: visible flight into the bag instead of a popup
   if($("productView").style.display==="block" && currentProductId===id) renderProduct();
+}
+
+/* v2: clone the product photo and fly it into the Bag button, then bump the badge */
+function flyToBag(ev, p){
+  const bagBtn = document.querySelector(".cart-btn");
+  if(!bagBtn){ return; }
+  // Find the product image nearest to the clicked button
+  let srcImg = null;
+  if(ev && ev.target){
+    const card = ev.target.closest(".card");
+    if(card) srcImg = card.querySelector(".card-img img");
+    if(!srcImg) srcImg = document.getElementById("pdMainImg");
+  }
+  const doBump = ()=>{
+    bagBtn.classList.remove("bump"); void bagBtn.offsetWidth; bagBtn.classList.add("bump");
+    const cc = $("cartCount");
+    if(cc){ cc.classList.remove("pop"); void cc.offsetWidth; cc.classList.add("pop"); }
+  };
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(!srcImg || reduced){ doBump(); return; }
+
+  const s = srcImg.getBoundingClientRect();
+  const t = bagBtn.getBoundingClientRect();
+  const ghost = document.createElement("img");
+  ghost.src = srcImg.src;
+  ghost.className = "fly-img";
+  ghost.style.left = s.left + "px";
+  ghost.style.top = s.top + "px";
+  ghost.style.width = s.width + "px";
+  ghost.style.height = s.height + "px";
+  document.body.appendChild(ghost);
+  void ghost.offsetWidth;                       // force layout before animating
+  ghost.style.left = (t.left + t.width/2 - 14) + "px";
+  ghost.style.top  = (t.top  + t.height/2 - 14) + "px";
+  ghost.style.width = "28px";
+  ghost.style.height = "28px";
+  ghost.style.opacity = ".25";
+  ghost.style.transform = "rotate(8deg)";
+  setTimeout(()=>{ ghost.remove(); doBump(); }, 780);
 }
 function changeQty(id,d){
   if(!cart[id]) return;
@@ -1106,17 +1309,72 @@ function renderCart(){
         </div>
       </div>`).join("");
   }
-  const sub = items.reduce((s,i)=>s+i.price*i.qty,0);
-  $("subtotal").textContent = money(sub);
-  $("total").textContent = money(sub);
+  const t = cartTotals();           // no zone yet — delivery is chosen at checkout
+  $("subtotal").textContent = money(t.sub);
+  if(t.discount > 0){
+    $("discountRow").style.display = "flex";
+    $("discountAmt").textContent = "−" + money(t.discount);
+  } else {
+    $("discountRow").style.display = "none";
+  }
+  $("total").textContent = money(t.total) + (items.length ? " + delivery" : "");
   $("checkoutBtn").disabled = !items.length;
+
+  // Coupon input / applied chip
+  const area = $("couponArea");
+  if(area){
+    if(t.coupon){
+      const c = findCoupon(t.coupon);
+      area.innerHTML = `<div class="coupon-chip"><span>Coupon <b>${c.code}</b> applied — ${c.type==="percent" ? c.value+"% off" : money(c.value)+" off"}</span><span class="x" onclick="removeCoupon()" title="Remove coupon">×</span></div>`;
+    } else {
+      area.innerHTML = `<div class="coupon-row">
+          <input id="couponInput" placeholder="Coupon code" onkeydown="if(event.key==='Enter')applyCoupon()">
+          <button onclick="applyCoupon()">Apply</button>
+        </div><div class="coupon-err" id="couponMsg"></div>`;
+    }
+  }
 }
 
 function openCart(){ $("overlay").classList.add("open"); $("drawer").classList.add("open"); }
 function closeCart(){ $("overlay").classList.remove("open"); $("drawer").classList.remove("open"); }
 
 /* ---------- Checkout & WhatsApp ---------- */
-function openCheckout(){ closeCart(); openModal("checkoutModal"); }
+function checkoutFormHTML(){
+  const zoneOpts = deliveryZones.map(z=>`<option value="${escapeHtml(z.name)}">${escapeHtml(z.name)} — ${money(z.charge)}</option>`).join("");
+  return `
+    <p style="color:var(--ink-soft);font-size:.88rem;margin:6px 0 4px">No online payment needed. We'll call you to confirm your order before delivery — payment is on delivery.</p>
+    <label>Full name</label>
+    <input id="coName" placeholder="e.g. Nusrat Jahan" oninput="this.style.borderColor=''">
+    <label>Phone number</label>
+    <input id="coPhone" placeholder="+88 01XXXXXXXXX" inputmode="numeric" maxlength="14" oninput="this.style.borderColor=''">
+    <span style="display:block;font-size:.74rem;color:var(--ink-soft);margin-top:5px">11-digit Bangladesh mobile number, starting with 01</span>
+    <label>Delivery location</label>
+    <select id="coZone" onchange="this.style.borderColor='';updateCheckoutSummary()">
+      <option value="">Select your area…</option>${zoneOpts}
+    </select>
+    <label>Delivery address</label>
+    <textarea id="coAddr" placeholder="House, road, area, city" oninput="this.style.borderColor=''"></textarea>
+    <label>Notes (optional)</label>
+    <input id="coNote" placeholder="e.g. preferred delivery time, need official invoice">
+    <div class="co-summary" id="coSummary"></div>
+    <button class="checkout-btn" style="margin-top:18px" onclick="placeOrder()">Place order →</button>`;
+}
+function updateCheckoutSummary(){
+  const box = $("coSummary"); if(!box) return;
+  const zone = $("coZone")?.value || "";
+  const t = cartTotals(zone);
+  box.innerHTML = `
+    <div class="row"><span>Subtotal</span><span>${money(t.sub)}</span></div>
+    ${t.discount>0 ? `<div class="row"><span>Coupon (${t.coupon})</span><span style="color:#2c6a44">−${money(t.discount)}</span></div>` : ""}
+    <div class="row"><span>Delivery${t.zone ? " — "+escapeHtml(t.zone.name) : ""}</span><span>${t.zone ? money(t.delivery) : "select area"}</span></div>
+    <div class="row total"><span>Total (COD)</span><span>${money(t.total)}</span></div>`;
+}
+function openCheckout(){
+  closeCart();
+  $("checkoutBody").innerHTML = checkoutFormHTML();
+  updateCheckoutSummary();
+  openModal("checkoutModal");
+}
 
 /* Validate & normalise a Bangladesh mobile number.
    Accepts inputs like: 01712345678, +8801712345678, 8801712345678,
@@ -1173,17 +1431,29 @@ function placeOrder(){
   }
   $("coAddr").style.borderColor = "";
 
+  // ---- v2: delivery location is required (charge varies by area) ----
+  const zoneName = $("coZone")?.value || "";
+  if(!zoneName){
+    toast("Please select your delivery location");
+    $("coZone").focus();
+    $("coZone").style.borderColor = "#c0564f";
+    return;
+  }
+
   const items = Object.values(cart).map(i=>({id:i.id,name:i.name,price:i.price,qty:i.qty}));
   if(!items.length){ toast("Your bag is empty"); return; }
 
   const orderId = "EON" + Date.now().toString().slice(-6);
-  const total = items.reduce((s,i)=>s+i.price*i.qty,0);
+  const t = cartTotals(zoneName);
   const note = $("coNote").value.trim();
 
   // Save the order as PENDING (seller approves later from Orders dashboard)
-  const order = {id:orderId,name,phone,addr,note,items,total,status:"pending",
+  const order = {id:orderId,name,phone,addr,note,items,status:"pending",
+    subtotal:t.sub, deliveryZone:zoneName, deliveryCharge:t.delivery,
+    coupon:t.coupon, discount:t.discount, total:t.total,
     placedAt:new Date().toISOString(),approvedAt:null};
   orders.unshift(order);
+  appliedCoupon = null;   // a coupon is consumed with the order
 
   // Deduct stock — items hide automatically when they hit 0
   items.forEach(i=>{
@@ -1198,7 +1468,13 @@ function placeOrder(){
   $("checkoutBody").innerHTML = `
     <div class="ok-circle">✓</div>
     <h3 class="serif" style="text-align:center;font-size:1.5rem;margin:4px 0 6px">Thank you — your order is received!</h3>
-    <p style="text-align:center;color:var(--ink-soft);font-size:.92rem;margin-bottom:4px">Order <b>#${orderId}</b> · ${money(total)} (Cash on delivery)</p>
+    <p style="text-align:center;color:var(--ink-soft);font-size:.92rem;margin-bottom:4px">Order <b>#${orderId}</b> · ${money(t.total)} (Cash on delivery)</p>
+    <div class="co-summary" style="max-width:340px;margin:10px auto 4px">
+      <div class="row"><span>Subtotal</span><span>${money(t.sub)}</span></div>
+      ${t.discount>0 ? `<div class="row"><span>Coupon (${t.coupon})</span><span style="color:#2c6a44">−${money(t.discount)}</span></div>` : ""}
+      <div class="row"><span>Delivery — ${escapeHtml(zoneName)}</span><span>${money(t.delivery)}</span></div>
+      <div class="row total"><span>Total (COD)</span><span>${money(t.total)}</span></div>
+    </div>
     <div class="wa-box" style="text-align:center">
       <p style="font-size:.95rem;line-height:1.6">Our team will <b>call you shortly</b> on <b>${phone}</b> to confirm your order before delivery.</p>
       <p style="margin-top:8px;color:var(--ink-soft);font-size:.86rem">Please keep your phone reachable. No payment is needed now — you'll pay on delivery.</p>
@@ -1223,7 +1499,11 @@ function notifySellerTelegram(o){
   if(o.note) msg += `📝 ${o.note}\n`;
   msg += `\nItems:\n`;
   o.items.forEach(i => msg += `• ${i.name} × ${i.qty} — ${money(i.price*i.qty)}\n`);
-  msg += `\n💰 Total: ${money(o.total)} (COD)\n`;
+  const bm = orderMoney(o);
+  msg += `\nSubtotal: ${money(bm.sub)}\n`;
+  if(bm.discount) msg += `Coupon ${bm.coupon}: −${money(bm.discount)}\n`;
+  if(bm.zone) msg += `Delivery (${bm.zone}): ${money(bm.delivery)}\n`;
+  msg += `💰 Total: ${money(o.total)} (COD)\n`;
   msg += `\n➡️ Call the customer to confirm, then approve in the Orders dashboard.`;
 
   const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
@@ -1378,6 +1658,71 @@ function renderCatList(){
     </div>`;
   }).join("");
 }
+/* ---------- v2: delivery zone manager ---------- */
+function renderZones(){
+  const el = $("zoneList"); if(!el) return;
+  el.innerHTML = deliveryZones.map((z,i)=>`
+    <div class="mini-row">
+      <span class="grow"><b>${escapeHtml(z.name)}</b></span>
+      <span>৳</span><input class="charge-in" type="number" value="${z.charge}" onchange="setZoneCharge(${i},this.value)">
+      <button class="mini-btn del" onclick="deleteZone(${i})">Delete</button>
+    </div>`).join("") || `<p class="hint-inline">No delivery areas yet — add one below.</p>`;
+}
+function setZoneCharge(i, val){
+  const n = Math.max(0, parseInt(val,10)||0);
+  deliveryZones[i].charge = n;
+  toast(`${deliveryZones[i].name}: delivery charge set to ${money(n)}`);
+  renderZones(); renderCart();
+}
+function addZone(){
+  const name = $("zName").value.trim();
+  const charge = Math.max(0, parseInt($("zCharge").value,10)||0);
+  if(!name){ toast("Give the area a name"); $("zName").focus(); return; }
+  if(deliveryZones.some(z=>z.name.toLowerCase()===name.toLowerCase())){ toast("That area already exists"); return; }
+  deliveryZones.push({name, charge});
+  $("zName").value=""; $("zCharge").value="";
+  renderZones(); toast(`Area "${name}" added — ${money(charge)} delivery`);
+}
+function deleteZone(i){
+  const z = deliveryZones[i];
+  if(!confirm(`Remove delivery area "${z.name}"?`)) return;
+  deliveryZones.splice(i,1); renderZones(); toast(`"${z.name}" removed`);
+}
+
+/* ---------- v2: coupon manager ---------- */
+function renderCoupons(){
+  const el = $("couponList"); if(!el) return;
+  el.innerHTML = coupons.map((c,i)=>`
+    <div class="mini-row">
+      <span class="grow"><b>${escapeHtml(c.code)}</b> — ${c.type==="percent" ? c.value+"% off" : money(c.value)+" off"}${c.minSpend?` · min ${money(c.minSpend)}`:""}</span>
+      <button class="mini-btn ${c.active?'on':'off'}" onclick="toggleCoupon(${i})">${c.active?"Active":"Off"}</button>
+      <button class="mini-btn del" onclick="deleteCoupon(${i})">Delete</button>
+    </div>`).join("") || `<p class="hint-inline">No coupons yet — create one below and share it on social media.</p>`;
+}
+function addCoupon(){
+  const code = $("cpCode").value.trim().toUpperCase().replace(/\s+/g,"");
+  const type = $("cpType").value;
+  const value = Math.max(0, parseInt($("cpValue").value,10)||0);
+  const minSpend = Math.max(0, parseInt($("cpMin").value,10)||0);
+  if(!code){ toast("Give the coupon a code"); $("cpCode").focus(); return; }
+  if(!value){ toast("Set the discount value"); $("cpValue").focus(); return; }
+  if(type==="percent" && value>90){ toast("Percent discount can't exceed 90%"); return; }
+  if(coupons.some(c=>c.code===code)){ toast("That code already exists"); return; }
+  coupons.push({code, type, value, minSpend, active:true});
+  $("cpCode").value=""; $("cpValue").value=""; $("cpMin").value="";
+  renderCoupons(); toast(`Coupon ${code} is live — share it!`);
+}
+function toggleCoupon(i){
+  coupons[i].active = !coupons[i].active;
+  renderCoupons(); renderCart();
+  toast(`Coupon ${coupons[i].code} is now ${coupons[i].active?"active":"off"}`);
+}
+function deleteCoupon(i){
+  const c = coupons[i];
+  if(!confirm(`Delete coupon "${c.code}"?`)) return;
+  coupons.splice(i,1); renderCoupons(); renderCart(); toast(`Coupon ${c.code} deleted`);
+}
+
 function addCategoryFromPanel(){
   const input = $("catNewName");
   const name = (input.value||"").trim();
@@ -1485,7 +1830,7 @@ function staffLogout(){
   closeMenu(); showShop();
   toast("Signed out of staff mode");
 }
-function enterAdmin(){ hideAllViews(); $("adminView").style.display="block"; renderAdmin(); closeMenu(); window.scrollTo(0,0); }
+function enterAdmin(){ hideAllViews(); $("adminView").style.display="block"; renderAdmin(); renderZones(); renderCoupons(); closeMenu(); window.scrollTo(0,0); }
 function enterOrders(){ hideAllViews(); $("ordersView").style.display="block"; renderOrders(); closeMenu(); window.scrollTo(0,0); }
 function enterAnalytics(){ hideAllViews(); $("analyticsView").style.display="block"; renderAnalytics(); closeMenu(); window.scrollTo(0,0); }
 
@@ -1565,7 +1910,11 @@ function renderTrack(id){
     return;
   }
   const stage = trackStageIndex(o);
-  const itemRows = o.items.map(i=>`<div class="tk-li"><span>${i.name} × ${i.qty}</span><span>${money(i.price*i.qty)}</span></div>`).join("");
+  const bm = orderMoney(o);
+  const itemRows = o.items.map(i=>`<div class="tk-li"><span>${i.name} × ${i.qty}</span><span>${money(i.price*i.qty)}</span></div>`).join("")
+    + `<div class="tk-li" style="border-top:1px dashed var(--line);margin-top:4px;padding-top:8px"><span>Subtotal</span><span>${money(bm.sub)}</span></div>`
+    + (bm.discount ? `<div class="tk-li"><span>Coupon (${bm.coupon})</span><span style="color:#2c6a44">−${money(bm.discount)}</span></div>` : "")
+    + (bm.zone ? `<div class="tk-li"><span>Delivery — ${escapeHtml(bm.zone)}</span><span>${money(bm.delivery)}</span></div>` : "");
 
   // Special states: cancelled / returned
   if(stage==="cancelled" || stage==="returned"){
@@ -1717,7 +2066,7 @@ function renderProduct(){
           ${soldOut?"Currently sold out":(p.stock<=LOW_STOCK?`Only ${p.stock} left in stock`:"In stock")}
         </div>
         <div class="pd-actions">
-          <button class="pd-add ${soldOut?'disabled':''}" ${soldOut?'disabled':`onclick="addToCart(${p.id})"`}>
+          <button class="pd-add ${soldOut?'disabled':''}" ${soldOut?'disabled':`onclick="addToCart(${p.id},event)"`}>
             ${soldOut?"Sold out":"Add to bag"}
           </button>
           ${inCart?`<span class="pd-incart">${inCart} in your bag</span>`:""}
@@ -1896,7 +2245,7 @@ function renderOrders(){
         ${o.riderName?`<br><span style="color:var(--blue-deep)">🛵 Rider: ${o.riderName}${o.riderPhone?` · ${o.riderPhone}`:""}</span>`:""}
       </div>
       <div class="oc-items">${itemRows}
-        <div class="oc-total"><span>Total (COD)</span><span>${money(o.total)}</span></div>
+        <div class="oc-total"><span>Total (COD)${o.deliveryZone?` · ${escapeHtml(o.deliveryZone)} +${money(o.deliveryCharge||0)}`:""}${o.coupon?` · ${escapeHtml(o.coupon)} −${money(o.discount||0)}`:""}</span><span>${money(o.total)}</span></div>
       </div>
       <div class="oc-actions">${actions}</div>
     </div>`;
@@ -2200,6 +2549,11 @@ function exportOrdersExcel(){
     "Note": o.note || "",
     "Items": o.items.map(i=>`${i.name} x${i.qty}`).join("; "),
     "Units": o.items.reduce((s,i)=>s+i.qty,0),
+    "Subtotal (BDT)": orderMoney(o).sub,
+    "Coupon": o.coupon || "",
+    "Discount (BDT)": o.discount || 0,
+    "Delivery Zone": o.deliveryZone || "",
+    "Delivery (BDT)": o.deliveryCharge || 0,
     "Total (BDT)": o.total,
     "Payment": "Cash on Delivery",
     "Order Status": o.status==="pending" ? "Pending call" : (o.status==="cancelled" ? "Cancelled" : "Approved"),
@@ -2239,7 +2593,11 @@ function buildInvoiceText(o){
   if(o.note) t += `Note: ${o.note}\n`;
   t += `\n*Parcel contents:*\n`;
   o.items.forEach(i=> t += `• ${i.name} × ${i.qty}\n`);
-  t += `\n*Collect on delivery (COD): ${moneyTk(o.total)}*\n`;
+  const bm = orderMoney(o);
+  t += `\nSubtotal: ${moneyTk(bm.sub)}\n`;
+  if(bm.discount) t += `Coupon ${bm.coupon}: -${moneyTk(bm.discount)}\n`;
+  if(bm.zone) t += `Delivery (${bm.zone}): ${moneyTk(bm.delivery)}\n`;
+  t += `*Collect on delivery (COD): ${moneyTk(o.total)}*\n`;
   t += `\nFrom: ${STORE_NAME}, ${STORE_PHONE}\nPickup: ${STORE_ADDR}`;
   return t;
 }
@@ -2318,9 +2676,15 @@ function downloadInvoice(id){
     y += rowH;
   });
 
+  // v2: subtotal / coupon / delivery breakdown
+  const bm = orderMoney(o);
+  doc.setFont("helvetica","normal"); doc.setFontSize(10); doc.setTextColor(60,54,48);
+  y += 8; doc.setDrawColor(221,227,240); doc.line(W/2, y, R, y);
+  y += 18; doc.text("Subtotal", colPrice, y, {align:"right"}); doc.text(moneyTk(bm.sub), colAmt, y, {align:"right"});
+  if(bm.discount){ y += 15; doc.text(`Coupon (${bm.coupon})`, colPrice, y, {align:"right"}); doc.text("-"+moneyTk(bm.discount), colAmt, y, {align:"right"}); }
+  if(bm.zone){ y += 15; doc.text(`Delivery — ${bm.zone}`, colPrice, y, {align:"right"}); doc.text(moneyTk(bm.delivery), colAmt, y, {align:"right"}); }
   // ---- Total ----
-  y += 8; doc.setDrawColor(232,221,208); doc.line(W/2, y, R, y);
-  y += 24; doc.setFont("helvetica","bold"); doc.setFontSize(13); doc.setTextColor(28,23,20);
+  y += 24; doc.setFont("helvetica","bold"); doc.setFontSize(13); doc.setTextColor(24,31,59);
   doc.text("COLLECT ON DELIVERY", colPrice, y, {align:"right"});
   doc.setTextColor(176,141,79);
   doc.text(moneyTk(o.total), colAmt, y, {align:"right"});
@@ -2399,9 +2763,15 @@ function downloadCustomerInvoice(id){
     y += rowH;
   });
 
+  // v2: subtotal / coupon / delivery breakdown
+  const bm = orderMoney(o);
+  doc.setFont("helvetica","normal"); doc.setFontSize(10); doc.setTextColor(60,54,48);
+  y += 8; doc.setDrawColor(221,227,240); doc.line(W/2, y, R, y);
+  y += 18; doc.text("Subtotal", colPrice, y, {align:"right"}); doc.text(moneyTk(bm.sub), colAmt, y, {align:"right"});
+  if(bm.discount){ y += 15; doc.text(`Coupon (${bm.coupon})`, colPrice, y, {align:"right"}); doc.text("-"+moneyTk(bm.discount), colAmt, y, {align:"right"}); }
+  if(bm.zone){ y += 15; doc.text(`Delivery — ${bm.zone}`, colPrice, y, {align:"right"}); doc.text(moneyTk(bm.delivery), colAmt, y, {align:"right"}); }
   // Total
-  y += 8; doc.setDrawColor(232,221,208); doc.line(W/2, y, R, y);
-  y += 24; doc.setFont("helvetica","bold"); doc.setFontSize(13); doc.setTextColor(28,23,20);
+  y += 24; doc.setFont("helvetica","bold"); doc.setFontSize(13); doc.setTextColor(24,31,59);
   doc.text("AMOUNT PAYABLE ON DELIVERY", colPrice, y, {align:"right"});
   doc.setTextColor(176,141,79);
   doc.text(moneyTk(o.total), colAmt, y, {align:"right"});
@@ -2456,14 +2826,8 @@ document.addEventListener("keydown", e=>{
   }
 });
 function resetCheckout(){
-  $("checkoutBody").innerHTML = `
-    <p style="color:var(--ink-soft);font-size:.88rem;margin:6px 0 4px">No online payment needed. We'll call you to confirm your order before delivery — payment is on delivery.</p>
-    <label>Full name</label><input id="coName" placeholder="e.g. Nusrat Jahan" oninput="this.style.borderColor=''">
-    <label>Phone number</label><input id="coPhone" placeholder="+88 01XXXXXXXXX" inputmode="numeric" maxlength="14" oninput="this.style.borderColor=''">
-    <span style="display:block;font-size:.74rem;color:var(--ink-soft);margin-top:5px">11-digit Bangladesh mobile number, starting with 01</span>
-    <label>Delivery address</label><textarea id="coAddr" placeholder="House, road, area, city" oninput="this.style.borderColor=''"></textarea>
-    <label>Notes (optional)</label><input id="coNote" placeholder="e.g. preferred delivery time, need official invoice">
-    <button class="checkout-btn" style="margin-top:18px" onclick="placeOrder()">Place order →</button>`;
+  $("checkoutBody").innerHTML = checkoutFormHTML();
+  updateCheckoutSummary();
 }
 let toastTimer;
 function toast(msg, wa){
@@ -2477,18 +2841,21 @@ orders.push(
   {id:"EON100245", name:"Nusrat Jahan", phone:"01712345678",
    addr:"Flat 4B, House 9, Road 11, Dhanmondi, Dhaka", note:"Please call before 6pm",
    items:[{id:2,name:"Samsung 980 Pro 1TB NVMe Gen4 SSD",price:14500,qty:1},{id:7,name:"Kingston Fury Beast 16GB DDR4 3200MHz",price:5400,qty:2}],
-   total:25300, status:"pending", placedAt:new Date(Date.now()-3600000).toISOString(), approvedAt:null},
+   subtotal:25300, deliveryZone:"Inside Dhaka", deliveryCharge:60, coupon:null, discount:0,
+   total:25360, status:"pending", placedAt:new Date(Date.now()-3600000).toISOString(), approvedAt:null},
   {id:"EON100231", name:"Rafiq Hasan", phone:"01819988776",
    addr:"House 22, Sector 7, Uttara, Dhaka", note:"",
    items:[{id:3,name:"TP-Link Archer AX73 WiFi 6 Router",price:13200,qty:1}],
-   total:13200, status:"approved", delivery:"Delivered",
+   subtotal:13200, deliveryZone:"Inside Dhaka", deliveryCharge:60, coupon:"EONS10", discount:1320,
+   total:11940, status:"approved", delivery:"Delivered",
    placedAt:new Date(Date.now()-86400000*2).toISOString(),
    approvedAt:new Date(Date.now()-86400000*2+3600000).toISOString(),
    deliveredAt:new Date(Date.now()-86400000).toISOString()},
   {id:"EON100218", name:"Tania Akter", phone:"01655443322",
    addr:"Flat 2A, Road 3, Mirpur DOHS, Dhaka", note:"Need official invoice",
    items:[{id:4,name:"Logitech MX Master 3S Wireless Mouse",price:11800,qty:1},{id:6,name:"APC BX650MI 650VA Line-Interactive UPS",price:6800,qty:1}],
-   total:18600, status:"approved", delivery:"Returned",
+   subtotal:18600, deliveryZone:"Outside Dhaka", deliveryCharge:130, coupon:null, discount:0,
+   total:18730, status:"approved", delivery:"Returned",
    placedAt:new Date(Date.now()-86400000*4).toISOString(),
    approvedAt:new Date(Date.now()-86400000*4+3600000).toISOString()}
 );
