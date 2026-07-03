@@ -906,7 +906,7 @@
 <div class="modal" id="checkoutModal">
   <div class="modal-card">
     <div class="mh">
-      <h3>Confirm your order</h3>
+      <h3 id="checkoutTitle">Confirm your order</h3>
       <button class="close-x" onclick="closeModal('checkoutModal')">×</button>
     </div>
     <div class="mb" id="checkoutBody">
@@ -955,12 +955,16 @@
       <p>WhatsApp: <span id="footWhatsapp">+880 1XXX-XXXXXX</span><br><span id="footHours">Mon–Sat, 10am–8pm</span></p>
     </div>
   </div>
-  <div class="foot-bottom">© 2026 EONS IT Solutions · v2.0 · Demo store. Staff: add <b>#admin</b> to the page URL to access Orders &amp; Manage Store.</div>
+  <div class="foot-bottom">© 2026 EONS IT Solutions · v2.1 · Demo store. Staff: add <b>#admin</b> to the page URL to access Orders &amp; Manage Store.</div>
 </footer>
 
 <script>
 /* ============================================================
    EONS STORE — VERSION HISTORY
+   v2.1 (2026-07-03)
+     • Order-success screen redesigned: compact copy, no redundant
+       lines, modal header switches to "Order placed", scrolls to top
+       so the confirmation is never cut off
    v2.0 (2026-07-03)
      • Delivery charge by location (zones managed in admin panel)
      • Coupon system (percent / flat, min-spend, on-off) managed in admin
@@ -972,7 +976,7 @@
    v1.0 (2026-07-02)
      • Initial EONS release: full storefront + staff dashboard
    ============================================================ */
-const APP_VERSION = "2.0";
+const APP_VERSION = "2.1";
 
 /* ============================================================
    CONFIG
@@ -1371,6 +1375,7 @@ function updateCheckoutSummary(){
 }
 function openCheckout(){
   closeCart();
+  if($("checkoutTitle")) $("checkoutTitle").textContent = "Confirm your order";
   $("checkoutBody").innerHTML = checkoutFormHTML();
   updateCheckoutSummary();
   openModal("checkoutModal");
@@ -1464,29 +1469,27 @@ function placeOrder(){
   // ---- Notify the SELLER on Telegram (free, automatic, background) ----
   notifySellerTelegram(order);
 
-  // ---- Customer sees ONLY a clean confirmation. No WhatsApp, no call. ----
+  // ---- Compact success screen (v2.1) ----
+  if($("checkoutTitle")) $("checkoutTitle").textContent = "Order placed";
   $("checkoutBody").innerHTML = `
-    <div class="ok-circle">✓</div>
-    <h3 class="serif" style="text-align:center;font-size:1.5rem;margin:4px 0 6px">Thank you — your order is received!</h3>
-    <p style="text-align:center;color:var(--ink-soft);font-size:.92rem;margin-bottom:4px">Order <b>#${orderId}</b> · ${money(t.total)} (Cash on delivery)</p>
-    <div class="co-summary" style="max-width:340px;margin:10px auto 4px">
+    <div class="ok-circle" style="margin-top:14px">✓</div>
+    <p style="text-align:center;color:var(--ink-soft);font-size:.9rem;margin:6px 0 2px">Order <b style="color:var(--ink)">#${orderId}</b></p>
+    <div class="co-summary" style="margin:12px 0 14px">
       <div class="row"><span>Subtotal</span><span>${money(t.sub)}</span></div>
       ${t.discount>0 ? `<div class="row"><span>Coupon (${t.coupon})</span><span style="color:#2c6a44">−${money(t.discount)}</span></div>` : ""}
       <div class="row"><span>Delivery — ${escapeHtml(zoneName)}</span><span>${money(t.delivery)}</span></div>
       <div class="row total"><span>Total (COD)</span><span>${money(t.total)}</span></div>
     </div>
-    <div class="wa-box" style="text-align:center">
-      <p style="font-size:.95rem;line-height:1.6">Our team will <b>call you shortly</b> on <b>${phone}</b> to confirm your order before delivery.</p>
-      <p style="margin-top:8px;color:var(--ink-soft);font-size:.86rem">Please keep your phone reachable. No payment is needed now — you'll pay on delivery.</p>
-    </div>
-    <button class="checkout-btn track-cta" style="margin-top:6px" onclick="closeModal('checkoutModal');openTrack('${orderId}');location.hash='#track/${orderId}'">🔎 Track my order</button>
-    <button class="checkout-btn pdf" style="margin-top:10px;background:var(--ink)" onclick="downloadCustomerInvoice('${orderId}')">📄 Download my invoice (PDF)</button>
+    <p style="text-align:center;font-size:.9rem;line-height:1.55;color:var(--ink);background:#f3faf5;border:1px solid #cfe8d8;border-radius:12px;padding:11px 14px;margin-bottom:14px">We'll call <b>${phone}</b> shortly to confirm — pay cash on delivery.</p>
+    <button class="checkout-btn track-cta" onclick="closeModal('checkoutModal');openTrack('${orderId}');location.hash='#track/${orderId}'">Track my order</button>
+    <button class="checkout-btn" style="margin-top:10px;background:var(--card);color:var(--ink);border:1px solid var(--line)" onclick="downloadCustomerInvoice('${orderId}')">Download invoice (PDF)</button>
     <button class="checkout-btn" style="margin-top:10px;background:var(--card);color:var(--ink);border:1px solid var(--line)" onclick="closeModal('checkoutModal');showShop()">Continue shopping</button>
-    <p style="text-align:center;font-size:.78rem;color:var(--teal);margin-top:12px">✓ Order placed successfully. We've got it from here!</p>
   `;
+  // Make sure the confirmation starts at the top, never cut off mid-screen
+  const mc = document.querySelector("#checkoutModal .modal-card");
+  if(mc) mc.scrollTop = 0;
 
   cart = {}; renderCart(); renderShop(); renderAdmin(); renderOrders();
-  toast("Order received — we'll call you shortly", true);
 }
 
 /* Send the seller a Telegram message in the background (no UI, no cost).
@@ -2826,6 +2829,7 @@ document.addEventListener("keydown", e=>{
   }
 });
 function resetCheckout(){
+  if($("checkoutTitle")) $("checkoutTitle").textContent = "Confirm your order";
   $("checkoutBody").innerHTML = checkoutFormHTML();
   updateCheckoutSummary();
 }
