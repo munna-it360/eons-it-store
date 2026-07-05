@@ -48,6 +48,21 @@
   .nav-links a:hover::after{width:100%}
   .nav-links a.active{color:var(--blue-deep)}
   .nav-links a.active::after{width:100%}
+  /* ---------- v3: dropdown menus ---------- */
+  .nav-item{position:relative}
+  .nav-row{display:flex;align-items:center;gap:4px}
+  .nav-caret{font-size:.58rem;color:var(--ink-soft);cursor:pointer;padding:4px 2px;transition:.2s;user-select:none}
+  .nav-item:hover .nav-caret{color:var(--blue-deep)}
+  .nav-dd{position:absolute;top:100%;left:-14px;padding-top:10px;display:none;z-index:65}
+  .nav-item:hover .nav-dd{display:block}
+  .nav-dd-card{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    box-shadow:var(--shadow);padding:8px;min-width:200px}
+  .nav-links .nav-dd-card a{display:block;padding:9px 12px;border-radius:8px;font-size:.86rem;
+    color:var(--ink);white-space:nowrap;font-weight:500}
+  .nav-links .nav-dd-card a::after{display:none}
+  .nav-links .nav-dd-card a:hover{background:#eef2fb;color:var(--blue-deep)}
+  .nav-dd-card a.dd-all{font-weight:600;border-bottom:1px solid var(--line);
+    border-radius:8px 8px 0 0;margin-bottom:4px}
   .nav-right{display:flex;gap:14px;align-items:center}
   /* Primary "Bag" button — the most important action in the shop */
   .cart-btn{position:relative;display:inline-flex;align-items:center;gap:8px;cursor:pointer;
@@ -545,6 +560,16 @@
     .nav-links a:last-child{border-bottom:none}
     .nav-links a::after{display:none}   /* no underline animation in dropdown */
     .nav-links a.active{background:var(--bg);color:var(--blue-deep);font-weight:600}
+    /* v3: mobile — categories expand in place */
+    .nav-links .nav-item{border-bottom:1px solid var(--line)}
+    .nav-links .nav-row a{flex:1;border-bottom:none}
+    .nav-links .nav-caret{padding:14px 20px;font-size:.75rem}
+    .nav-item.open .nav-caret{transform:rotate(180deg);color:var(--blue-deep)}
+    .nav-dd{display:none;position:static;padding:0}
+    .nav-item.open .nav-dd{display:block}
+    .nav-dd-card{background:var(--bg);border:none;box-shadow:none;border-radius:0;padding:0 0 6px;min-width:0}
+    .nav-links .nav-dd-card a{padding:11px 22px 11px 40px;border-bottom:none;font-size:.9rem;white-space:normal}
+    .nav-dd-card a.dd-all{border-bottom:none;margin-bottom:0}
     .menu-toggle{display:grid}
     .admin-link{display:none}            /* desktop admin links never show on mobile */
     body.is-staff .admin-link.staff-only{display:none !important}  /* use mobile menu instead */
@@ -628,6 +653,34 @@
     margin-top:6px;padding-top:8px}
   .co-summary .row.total span:last-child{font-family:"IBM Plex Mono",monospace}
 
+  /* ---------- v3: sub-category pills ---------- */
+  #catPills{flex-wrap:wrap}
+  .sub-pills{display:flex;gap:8px;flex-wrap:wrap;width:100%;margin-top:10px}
+  .sub-pill{padding:7px 15px;border-radius:20px;border:1px solid var(--line);background:var(--card);
+    font-size:.78rem;color:var(--ink-soft);transition:.15s;cursor:pointer}
+  .sub-pill:hover{border-color:var(--blue);color:var(--blue-deep)}
+  .sub-pill.active{background:var(--blue-deep);border-color:var(--blue-deep);color:#fff}
+
+  /* ---------- v3: admin submenu manager ---------- */
+  .sub-box{margin:-4px 0 14px;padding:11px 13px;background:var(--bg);
+    border:1px solid var(--line);border-radius:0 0 10px 10px;border-top:none}
+  .sub-box .sb-label{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ink-soft);margin-bottom:8px;font-family:"IBM Plex Mono",monospace}
+  .sub-chip{display:inline-flex;align-items:center;gap:7px;background:var(--card);
+    border:1px solid var(--line);border-radius:20px;padding:6px 11px;font-size:.78rem;margin:0 6px 6px 0}
+  .sub-chip .sc-count{color:var(--ink-soft);font-size:.7rem}
+  .sub-chip .sc-e,.sub-chip .sc-x{cursor:pointer;color:var(--ink-soft);font-weight:700;line-height:1}
+  .sub-chip .sc-e:hover{color:var(--blue-deep)}
+  .sub-chip .sc-x:hover{color:#c0564f}
+  .sub-add{display:flex;gap:8px;margin-top:6px}
+  .sub-add input{flex:1;padding:8px 11px;border:1px solid var(--line);border-radius:8px;font-size:.8rem}
+  .sub-add button{background:var(--card);border:1px solid var(--line);border-radius:8px;
+    padding:8px 14px;font-size:.76rem;font-weight:600}
+  .sub-add button:hover{border-color:var(--blue)}
+  .cat-rename{font-size:.72rem;padding:6px 11px;border-radius:8px;border:1px solid var(--line);
+    background:var(--card);margin-right:8px}
+  .cat-rename:hover{border-color:var(--blue)}
+
   /* ---------- v2: admin zone & coupon manager ---------- */
   .mini-list{display:flex;flex-direction:column;gap:8px;margin-top:12px}
   .mini-row{display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--line);
@@ -686,10 +739,7 @@
     <div class="brand" onclick="showShop()"><img src="data:image/png;base64,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" alt="EONS"></div>
     <div class="nav-links" id="navLinks">
       <a onclick="filterCat('All')">All</a>
-      <a onclick="filterCat('Laptops')">Laptops</a>
-      <a onclick="filterCat('Components')">Components</a>
-      <a onclick="filterCat('Networking')">Networking</a>
-      <a onclick="filterCat('Peripherals')">Peripherals</a>
+      <span id="navCats" style="display:contents"></span>
       <a class="nav-mobile-only staff-only" onclick="showAdmin();closeMenu()">Manage Store</a>
       <a class="nav-mobile-only staff-only" onclick="showOrders();closeMenu()">Orders</a>
       <a class="nav-mobile-only staff-only" onclick="showAnalytics();closeMenu()">Analytics</a>
@@ -755,6 +805,8 @@
       <input id="fName" placeholder="e.g. TP-Link Archer AX73 Router">
       <label>Category</label>
       <select id="fCat" onchange="onCatChange(this.value)"></select>
+      <label>Submenu <span style="font-weight:400;color:var(--ink-soft)">(optional)</span></label>
+      <select id="fSub"></select>
       <div id="newCatRow" style="display:none;margin-top:10px">
         <div style="display:flex;gap:8px">
           <input id="fNewCat" placeholder="New category name" oninput="this.style.borderColor=''" style="flex:1">
@@ -797,8 +849,8 @@
   </div>
 
   <div class="panel" style="margin-top:22px">
-    <h3>Manage categories</h3>
-    <p class="hint">Add or remove shop categories. A category can only be removed once no products use it — reassign or delete those products first.</p>
+    <h3>Manage menu &amp; submenus</h3>
+    <p class="hint">Each menu (category) can hold submenus that appear as a dropdown in the shop navigation. Rename anything anytime — products follow the new name automatically. A menu can only be removed once no products use it.</p>
     <div class="cat-add-row">
       <input id="catNewName" placeholder="New category name (e.g. Printers)" oninput="this.style.borderColor=''">
       <button class="oc-btn" style="flex:0 0 auto;min-width:0;padding:11px 20px" onclick="addCategoryFromPanel()">+ Add category</button>
@@ -973,12 +1025,19 @@
       <p>WhatsApp: <span id="footWhatsapp">+880 1XXX-XXXXXX</span><br><span id="footHours">Mon–Sat, 10am–8pm</span></p>
     </div>
   </div>
-  <div class="foot-bottom">© 2026 EONS IT Solutions · v2.3 · Demo store. Staff: add <b>#admin</b> to the page URL to access Orders &amp; Manage Store.</div>
+  <div class="foot-bottom">© 2026 EONS IT Solutions · v3.0 · Demo store. Staff: add <b>#admin</b> to the page URL to access Orders &amp; Manage Store.</div>
 </footer>
 
 <script>
 /* ============================================================
    EONS STORE — VERSION HISTORY
+   v3.0 (2026-07-05)
+     • Two-level menu: every category can have submenus, shown as
+       hover dropdowns on desktop and expandable sections on mobile
+     • Admin panel: full create / rename / delete for categories AND
+       subcategories; products can be assigned a subcategory
+     • Sub-filter pills appear under the main pills when browsing a
+       category that has submenus
    v2.3 (2026-07-03)
      • Success screen refined to a professional finish: navy primary
        download button with a brief (non-looping) pulse, caption text
@@ -1003,7 +1062,7 @@
    v1.0 (2026-07-02)
      • Initial EONS release: full storefront + staff dashboard
    ============================================================ */
-const APP_VERSION = "2.3";
+const APP_VERSION = "3.0";
 
 /* ============================================================
    CONFIG
@@ -1064,33 +1123,33 @@ function saveStoreInfo(){
 
 /* ---------- Seed products ---------- */
 let products = [
-  {id:1,name:"HP ProBook 450 G10 (i5-1335U / 16GB / 512GB)",cat:"Laptops",desc:"13th-gen Core i5 business laptop with 16GB DDR4 and 512GB NVMe SSD. Aluminium build, backlit keyboard, and a 15.6\" FHD anti-glare display — a dependable daily driver for office fleets.",price:115000,old:122000,stock:4,
+  {id:1,name:"HP ProBook 450 G10 (i5-1335U / 16GB / 512GB)",cat:"Laptops",sub:"Business",desc:"13th-gen Core i5 business laptop with 16GB DDR4 and 512GB NVMe SSD. Aluminium build, backlit keyboard, and a 15.6\" FHD anti-glare display — a dependable daily driver for office fleets.",price:115000,old:122000,stock:4,
     images:["https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&q=80","https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&q=80"],
     reviews:[
       {name:"Arif Chowdhury",rating:5,comment:"Bought 6 units for our office. Clean builds, genuine Windows, quick delivery.",at:"2026-05-18T10:00:00Z"},
       {name:"Sadia N.",rating:4,comment:"Fast and quiet. Battery easily lasts a workday.",at:"2026-06-02T14:30:00Z"}
     ]},
-  {id:2,name:"Samsung 980 Pro 1TB NVMe Gen4 SSD",cat:"Components",desc:"Up to 7,000 MB/s reads on PCIe 4.0. The go-to upgrade for workstations, gaming rigs, and anyone tired of waiting on disk. 5-year official warranty.",price:14500,old:0,stock:18,
+  {id:2,name:"Samsung 980 Pro 1TB NVMe Gen4 SSD",cat:"Components",sub:"SSD & Storage",desc:"Up to 7,000 MB/s reads on PCIe 4.0. The go-to upgrade for workstations, gaming rigs, and anyone tired of waiting on disk. 5-year official warranty.",price:14500,old:0,stock:18,
     images:["https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80"],reviews:[
       {name:"Tanvir R.",rating:5,comment:"Boot time went from 40s to 9s. Genuine unit, warranty registered fine.",at:"2026-05-25T09:00:00Z"}
     ]},
-  {id:3,name:"TP-Link Archer AX73 WiFi 6 Router",cat:"Networking",desc:"AX5400 dual-band WiFi 6 with 6 antennas and HomeShield security. Comfortably covers a 2,000+ sq ft office or flat with dozens of devices.",price:13200,old:14500,stock:9,
+  {id:3,name:"TP-Link Archer AX73 WiFi 6 Router",cat:"Networking",sub:"Routers",desc:"AX5400 dual-band WiFi 6 with 6 antennas and HomeShield security. Comfortably covers a 2,000+ sq ft office or flat with dozens of devices.",price:13200,old:14500,stock:9,
     images:["https://images.unsplash.com/photo-1606904825846-647eb07f5be2?w=600&q=80"],reviews:[]},
-  {id:4,name:"Logitech MX Master 3S Wireless Mouse",cat:"Peripherals",desc:"8K DPI quiet-click flagship with MagSpeed scrolling and multi-device flow. The mouse serious professionals refuse to give up.",price:11800,old:0,stock:7,
+  {id:4,name:"Logitech MX Master 3S Wireless Mouse",cat:"Peripherals",sub:"Keyboard & Mouse",desc:"8K DPI quiet-click flagship with MagSpeed scrolling and multi-device flow. The mouse serious professionals refuse to give up.",price:11800,old:0,stock:7,
     images:["https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=600&q=80"],reviews:[
       {name:"Nabila H.",rating:5,comment:"Worth every taka. Scroll wheel alone is a productivity upgrade.",at:"2026-06-10T11:00:00Z"}
     ]},
-  {id:5,name:"Dell P2422H 24\" IPS FHD Monitor",cat:"Peripherals",desc:"Business-class IPS panel with height, tilt, swivel and pivot adjustment plus a built-in USB hub. 3-year advanced exchange warranty.",price:21500,old:0,stock:6,
+  {id:5,name:"Dell P2422H 24\" IPS FHD Monitor",cat:"Peripherals",sub:"Monitors",desc:"Business-class IPS panel with height, tilt, swivel and pivot adjustment plus a built-in USB hub. 3-year advanced exchange warranty.",price:21500,old:0,stock:6,
     images:["https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&q=80"],reviews:[]},
-  {id:6,name:"APC BX650MI 650VA Line-Interactive UPS",cat:"Power",desc:"Reliable backup and surge protection for a PC, router, and monitor — enough runtime to ride out load-shedding blips and shut down safely.",price:6800,old:0,stock:15,
+  {id:6,name:"APC BX650MI 650VA Line-Interactive UPS",cat:"Power",sub:"UPS",desc:"Reliable backup and surge protection for a PC, router, and monitor — enough runtime to ride out load-shedding blips and shut down safely.",price:6800,old:0,stock:15,
     images:["https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=600&q=80"],reviews:[]},
-  {id:7,name:"Kingston Fury Beast 16GB DDR4 3200MHz",cat:"Components",desc:"Plug-and-play XMP performance memory with a low-profile heat spreader. The easiest, cheapest upgrade for a sluggish desktop.",price:5400,old:6200,stock:22,
+  {id:7,name:"Kingston Fury Beast 16GB DDR4 3200MHz",cat:"Components",sub:"RAM",desc:"Plug-and-play XMP performance memory with a low-profile heat spreader. The easiest, cheapest upgrade for a sluggish desktop.",price:5400,old:6200,stock:22,
     images:["https://images.unsplash.com/photo-1562976540-1502c2145186?w=600&q=80"],reviews:[]},
-  {id:8,name:"TP-Link TL-SG1024D 24-Port Gigabit Switch",cat:"Networking",desc:"Unmanaged rack-mountable gigabit switch — silent fanless design, plug-and-play, and built for always-on office backbones.",price:12900,old:0,stock:3,
+  {id:8,name:"TP-Link TL-SG1024D 24-Port Gigabit Switch",cat:"Networking",sub:"Switches",desc:"Unmanaged rack-mountable gigabit switch — silent fanless design, plug-and-play, and built for always-on office backbones.",price:12900,old:0,stock:3,
     images:["https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80"],reviews:[]},
-  {id:9,name:"Keychron K2 V2 Wireless Mechanical Keyboard",cat:"Peripherals",desc:"Hot-swappable 75% mechanical board with Bluetooth for 3 devices, Mac/Windows layouts, and RGB backlight.",price:9500,old:0,stock:0,
+  {id:9,name:"Keychron K2 V2 Wireless Mechanical Keyboard",cat:"Peripherals",sub:"Keyboard & Mouse",desc:"Hot-swappable 75% mechanical board with Bluetooth for 3 devices, Mac/Windows layouts, and RGB backlight.",price:9500,old:0,stock:0,
     images:["https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=600&q=80"],reviews:[]},
-  {id:10,name:"ASUS TUF Gaming F15 (i7-12700H / RTX 4060)",cat:"Laptops",desc:"12th-gen i7 with RTX 4060, 16GB DDR5 and a 144Hz display. Military-grade chassis that doubles as a CAD/rendering workhorse.",price:145000,old:152000,stock:2,
+  {id:10,name:"ASUS TUF Gaming F15 (i7-12700H / RTX 4060)",cat:"Laptops",sub:"Gaming",desc:"12th-gen i7 with RTX 4060, 16GB DDR5 and a 144Hz display. Military-grade chassis that doubles as a CAD/rendering workhorse.",price:145000,old:152000,stock:2,
     images:["https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=600&q=80"],reviews:[
       {name:"Rakib I.",rating:5,comment:"Handles SolidWorks and gaming without breaking a sweat.",at:"2026-06-14T16:00:00Z"}
     ]},
@@ -1101,7 +1160,17 @@ let activeCat = "All";
 let isAdmin = false;
 let orders = [];          // {id, name, phone, addr, note, items, total, status, placedAt, approvedAt}
 // Categories — the single source of truth for both the shop menu and the admin form
-let categories = ["Laptops","Components","Networking","Peripherals","Power"];
+/* v3: two-level menu — each category owns its submenus */
+let categories = [
+  {name:"Laptops",     subs:["Business","Gaming"]},
+  {name:"Components",  subs:["SSD & Storage","RAM"]},
+  {name:"Networking",  subs:["Routers","Switches"]},
+  {name:"Peripherals", subs:["Monitors","Keyboard & Mouse"]},
+  {name:"Power",       subs:["UPS"]},
+];
+function catNames(){ return categories.map(c=>c.name); }
+function getCat(name){ return categories.find(c=>c.name===name); }
+let activeSub = "";
 
 /* ---------- v2: delivery zones (admin-managed, charge varies by location) ---------- */
 let deliveryZones = [
@@ -1144,10 +1213,47 @@ function starsHtml(rating, cls){
 }
 
 /* ---------- Render shop ---------- */
+function esq(s){ return String(s).replace(/'/g,"\\'"); }   // escape for inline onclick args
+
+/* v3: build the top nav (with dropdowns) from the categories model */
+function renderNav(){
+  const el = $("navCats"); if(!el) return;
+  el.innerHTML = categories.map(c=>{
+    if(!c.subs.length)
+      return `<a onclick="filterCat('${esq(c.name)}')">${escapeHtml(c.name)}</a>`;
+    return `<div class="nav-item">
+      <div class="nav-row">
+        <a onclick="filterCat('${esq(c.name)}')">${escapeHtml(c.name)}</a>
+        <span class="nav-caret" onclick="toggleNavSubs(event,this)">▾</span>
+      </div>
+      <div class="nav-dd"><div class="nav-dd-card">
+        <a class="dd-all" onclick="filterCat('${esq(c.name)}')">All ${escapeHtml(c.name)}</a>
+        ${c.subs.map(s=>`<a onclick="filterSub('${esq(c.name)}','${esq(s)}')">${escapeHtml(s)}</a>`).join("")}
+      </div></div>
+    </div>`;
+  }).join("");
+}
+function toggleNavSubs(e, el){
+  e.stopPropagation();
+  const item = el.closest(".nav-item");
+  document.querySelectorAll(".nav-item.open").forEach(x=>{ if(x!==item) x.classList.remove("open"); });
+  item.classList.toggle("open");
+}
+
 function renderPills(){
-  const cats = ["All", ...categories];
-  $("catPills").innerHTML = cats.map(c =>
-    `<button class="cat-pill ${c===activeCat?'active':''}" onclick="filterCat('${c}')">${c}</button>`).join("");
+  renderNav();
+  const cats = ["All", ...catNames()];
+  let html = cats.map(c =>
+    `<button class="cat-pill ${c===activeCat?'active':''}" onclick="filterCat('${esq(c)}')">${escapeHtml(c)}</button>`).join("");
+  // v3: second row of sub-pills when the active category has submenus
+  const cat = getCat(activeCat);
+  if(cat && cat.subs.length){
+    html += `<div class="sub-pills">
+      <button class="sub-pill ${!activeSub?'active':''}" onclick="filterCat('${esq(cat.name)}')">All</button>
+      ${cat.subs.map(s=>`<button class="sub-pill ${s===activeSub?'active':''}" onclick="filterSub('${esq(cat.name)}','${esq(s)}')">${escapeHtml(s)}</button>`).join("")}
+    </div>`;
+  }
+  $("catPills").innerHTML = html;
   syncNavActive();
   renderFooterShop();
 }
@@ -1155,13 +1261,21 @@ function renderPills(){
 // Keep the footer "Shop" links in sync with the category list
 function renderFooterShop(){
   const el = $("footShop"); if(!el) return;
-  el.innerHTML = categories.map(c=>`<a onclick="filterCat('${c}')">${c}</a>`).join("<br>");
+  el.innerHTML = catNames().map(c=>`<a onclick="filterCat('${esq(c)}')">${escapeHtml(c)}</a>`).join("<br>");
 }
 
 // Highlight the current category in the top nav bar
 function syncNavActive(){
   document.querySelectorAll('#navLinks a').forEach(a=>{
     const oc = a.getAttribute('onclick')||"";
+    if(a.closest(".nav-dd")){
+      const ms = oc.match(/filterSub\('([^']+)','([^']+)'\)/);
+      const mc = oc.match(/filterCat\('([^']+)'\)/);
+      a.classList.toggle('active',
+        (!!ms && ms[1]===activeCat && ms[2]===activeSub) ||
+        (!!mc && mc[1]===activeCat && !activeSub));
+      return;
+    }
     const m = oc.match(/filterCat\('([^']+)'\)/);
     a.classList.toggle('active', !!m && m[1]===activeCat);
   });
@@ -1169,13 +1283,16 @@ function syncNavActive(){
 
 function visibleProducts(){
   // AUTO-HIDE: only show in-stock items
-  return products.filter(p => p.stock > 0 && (activeCat==="All" || p.cat===activeCat));
+  return products.filter(p => p.stock > 0
+    && (activeCat==="All" || p.cat===activeCat)
+    && (!activeSub || p.sub===activeSub));
 }
 
 function renderShop(){
   renderPills();
   const list = visibleProducts();
-  $("secTitle").textContent = activeCat==="All" ? "The Catalog" : activeCat;
+  $("secTitle").textContent = activeCat==="All" ? "The Catalog"
+    : (activeSub ? `${activeCat} — ${activeSub}` : activeCat);
   $("secCount").textContent = list.length + " item" + (list.length!==1?"s":"") + " available";
   const grid = $("productGrid");
   if(!list.length){
@@ -1562,7 +1679,7 @@ function renderAdmin(){
   renderCatList();
   // keep the category dropdown in sync (unless mid-edit, preserve current selection)
   if($("fCat") && $("fCat").value!=="__new__"){
-    const cur = $("editId").value ? $("fCat").value : (categories.includes($("fCat").value)?$("fCat").value:categories[0]);
+    const cur = $("editId").value ? $("fCat").value : (catNames().includes($("fCat").value)?$("fCat").value:catNames()[0]);
     renderCatSelect(cur);
   }
   $("adminList").innerHTML = products.map(p=>{
@@ -1593,7 +1710,8 @@ function saveProduct(){
   const images = formImages.length ? [...formImages]
     : ["https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80"];
   const data = {
-    name, cat:$("fCat").value, desc:$("fDesc").value.trim()||"—",
+    name, cat:$("fCat").value, sub:($("fSub")&&!$("fSub").disabled)?$("fSub").value:"",
+    desc:$("fDesc").value.trim()||"—",
     price:+$("fPrice").value||0, old:+$("fOld").value||0,
     stock:parseInt($("fStock").value)||0,
     images, img: images[0]   // keep img in sync as the primary, for any legacy reads
@@ -1612,7 +1730,7 @@ function saveProduct(){
 function editProduct(id){
   const p = products.find(x=>x.id===id);
   $("editId").value=p.id; $("fName").value=p.name;
-  renderCatSelect(p.cat);
+  renderCatSelect(p.cat, p.sub||"");
   $("fDesc").value=p.desc; $("fPrice").value=p.price; $("fOld").value=p.old||"";
   $("fStock").value=p.stock; $("fImg").value="";
   formImages = [...productImages(p)];
@@ -1626,7 +1744,7 @@ function deleteProduct(id){
 }
 function clearForm(){
   ["editId","fName","fDesc","fPrice","fOld","fStock","fImg","fNewCat"].forEach(i=>$(i).value="");
-  renderCatSelect(categories[0]);
+  renderCatSelect(catNames()[0]);
   $("newCatRow").style.display="none";
   formImages = [];
   renderFormThumbs();
@@ -1635,24 +1753,37 @@ function clearForm(){
 
 /* ---------- Category management ---------- */
 // Populate the category <select>, plus an "+ Add new category" option
-function renderCatSelect(selected){
+function renderCatSelect(selected, selectedSub){
   const sel = $("fCat");
-  sel.innerHTML = categories.map(c=>`<option ${c===selected?"selected":""}>${c}</option>`).join("")
+  sel.innerHTML = catNames().map(c=>`<option ${c===selected?"selected":""}>${escapeHtml(c)}</option>`).join("")
     + `<option value="__new__">+ Add new category…</option>`;
-  if(selected && categories.includes(selected)) sel.value = selected;
+  if(selected && catNames().includes(selected)) sel.value = selected;
+  renderSubSelect(sel.value==="__new__" ? "" : sel.value, selectedSub||"");
+}
+function renderSubSelect(catName, selectedSub){
+  const sel = $("fSub"); if(!sel) return;
+  const cat = getCat(catName);
+  if(!cat || !cat.subs.length){
+    sel.innerHTML = `<option value="">— No submenus in this category —</option>`;
+    sel.disabled = true; return;
+  }
+  sel.disabled = false;
+  sel.innerHTML = `<option value="">— None —</option>`
+    + cat.subs.map(s=>`<option ${s===selectedSub?"selected":""}>${escapeHtml(s)}</option>`).join("");
 }
 function onCatChange(val){
   $("newCatRow").style.display = (val==="__new__") ? "block" : "none";
-  if(val==="__new__") $("fNewCat").focus();
+  if(val==="__new__"){ $("fNewCat").focus(); renderSubSelect("",""); }
+  else renderSubSelect(val, "");
 }
 function addCategory(){
   const name = $("fNewCat").value.trim();
   if(name.length < 2){ toast("Enter a category name"); $("fNewCat").style.borderColor="#c0564f"; return; }
   // case-insensitive duplicate check
-  if(categories.some(c=>c.toLowerCase()===name.toLowerCase())){
+  if(categories.some(c=>c.name.toLowerCase()===name.toLowerCase())){
     toast("That category already exists"); renderCatSelect(name); $("newCatRow").style.display="none"; return;
   }
-  categories.push(name);
+  categories.push({name, subs:[]});
   $("fNewCat").value="";
   $("newCatRow").style.display="none";
   renderCatSelect(name);       // select the newly added category
@@ -1666,27 +1797,111 @@ function addCategory(){
 function productCountForCat(cat){
   return products.filter(p=>p.cat===cat).length;
 }
+function productCountForSub(cat, sub){
+  return products.filter(p=>p.cat===cat && p.sub===sub).length;
+}
 function renderCatList(){
   const el = $("catList"); if(!el) return;
   if(!categories.length){
-    el.innerHTML = `<p class="hint" style="margin-top:10px">No categories yet. Add one above.</p>`;
+    el.innerHTML = `<p class="hint" style="margin-top:10px">No menus yet. Add one above.</p>`;
     return;
   }
-  el.innerHTML = categories.map(c=>{
-    const n = productCountForCat(c);
+  el.innerHTML = categories.map((c,i)=>{
+    const n = productCountForCat(c.name);
     const countLabel = n===0 ? "No products" : `${n} product${n!==1?'s':''}`;
     const canDelete = n===0;
-    return `<div class="cat-item">
+    const chips = c.subs.map((s,j)=>{
+      const sn = productCountForSub(c.name, s);
+      return `<span class="sub-chip">${escapeHtml(s)}
+        ${sn?`<span class="sc-count">(${sn})</span>`:""}
+        <span class="sc-e" title="Rename submenu" onclick="renameSubcategory(${i},${j})">✎</span>
+        <span class="sc-x" title="Delete submenu" onclick="deleteSubcategory(${i},${j})">×</span>
+      </span>`;
+    }).join("");
+    return `<div class="cat-item" style="border-radius:10px 10px 0 0;margin-bottom:0">
       <div class="cat-item-main">
-        <span class="cat-item-name">${c}</span>
+        <span class="cat-item-name">${escapeHtml(c.name)}</span>
         <span class="cat-item-count ${canDelete?'':'has'}">${countLabel}</span>
       </div>
-      <button class="cat-del ${canDelete?'':'disabled'}"
-        ${canDelete?`onclick="deleteCategory('${c.replace(/'/g,"\\'")}')"`:`title="Reassign or remove its products first" disabled`}>
-        ${canDelete?'Remove':'In use'}
-      </button>
+      <div style="display:flex;align-items:center">
+        <button class="cat-rename" onclick="renameCategory(${i})">Rename</button>
+        <button class="cat-del ${canDelete?'':'disabled'}"
+          ${canDelete?`onclick="deleteCategory('${esq(c.name)}')"`:`title="Reassign or remove its products first" disabled`}>
+          ${canDelete?'Remove':'In use'}
+        </button>
+      </div>
+    </div>
+    <div class="sub-box">
+      <div class="sb-label">Submenus</div>
+      ${chips || `<span class="hint-inline">No submenus yet — this menu shows without a dropdown.</span>`}
+      <div class="sub-add">
+        <input id="subIn-${i}" placeholder="New submenu (e.g. Gaming)"
+          onkeydown="if(event.key==='Enter')addSubcategory(${i})">
+        <button onclick="addSubcategory(${i})">+ Add</button>
+      </div>
     </div>`;
   }).join("");
+}
+
+/* ---------- v3: submenu CRUD ---------- */
+function refreshMenus(){
+  renderCatList(); renderPills(); renderShop();
+  if($("fCat")) renderCatSelect($("fCat").value==="__new__" ? catNames()[0] : $("fCat").value,
+                                $("fSub") ? $("fSub").value : "");
+}
+function addSubcategory(i){
+  const c = categories[i];
+  const input = $("subIn-"+i);
+  const name = (input.value||"").trim();
+  if(name.length < 2){ toast("Enter a submenu name"); input.focus(); return; }
+  if(c.subs.some(s=>s.toLowerCase()===name.toLowerCase())){
+    toast(`"${name}" already exists in ${c.name}`); return;
+  }
+  c.subs.push(name);
+  refreshMenus();
+  toast(`Submenu "${name}" added under ${c.name}`);
+}
+function renameSubcategory(i, j){
+  const c = categories[i];
+  const oldName = c.subs[j];
+  const name = (prompt(`Rename submenu "${oldName}" to:`, oldName)||"").trim();
+  if(!name || name===oldName) return;
+  if(c.subs.some(s=>s.toLowerCase()===name.toLowerCase())){
+    toast(`"${name}" already exists in ${c.name}`); return;
+  }
+  c.subs[j] = name;
+  products.forEach(p=>{ if(p.cat===c.name && p.sub===oldName) p.sub = name; });
+  if(activeCat===c.name && activeSub===oldName) activeSub = name;
+  refreshMenus();
+  toast(`Submenu renamed to "${name}"`);
+}
+function deleteSubcategory(i, j){
+  const c = categories[i];
+  const sub = c.subs[j];
+  const n = productCountForSub(c.name, sub);
+  const msg = n
+    ? `${n} product${n!==1?'s':''} use "${sub}". They'll stay in ${c.name} without a submenu. Delete it?`
+    : `Delete submenu "${sub}" from ${c.name}?`;
+  if(!confirm(msg)) return;
+  products.forEach(p=>{ if(p.cat===c.name && p.sub===sub) p.sub = ""; });
+  c.subs.splice(j,1);
+  if(activeCat===c.name && activeSub===sub) activeSub = "";
+  refreshMenus();
+  toast(`Submenu "${sub}" deleted`);
+}
+function renameCategory(i){
+  const c = categories[i];
+  const oldName = c.name;
+  const name = (prompt(`Rename menu "${oldName}" to:`, oldName)||"").trim();
+  if(!name || name===oldName) return;
+  if(categories.some(x=>x.name.toLowerCase()===name.toLowerCase())){
+    toast(`A menu called "${name}" already exists`); return;
+  }
+  c.name = name;
+  products.forEach(p=>{ if(p.cat===oldName) p.cat = name; });
+  if(activeCat===oldName) activeCat = name;
+  refreshMenus();
+  toast(`Menu renamed to "${name}"`);
 }
 /* ---------- v2: delivery zone manager ---------- */
 function renderZones(){
@@ -1757,10 +1972,10 @@ function addCategoryFromPanel(){
   const input = $("catNewName");
   const name = (input.value||"").trim();
   if(name.length < 2){ toast("Enter a category name"); input.style.borderColor="#c0564f"; return; }
-  if(categories.some(c=>c.toLowerCase()===name.toLowerCase())){
+  if(categories.some(c=>c.name.toLowerCase()===name.toLowerCase())){
     toast("That category already exists"); input.style.borderColor="#c0564f"; return;
   }
-  categories.push(name);
+  categories.push({name, subs:[]});
   input.value="";
   renderCatList(); renderPills();
   if($("fCat")) renderCatSelect($("fCat").value);   // refresh product-form dropdown
@@ -1773,12 +1988,12 @@ function deleteCategory(name){
     return;
   }
   if(!confirm(`Remove the category "${name}"? This can't be undone.`)) return;
-  categories = categories.filter(c=>c!==name);
+  categories = categories.filter(c=>c.name!==name);
   // if the shop is currently filtered to the removed category, reset to All
-  if(activeCat===name) activeCat="All";
+  if(activeCat===name){ activeCat="All"; activeSub=""; }
   // if the product form had it selected, reset the dropdown
   renderCatList(); renderPills(); renderShop();
-  if($("fCat")) renderCatSelect(categories[0]||"");
+  if($("fCat")) renderCatSelect(catNames()[0]||"");
   toast(`Category "${name}" removed`);
 }
 
@@ -2840,9 +3055,16 @@ function scrollToProducts(){
   window.scrollTo({ top, behavior: "smooth" });
 }
 
+function filterSub(c, s){
+  activeCat=c; activeSub=s;
+  showShop(false);
+  renderShop();
+  closeCart(); closeMenu();
+  requestAnimationFrame(()=> scrollToProducts());
+}
 function filterCat(c){
   const wasAdmin = $("adminView").style.display==="block";
-  activeCat=c;
+  activeCat=c; activeSub="";
   showShop(false);      // switch to shop without jumping to top
   renderShop();
   closeCart();
