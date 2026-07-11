@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EONS — IT Hardware & Enterprise Solutions</title>
+<title>Live Demo · EONS — IT Hardware & Enterprise Solutions</title>
 <style>
   :root{
     --ink:#181f3b;
@@ -89,36 +89,28 @@
   body.is-staff .nav-mobile-only.staff-only{display:none}  /* shown via mobile rule below */
 
   /* ---------- Hero ---------- */
-  .hero{max-width:1180px;margin:0 auto;padding:54px 22px 30px;display:grid;
-    grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
-  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue-deep);
-    margin-bottom:18px}
-  .eyebrow::before{content:"// ";color:var(--amber)}
-  .hero h1{font-size:clamp(2.6rem,5.5vw,4.3rem);line-height:1.02;font-weight:500;
+  .hero{max-width:1180px;margin:0 auto;padding:40px 22px 12px;display:grid;
+    grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+  .hero h1{font-size:clamp(2rem,3.8vw,3.05rem);line-height:1.12;font-weight:500;
     letter-spacing:-.01em}
   .hero h1 em{font-style:italic;color:var(--blue-deep)}
-  .hero p{margin:22px 0 30px;color:var(--ink-soft);font-size:1.05rem;max-width:430px}
+  .hero p{margin:14px 0 20px;color:var(--ink-soft);font-size:.94rem;max-width:460px}
   .hero-cta{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;
-    padding:15px 30px;border-radius:40px;font-size:.9rem;letter-spacing:.04em;transition:.25s}
+    padding:11px 24px;border-radius:40px;font-size:.84rem;letter-spacing:.04em;transition:.25s}
   .hero-cta:hover{background:var(--blue-deep);transform:translateY(-2px)}
-  .hero-art{position:relative;aspect-ratio:4/4.4;border-radius:18px;
+  .hero-art{position:relative;aspect-ratio:16/10.2;border-radius:16px;
     overflow:hidden;box-shadow:var(--shadow);background:linear-gradient(160deg,#e4eaf8,#c9d6ef);
     outline:1px solid var(--line)}
   .hero-art img{width:100%;height:100%;object-fit:cover}
-  .hero-badge{position:absolute;bottom:22px;left:22px;background:rgba(255,255,255,.94);
-    backdrop-filter:blur(6px);border-radius:14px;padding:12px 16px;box-shadow:var(--shadow);
-    font-size:.8rem}
-  .hero-badge strong{display:block;font-family:"Space Grotesk",sans-serif;font-size:1.15rem;color:var(--blue-deep)}
+  .hero-badge{position:absolute;bottom:14px;left:14px;background:rgba(255,255,255,.94);
+    backdrop-filter:blur(6px);border-radius:12px;padding:8px 13px;box-shadow:var(--shadow);
+    font-size:.72rem}
+  .hero-badge strong{display:block;font-family:"Space Grotesk",sans-serif;font-size:.98rem;color:var(--blue-deep)}
 
   /* ---------- Category strip ---------- */
-  .cats{max-width:1180px;margin:18px auto 8px;padding:0 22px;display:flex;gap:12px;flex-wrap:wrap}
-  .cat-pill{padding:10px 20px;border-radius:30px;border:1px solid var(--line);background:var(--card);
-    font-size:.86rem;letter-spacing:.02em;color:var(--ink-soft);transition:.2s}
-  .cat-pill:hover{border-color:var(--blue)}
-  .cat-pill.active{background:var(--ink);color:#fff;border-color:var(--ink)}
 
   /* ---------- Section head ---------- */
-  .sec-head{max-width:1180px;margin:40px auto 22px;padding:0 22px;display:flex;
+  .sec-head{max-width:1180px;margin:26px auto 14px;padding:0 22px;display:flex;
     align-items:flex-end;justify-content:space-between;gap:18px}
   .sec-head h2{font-size:2rem;font-weight:500}
   .sec-head p{color:var(--ink-soft);font-size:.9rem}
@@ -140,9 +132,7 @@
     margin-bottom:6px}
   .card-name{font-family:"Space Grotesk",sans-serif;font-size:1.06rem;font-weight:500;margin-bottom:4px;
     display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-  .card-desc{font-size:.82rem;color:var(--ink-soft);margin-bottom:14px;flex:1;line-height:1.5;
-    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-  .card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+  .card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:auto}
   .price{font-family:"IBM Plex Mono",monospace;font-size:1rem;font-weight:600;letter-spacing:-.02em;
     min-width:0;line-height:1.25}
   .price small{display:block;font-size:.72rem;color:var(--ink-soft);text-decoration:line-through;
@@ -543,9 +533,9 @@
 
   /* Tablet landscape / small laptop */
   @media(max-width:980px){
-    .hero{grid-template-columns:1fr;gap:28px;padding:40px 22px 24px;text-align:center}
+    .hero{grid-template-columns:1fr;gap:0;padding:22px 22px 6px;text-align:center}
+    .hero-art{display:none}   /* phones: straight to categories & products */
     .hero p{margin-left:auto;margin-right:auto}
-    .hero-art{max-width:440px;margin:0 auto;aspect-ratio:4/3.6}
     .admin-grid{grid-template-columns:1fr;gap:20px}
   }
 
@@ -591,7 +581,6 @@
     .grid{grid-template-columns:repeat(2,1fr);gap:13px;padding-bottom:46px}
     .card-body{padding:12px 12px 14px}
     .card-name{font-size:.98rem}
-    .card-desc{font-size:.78rem}
     .price{font-size:.9rem}
     .price small{font-size:.68rem}
     .add-btn{padding:8px 13px;font-size:.76rem}
@@ -654,12 +643,6 @@
   .co-summary .row.total span:last-child{font-family:"IBM Plex Mono",monospace}
 
   /* ---------- v3: sub-category pills ---------- */
-  #catPills{flex-wrap:wrap}
-  .sub-pills{display:flex;gap:8px;flex-wrap:wrap;width:100%;margin-top:10px}
-  .sub-pill{padding:7px 15px;border-radius:20px;border:1px solid var(--line);background:var(--card);
-    font-size:.78rem;color:var(--ink-soft);transition:.15s;cursor:pointer}
-  .sub-pill:hover{border-color:var(--blue);color:var(--blue-deep)}
-  .sub-pill.active{background:var(--blue-deep);border-color:var(--blue-deep);color:#fff}
 
   /* ---------- v3: admin submenu manager ---------- */
   .sub-box{margin:-4px 0 14px;padding:11px 13px;background:var(--bg);
@@ -719,6 +702,133 @@
     box-shadow:none!important;text-decoration:underline;text-underline-offset:3px;font-weight:500}
   .btn-text:hover{color:var(--ink)!important}
 
+  /* ---------- v4.1: product search ---------- */
+  .search-btn{background:none;border:1px solid var(--line);border-radius:50%;width:38px;height:38px;
+    display:grid;place-items:center;cursor:pointer;color:var(--ink);transition:.15s;margin-right:2px}
+  .search-btn:hover{border-color:var(--blue);color:var(--blue-deep)}
+  .search-row{display:none;border-top:1px solid var(--line);background:var(--card);padding:10px 22px}
+  .search-row.open{display:block}
+  .search-inner{max-width:640px;margin:0 auto;display:flex;align-items:center;gap:10px;
+    border:1.5px solid var(--blue-deep);border-radius:12px;padding:2px 6px 2px 14px;background:var(--bg)}
+  .search-inner svg{flex:none;color:var(--ink-soft)}
+  .search-inner input{flex:1;border:none;background:none;font-size:.95rem;padding:11px 0;outline:none;color:var(--ink)}
+  .search-clear{background:none;border:none;color:var(--ink-soft);font-size:1.2rem;cursor:pointer;
+    padding:8px 10px;line-height:1;border-radius:8px}
+  .search-clear:hover{color:var(--ink)}
+
+  /* ---------- v4.1: floating contact buttons ---------- */
+  .float-contact{position:fixed;right:16px;bottom:20px;display:flex;flex-direction:column;gap:10px;z-index:58}
+  .float-contact a{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
+    color:#fff;box-shadow:0 4px 14px rgba(24,31,59,.25);transition:.15s}
+  .float-contact a:hover{transform:translateY(-2px)}
+  .float-wa{background:#25d366}
+  .float-call{background:var(--ink)}
+  body.is-staff .float-contact{display:none}
+
+  /* ---------- v4.1: mobile bottom navigation ---------- */
+  .bottom-nav{display:none}
+  @media (max-width:820px){
+    .bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:59;display:flex;
+      background:var(--card);border-top:1px solid var(--line);
+      padding:6px 0 calc(6px + env(safe-area-inset-bottom));box-shadow:0 -4px 16px rgba(24,31,59,.06)}
+    .bottom-nav button{flex:1;background:none;border:none;display:flex;flex-direction:column;
+      align-items:center;gap:3px;font-size:.66rem;font-weight:600;color:var(--ink-soft);
+      letter-spacing:.02em;cursor:pointer;padding:4px 0;position:relative}
+    .bottom-nav button svg{width:21px;height:21px}
+    .bottom-nav button:active{color:var(--blue-deep)}
+    .bnav-count{position:absolute;top:0;right:calc(50% - 19px);background:var(--amber);color:#fff;
+      font-size:.62rem;font-weight:700;min-width:16px;height:16px;border-radius:8px;
+      display:none;place-items:center;padding:0 4px;font-family:"IBM Plex Mono",monospace}
+    body{padding-bottom:66px}
+    .float-contact{bottom:calc(72px + env(safe-area-inset-bottom))}
+  }
+
+  /* ---------- v4.2: banner slider ---------- */
+  .slider{position:relative;border-radius:18px;overflow:hidden;margin:26px auto 6px;
+    max-width:1160px;box-shadow:var(--shadow)}
+  .slide{position:absolute;inset:0;opacity:0;transition:opacity .55s ease;pointer-events:none}
+  .slide.on{opacity:1;pointer-events:auto;position:relative}
+  .slide img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:1160/420;min-height:220px}
+  .slide-text{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+    padding:0 7%;background:linear-gradient(90deg,rgba(15,20,45,.62) 0%,rgba(15,20,45,.28) 55%,transparent 100%)}
+  .slide-text h2{color:#fff;font-size:clamp(1.3rem,3.4vw,2.4rem);font-weight:600;max-width:520px;line-height:1.15}
+  .slide-text p{color:#e8ecf7;font-size:clamp(.82rem,1.6vw,1.02rem);margin-top:8px;max-width:460px}
+  .slide-cta{margin-top:16px;display:inline-block;background:var(--amber);color:#fff;font-weight:600;
+    padding:11px 22px;border-radius:26px;font-size:.9rem;width:max-content}
+  .slide-cta:hover{filter:brightness(1.07)}
+  .slider-dots{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:7px;z-index:3}
+  .slider-dots button{width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,255,255,.5);cursor:pointer;padding:0;transition:.2s}
+  .slider-dots button.on{background:#fff;width:20px;border-radius:5px}
+  .slider-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:38px;height:38px;
+    border-radius:50%;border:none;background:rgba(255,255,255,.85);color:var(--ink);font-size:1.1rem;
+    cursor:pointer;display:grid;place-items:center;box-shadow:0 2px 8px rgba(24,31,59,.18)}
+  .slider-arrow:hover{background:#fff}
+  .slider-arrow.prev{left:14px}.slider-arrow.next{right:14px}
+  @media (max-width:820px){.slider{border-radius:0;margin-top:0}.slider-arrow{display:none}
+    .slide img{aspect-ratio:4/2.4}}
+
+  /* ---------- v4.2.2: category tiles (polished) ---------- */
+  .cat-tiles-wrap{max-width:1160px;margin:34px auto 0;padding:0 22px}
+  .cat-tiles{display:flex;gap:14px 26px;overflow-x:auto;padding:6px 2px 12px;
+    scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .cat-tiles::-webkit-scrollbar{display:none}
+  .cat-tile{flex:none;width:96px;display:flex;flex-direction:column;align-items:center;
+    gap:10px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .ct-img{width:84px;height:84px;border-radius:50%;overflow:hidden;position:relative;
+    background:linear-gradient(150deg,#f2f5fc,#e2e9f7);
+    border:1.5px solid var(--line);display:grid;place-items:center;
+    transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    box-shadow:0 3px 10px rgba(24,31,59,.06)}
+  .cat-tile:hover .ct-img{border-color:var(--blue);transform:translateY(-4px);
+    box-shadow:0 8px 18px rgba(42,85,162,.14)}
+  .cat-tile.on .ct-img{border-color:var(--blue-deep);
+    box-shadow:0 0 0 3px rgba(42,85,162,.15), 0 3px 10px rgba(24,31,59,.06)}
+  .ct-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s ease}
+  .cat-tile:hover .ct-img img{transform:scale(1.07)}
+  .ct-ph{width:100%;height:100%;display:grid;place-items:center;color:var(--blue-deep)}
+  .ct-ph svg{width:32px;height:32px}
+  .ct-ph .ct-letter{font-family:"Space Grotesk",sans-serif;font-size:1.6rem;font-weight:600}
+  .cat-tile span{font-size:.8rem;font-weight:600;color:var(--ink);text-align:center;
+    line-height:1.25;max-width:96px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+    transition:color .15s}
+  .cat-tile:hover span{color:var(--blue-deep)}
+  .cat-tile.on span{color:var(--blue-deep)}
+  @media (max-width:820px){
+    .ct-img{width:70px;height:70px}
+    .cat-tile{width:80px}
+    .ct-ph svg{width:27px;height:27px}
+  }
+
+  /* ---------- v4.2: homepage category rows ---------- */
+  .cat-row-head{display:flex;align-items:baseline;justify-content:space-between;
+    margin:26px 0 14px;border-bottom:1px solid var(--line);padding-bottom:9px}
+  .cat-row-head h3{font-size:1.3rem;font-family:"Space Grotesk",sans-serif;font-weight:600}
+  .cat-row-head a{font-size:.85rem;font-weight:600;color:var(--blue-deep);cursor:pointer;white-space:nowrap}
+  .cat-row-head a:hover{text-decoration:underline}
+
+  /* ---------- v4.2: content pages ---------- */
+  #pageView{max-width:760px;margin:0 auto;padding:44px 22px 80px}
+  #pageView h1{font-family:"Space Grotesk",sans-serif;font-size:1.9rem;margin-bottom:20px}
+  #pageView .page-body p{margin-bottom:14px;line-height:1.75;color:var(--ink);font-size:.96rem}
+  #pageView .page-empty{color:var(--ink-soft);text-align:center;padding:50px 0}
+  .page-back{background:none;border:none;color:var(--blue-deep);font-weight:600;cursor:pointer;
+    margin-bottom:22px;font-size:.9rem;padding:0}
+  .foot-links a{display:block;margin-bottom:8px;cursor:pointer}
+
+  /* ---------- v4.2: banner admin manager ---------- */
+  .bn-item{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:10px;
+    padding:10px 12px;margin-bottom:8px;background:var(--bg)}
+  .bn-item img{width:86px;height:38px;object-fit:cover;border-radius:6px;flex:none}
+  .bn-item .bn-meta{flex:1;min-width:0}
+  .bn-item .bn-title{font-weight:600;font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .bn-item .bn-sub{font-size:.74rem;color:var(--ink-soft)}
+  .bn-item .bn-off{opacity:.45}
+  .bn-actions{display:flex;gap:5px;flex-wrap:wrap}
+  .bn-actions button{border:1px solid var(--line);background:var(--card);border-radius:7px;
+    padding:5px 9px;font-size:.72rem;font-weight:600;cursor:pointer}
+  .bn-actions button:hover{border-color:var(--blue)}
+  .bn-actions .bn-del:hover{border-color:#c0564f;color:#c0564f}
+
   /* Respect reduced-motion preference */
   @media(prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
@@ -734,6 +844,10 @@
 
 <div class="announce">100% genuine products · Official warranty · Every order confirmed by a quick call</div>
 
+<div id="demoBar" style="background:#eef2fb;border-bottom:1px solid var(--line);padding:8px 16px;text-align:center;font-size:.78rem;color:var(--ink-soft)">
+  <b style="color:var(--blue-deep)">Live demo</b> — sample data, resets on refresh · try the staff dashboard: <a href="#admin" style="font-weight:700;color:var(--blue-deep)">#admin</a> · passcode <code style="background:var(--card);border:1px solid var(--line);border-radius:5px;padding:1px 6px">eons</code>
+  <span onclick="this.parentElement.style.display='none'" style="cursor:pointer;margin-left:10px;font-weight:700">×</span>
+</div>
 <header>
   <nav class="nav">
     <div class="brand" onclick="showShop()"><img src="data:image/png;base64,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" alt="EONS"></div>
@@ -750,6 +864,9 @@
       <a class="admin-link staff-only" onclick="showAdmin()">Manage Store</a>
       <a class="admin-link staff-only" onclick="showAnalytics()">Analytics</a>
       <a class="admin-link staff-only" onclick="staffLogout()" title="Sign out of staff mode">Sign out</a>
+      <button class="search-btn" onclick="toggleSearch()" title="Search products" aria-label="Search products">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
       <button class="cart-btn" onclick="openCart()" title="View your cart" aria-label="Open cart">
         <span class="bag-ico">🛒</span>
         <span class="cart-label">Bag</span>
@@ -758,13 +875,21 @@
       <button class="icon-btn menu-toggle" id="menuToggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
     </div>
   </nav>
+  <div class="search-row" id="searchRow">
+    <div class="search-inner">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="searchInput" placeholder="Search products, brands, categories…"
+        oninput="onSearchInput(this.value)" onkeydown="if(event.key==='Escape')toggleSearch(false)">
+      <button class="search-clear" onclick="toggleSearch(false)" aria-label="Close search">×</button>
+    </div>
+  </div>
 </header>
 
 <!-- ============ SHOP VIEW ============ -->
 <div id="shopView">
-  <section class="hero">
+  <div id="bannerSlider" style="display:none"></div>
+  <section class="hero" id="staticHero">
     <div>
-      <div class="eyebrow">Laptops · Components · Networking</div>
       <h1>Serious hardware,<br><em>zero</em> guesswork.</h1>
       <p>EONS supplies genuine laptops, components, and networking gear to offices and power users across Bangladesh. Every order is confirmed with a quick call and ships with official warranty.</p>
       <a class="hero-cta" onclick="scrollToProducts()">Browse the catalog →</a>
@@ -775,8 +900,11 @@
     </div>
   </section>
 
+  <div class="cat-tiles-wrap" id="catTilesWrap" style="display:none">
+    <div class="cat-tiles" id="catTiles"></div>
+  </div>
+
   <div id="shopAnchor"></div>
-  <div class="cats" id="catPills"></div>
 
   <div class="sec-head">
     <h2 id="secTitle">The Catalog</h2>
@@ -884,6 +1012,48 @@
   </div>
 
   <div class="panel" style="margin-top:22px">
+    <h3>Homepage banners</h3>
+    <p class="hint">Banners rotate in a slider at the top of your homepage (replacing the standard hero while any are active). Recommended size: <b>1600×580&nbsp;px JPG, under 400&nbsp;KB</b>. Text and button are optional.</p>
+    <div id="bnList"></div>
+    <div style="border-top:1px solid var(--line);margin-top:14px;padding-top:14px">
+      <h4 id="bnFormTitle" style="margin-bottom:10px">Add a banner</h4>
+      <label>Banner image</label>
+      <input type="file" id="bnFile" accept="image/png,image/jpeg,image/webp" onchange="bnPickImage(this.files)">
+      <img id="bnPrev" alt="" style="display:none;width:100%;max-width:420px;border-radius:10px;margin:8px 0;border:1px solid var(--line)">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+        <div style="flex:1;min-width:200px"><label>Headline <span style="font-weight:400;color:var(--ink-soft)">(optional)</span></label><input id="bnTitle" maxlength="120" placeholder="Office laptops from ৳55,000"></div>
+        <div style="flex:1;min-width:200px"><label>Subtitle <span style="font-weight:400;color:var(--ink-soft)">(optional)</span></label><input id="bnSubtitle" maxlength="200" placeholder="Genuine units, official warranty"></div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+        <div style="flex:1;min-width:170px"><label>Button text <span style="font-weight:400;color:var(--ink-soft)">(optional)</span></label><input id="bnCta" maxlength="60" placeholder="Shop laptops"></div>
+        <div style="flex:1;min-width:170px"><label>Button opens</label><select id="bnCatSel"></select></div>
+      </div>
+      <label style="display:flex;align-items:center;gap:8px;margin-top:12px;font-weight:500">
+        <input type="checkbox" id="bnActive" checked style="width:auto"> Active (shown on the homepage)
+      </label>
+      <div style="display:flex;gap:10px;margin-top:12px">
+        <button class="save-btn" onclick="saveBanner()">Save banner</button>
+        <button class="save-btn" id="bnCancel" style="display:none;background:var(--card);color:var(--ink);border:1px solid var(--line)" onclick="resetBannerForm()">Cancel edit</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-top:22px">
+    <h3>Website pages</h3>
+    <p class="hint">These pages are linked in your footer (About Us, Delivery Rules, Return Policy, Terms). Plain text — leave a blank line between paragraphs. Having real policies builds trust and is required for running Facebook ads.</p>
+    <label>Page</label>
+    <select id="pgKey" onchange="loadPageEditor()">
+      <option value="about">About Us</option>
+      <option value="delivery">Delivery Rules</option>
+      <option value="return">Return Policy</option>
+      <option value="terms">Terms &amp; Conditions</option>
+    </select>
+    <label style="margin-top:10px">Content</label>
+    <textarea id="pgBody" rows="9" placeholder="Write the page content here…"></textarea>
+    <button class="save-btn" style="margin-top:12px" onclick="savePage()">Save page</button>
+  </div>
+
+  <div class="panel" style="margin-top:22px">
     <h3>Store info &amp; contact</h3>
     <p class="hint">This text shows in the footer at the bottom of your site. Update it anytime — changes appear instantly.</p>
     <label>Footer tagline</label>
@@ -893,6 +1063,14 @@
       <div style="flex:1;min-width:200px"><label>Opening hours</label><input id="siHours" placeholder="Mon–Sat, 10am–8pm"></div>
     </div>
     <button class="save-btn" id="siSaveBtn" onclick="saveStoreInfo()">Save store info</button>
+    <div style="margin-top:22px;padding-top:16px;border-top:1px solid var(--line)">
+      <h4 style="margin-bottom:8px">Staff passcode</h4>
+      <div class="si-grid" style="display:flex;gap:12px;flex-wrap:wrap">
+        <div style="flex:1;min-width:170px"><label>Current passcode</label><input id="spCur" type="password" autocomplete="off"></div>
+        <div style="flex:1;min-width:170px"><label>New passcode</label><input id="spNew" type="password" autocomplete="off" placeholder="min 4 characters"></div>
+      </div>
+      <button class="save-btn" style="margin-top:12px" onclick="changeStaffPass()">Change passcode</button>
+    </div>
   </div>
 </div>
 
@@ -942,6 +1120,42 @@
   </div>
 
   <div id="analyticsBody"></div>
+</div>
+
+<!-- v4.1: floating contact (WhatsApp + call) -->
+<div class="float-contact" id="floatContact" style="display:none">
+  <a id="floatWa" target="_blank" rel="noopener" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2a9.9 9.9 0 0 0-8.4 15.2L2 22l4.94-1.58A9.9 9.9 0 1 0 12.04 2Zm0 1.67a8.23 8.23 0 1 1-4.2 15.3l-.3-.18-2.93.94.96-2.86-.2-.3a8.23 8.23 0 0 1 6.67-12.9Zm-3.1 3.62c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.23.9 2.42 1.03 2.59.12.17 1.74 2.78 4.3 3.79 2.13.84 2.56.67 3.02.63.46-.04 1.49-.61 1.7-1.2.21-.58.21-1.08.15-1.19-.06-.1-.23-.17-.48-.3-.25-.12-1.49-.73-1.72-.81-.23-.08-.4-.13-.56.12-.17.25-.65.82-.8.99-.14.16-.29.19-.54.06-.25-.12-1.06-.39-2.02-1.24-.75-.66-1.25-1.48-1.4-1.73-.14-.25-.01-.39.11-.51.12-.11.25-.29.38-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.55-1.36-.77-1.86-.2-.49-.41-.42-.56-.43l-.52-.02Z"/></svg>
+  </a>
+  <a id="floatCall" title="Call us" aria-label="Call us">
+    <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 3.5a1 1 0 0 1 1-1H7.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.24 1.02l-2.2 2.2Z"/></svg>
+  </a>
+</div>
+
+<!-- v4.1: sticky mobile bottom navigation -->
+<nav class="bottom-nav" id="bottomNav">
+  <button onclick="toggleSearch(false);showShop();window.scrollTo({top:0,behavior:'smooth'})" aria-label="Home">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>Home
+  </button>
+  <button onclick="toggleSearch(false);toggleMenu()" aria-label="Menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg>Menu
+  </button>
+  <button onclick="toggleSearch(true)" aria-label="Search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search
+  </button>
+  <button onclick="toggleSearch(false);openCart()" aria-label="Bag" style="position:relative">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1 14H5L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>Bag
+    <span class="bnav-count" id="bnavCount">0</span>
+  </button>
+</nav>
+
+<input type="file" id="catImgFile" accept="image/png,image/jpeg,image/webp" style="display:none" onchange="onCatImageFile(this.files)">
+
+<!-- ============ CONTENT PAGE VIEW (public, via #page/<key>) ============ -->
+<div id="pageView" style="display:none">
+  <button class="page-back" onclick="showShop()">← Back to shop</button>
+  <h1 id="pageTitle"></h1>
+  <div class="page-body" id="pageBody"></div>
 </div>
 
 <!-- ============ CUSTOMER TRACKING VIEW (public, via #track/<id>) ============ -->
@@ -1002,7 +1216,7 @@
     <div class="mb">
       <p style="color:var(--ink-soft);font-size:.86rem;margin:6px 0">Enter the store passcode to manage products.</p>
       <label>Passcode</label>
-      <input id="adminPass" type="password" placeholder="demo passcode: eons" onkeydown="if(event.key==='Enter')tryLogin()">
+      <input id="adminPass" type="password" placeholder="staff passcode" onkeydown="if(event.key==='Enter')tryLogin()">
       <button class="checkout-btn" style="margin-top:16px" onclick="tryLogin()">Enter</button>
     </div>
   </div>
@@ -1019,18 +1233,84 @@
     <div>
       <h4 style="font-size:1rem">Shop</h4>
       <div id="footShop"></div>
+      <a onclick="location.hash='#track'" style="display:inline-block;margin-top:10px;font-weight:600">Track your order →</a>
+    </div>
+    <div>
+      <h4 style="font-size:1rem">Information</h4>
+      <div class="foot-links">
+        <a onclick="location.hash='#page/about'">About Us</a>
+        <a onclick="location.hash='#page/delivery'">Delivery Rules</a>
+        <a onclick="location.hash='#page/return'">Return Policy</a>
+        <a onclick="location.hash='#page/terms'">Terms &amp; Conditions</a>
+      </div>
     </div>
     <div>
       <h4 style="font-size:1rem">Contact</h4>
       <p>WhatsApp: <span id="footWhatsapp">+880 1XXX-XXXXXX</span><br><span id="footHours">Mon–Sat, 10am–8pm</span></p>
     </div>
   </div>
-  <div class="foot-bottom">© 2026 EONS IT Solutions · v3.0 · Demo store. Staff: add <b>#admin</b> to the page URL to access Orders &amp; Manage Store.</div>
+  <div class="foot-bottom">© 2026 EONS IT Solutions · v4.3.0 demo · Demo store. Staff: add <b>#admin</b> to the page URL to access Orders &amp; Manage Store.</div>
 </footer>
 
 <script>
 /* ============================================================
    EONS STORE — VERSION HISTORY
+   v4.3.0 (2026-07-11)
+     • Demo catalog expanded to 35 products across all menus, including
+       two new submenus (Processors, Headphones & Audio), realistic BD
+       prices, discounts, low-stock and out-of-stock demo items, and
+       10 extra reviews. schema.sql seeds it fresh; existing databases
+       run seed-demo-v4.3.sql once (idempotent).
+   v4.2.6 (2026-07-10)
+     • "Shop by category" heading removed — the tile row speaks for
+       itself; spacing adjusted so it sits cleanly under the hero
+   v4.2.5 (2026-07-10)
+     • Hero sized to final proportion: close to v4.2.1 but slightly
+       shorter (taller image than v4.2.4, comfortable headline)
+     • Product cards cleaned: 2-line description removed — details
+       live on the product page (tap/click the card)
+   v4.2.4 (2026-07-10)
+     • Hero rebalanced: middle ground between v4.2.2 and the overly
+       compressed v4.2.3; controlled two-line headline restored
+     • Both "//" eyebrow lines removed (hero + Shop by category) to
+       reclaim vertical space cleanly
+   v4.2.3 (2026-07-10)
+     • Compact hero: slimmer band so category tiles AND the first
+       product row are visible above the fold — products first
+   v4.2.2 (2026-07-10)
+     • "Shop by category" polished: smart per-category icons (laptop,
+       chip, wifi, mouse, plug…) replace letter placeholders, larger
+       circles with refined hover/active states, section eyebrow header
+   v4.2.1 (2026-07-10)
+     • Category pills removed (redundant next to nav dropdowns + tiles)
+     • "Shop by category" restyled ekhonie-style: circular image tiles
+       in a swipeable row, with an "All" tile and active highlighting
+   v4.2 (2026-07-10)
+     • Admin-managed homepage banner slider (fade, dots, arrows, swipe;
+       auto-advance pauses on hover and respects reduced-motion)
+     • "Shop by category" image tiles + category rows on the homepage
+       with "View all" links (admin can set an image per menu)
+     • Content pages (About / Delivery / Return / Terms) editable from
+       the admin panel, linked in the footer, routed at #page/<key>
+   v4.1 (2026-07-09)
+     • Live product search (header + mobile), with result count
+     • Discount % badge computed from the old price (was a plain "Sale" tag)
+     • Floating WhatsApp & call buttons (hidden in staff mode / if unset)
+     • Sticky mobile bottom navigation: Home · Menu · Search · Bag
+     • Track-order lookup form at #track — customers can enter their order ID
+   v4.0 (2026-07-09)
+     • Full PHP/MySQL backend: products, menus, zones, coupons, orders
+       and store info now persist in a database — nothing resets on
+       reload anymore
+     • All money is computed on the SERVER: prices, coupon discounts,
+       delivery charges and stock are verified in the database inside a
+       transaction; the browser can no longer influence an order total
+     • Staff login is a server session with a hashed passcode (changeable
+       from the admin panel); Telegram alerts are sent by the server so
+       the bot token is never exposed
+     • Public order tracking, coupon validation and reviews are live API
+       endpoints; stock changes from cancels/returns come back from the
+       server and update the shop instantly
    v3.0 (2026-07-05)
      • Two-level menu: every category can have submenus, shown as
        hover dropdowns on desktop and expandable sections on mobile
@@ -1062,7 +1342,7 @@
    v1.0 (2026-07-02)
      • Initial EONS release: full storefront + staff dashboard
    ============================================================ */
-const APP_VERSION = "3.0";
+const APP_VERSION = "4.3.0";
 
 /* ============================================================
    CONFIG
@@ -1101,6 +1381,20 @@ function renderStoreInfo(){
   const t=$("footTagline"); if(t) t.textContent=storeInfo.tagline;
   const w=$("footWhatsapp"); if(w) w.textContent=storeInfo.whatsapp;
   const h=$("footHours"); if(h) h.textContent=storeInfo.hours;
+  // v4.1: floating contact buttons follow store settings
+  const fc=$("floatContact");
+  if(fc){
+    let digits = (storeInfo.whatsapp||"").replace(/\D/g,"");
+    if(digits.startsWith("0")) digits = "88"+digits;    // 01712… → 8801712…
+    const hasWa = digits.length >= 12 && !storeInfo.whatsapp.includes("X");
+    $("floatWa").href = hasWa ? ("https://wa.me/"+digits) : "#";
+    $("floatWa").style.display = hasWa ? "grid" : "none";
+    const tel = (STORE_PHONE||"").replace(/[^\d+]/g,"");
+    const hasTel = tel.length >= 8 && !STORE_PHONE.includes("X");
+    $("floatCall").href = "tel:"+tel;
+    $("floatCall").style.display = hasTel ? "grid" : "none";
+    fc.style.display = (hasWa||hasTel) ? "flex" : "none";
+  }
 }
 
 // Pre-fill the admin Store Info form with current values
@@ -1117,74 +1411,342 @@ function saveStoreInfo(){
   const hours = $("siHours").value.trim();
   if(!tagline){ toast("Tagline can't be empty"); return; }
   storeInfo = { tagline, whatsapp, hours };
+  syncStaff("settings.php", {tagline, whatsapp, hours}).catch(()=>{});
   renderStoreInfo();
   toast("Store info updated");
 }
 
 /* ---------- Seed products ---------- */
-let products = [
-  {id:1,name:"HP ProBook 450 G10 (i5-1335U / 16GB / 512GB)",cat:"Laptops",sub:"Business",desc:"13th-gen Core i5 business laptop with 16GB DDR4 and 512GB NVMe SSD. Aluminium build, backlit keyboard, and a 15.6\" FHD anti-glare display — a dependable daily driver for office fleets.",price:115000,old:122000,stock:4,
-    images:["https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&q=80","https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&q=80"],
-    reviews:[
-      {name:"Arif Chowdhury",rating:5,comment:"Bought 6 units for our office. Clean builds, genuine Windows, quick delivery.",at:"2026-05-18T10:00:00Z"},
-      {name:"Sadia N.",rating:4,comment:"Fast and quiet. Battery easily lasts a workday.",at:"2026-06-02T14:30:00Z"}
-    ]},
-  {id:2,name:"Samsung 980 Pro 1TB NVMe Gen4 SSD",cat:"Components",sub:"SSD & Storage",desc:"Up to 7,000 MB/s reads on PCIe 4.0. The go-to upgrade for workstations, gaming rigs, and anyone tired of waiting on disk. 5-year official warranty.",price:14500,old:0,stock:18,
-    images:["https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80"],reviews:[
-      {name:"Tanvir R.",rating:5,comment:"Boot time went from 40s to 9s. Genuine unit, warranty registered fine.",at:"2026-05-25T09:00:00Z"}
-    ]},
-  {id:3,name:"TP-Link Archer AX73 WiFi 6 Router",cat:"Networking",sub:"Routers",desc:"AX5400 dual-band WiFi 6 with 6 antennas and HomeShield security. Comfortably covers a 2,000+ sq ft office or flat with dozens of devices.",price:13200,old:14500,stock:9,
-    images:["https://images.unsplash.com/photo-1606904825846-647eb07f5be2?w=600&q=80"],reviews:[]},
-  {id:4,name:"Logitech MX Master 3S Wireless Mouse",cat:"Peripherals",sub:"Keyboard & Mouse",desc:"8K DPI quiet-click flagship with MagSpeed scrolling and multi-device flow. The mouse serious professionals refuse to give up.",price:11800,old:0,stock:7,
-    images:["https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=600&q=80"],reviews:[
-      {name:"Nabila H.",rating:5,comment:"Worth every taka. Scroll wheel alone is a productivity upgrade.",at:"2026-06-10T11:00:00Z"}
-    ]},
-  {id:5,name:"Dell P2422H 24\" IPS FHD Monitor",cat:"Peripherals",sub:"Monitors",desc:"Business-class IPS panel with height, tilt, swivel and pivot adjustment plus a built-in USB hub. 3-year advanced exchange warranty.",price:21500,old:0,stock:6,
-    images:["https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&q=80"],reviews:[]},
-  {id:6,name:"APC BX650MI 650VA Line-Interactive UPS",cat:"Power",sub:"UPS",desc:"Reliable backup and surge protection for a PC, router, and monitor — enough runtime to ride out load-shedding blips and shut down safely.",price:6800,old:0,stock:15,
-    images:["https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=600&q=80"],reviews:[]},
-  {id:7,name:"Kingston Fury Beast 16GB DDR4 3200MHz",cat:"Components",sub:"RAM",desc:"Plug-and-play XMP performance memory with a low-profile heat spreader. The easiest, cheapest upgrade for a sluggish desktop.",price:5400,old:6200,stock:22,
-    images:["https://images.unsplash.com/photo-1562976540-1502c2145186?w=600&q=80"],reviews:[]},
-  {id:8,name:"TP-Link TL-SG1024D 24-Port Gigabit Switch",cat:"Networking",sub:"Switches",desc:"Unmanaged rack-mountable gigabit switch — silent fanless design, plug-and-play, and built for always-on office backbones.",price:12900,old:0,stock:3,
-    images:["https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80"],reviews:[]},
-  {id:9,name:"Keychron K2 V2 Wireless Mechanical Keyboard",cat:"Peripherals",sub:"Keyboard & Mouse",desc:"Hot-swappable 75% mechanical board with Bluetooth for 3 devices, Mac/Windows layouts, and RGB backlight.",price:9500,old:0,stock:0,
-    images:["https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=600&q=80"],reviews:[]},
-  {id:10,name:"ASUS TUF Gaming F15 (i7-12700H / RTX 4060)",cat:"Laptops",sub:"Gaming",desc:"12th-gen i7 with RTX 4060, 16GB DDR5 and a 144Hz display. Military-grade chassis that doubles as a CAD/rendering workhorse.",price:145000,old:152000,stock:2,
-    images:["https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=600&q=80"],reviews:[
-      {name:"Rakib I.",rating:5,comment:"Handles SolidWorks and gaming without breaking a sweat.",at:"2026-06-14T16:00:00Z"}
-    ]},
-];
-let nextId = 11;
+let products = [];     // v4: loaded from the database
+let nextId = 11;   // v4: unused — the database assigns product ids
 let cart = {};
 let activeCat = "All";
 let isAdmin = false;
 let orders = [];          // {id, name, phone, addr, note, items, total, status, placedAt, approvedAt}
 // Categories — the single source of truth for both the shop menu and the admin form
+/* ============================================================
+   v4: API layer — the single door to the PHP/MySQL backend
+   ============================================================ */
+const API_BASE = "api/";
+
+/* ================= DEMO MODE =================
+   This build runs entirely in the browser: the PHP/MySQL API is
+   simulated in memory with the same request/response contracts, so
+   every feature works on static hosting (GitHub Pages). The real
+   backend lives in /api of the repository. Data resets on refresh. */
+const DEMO = {"products": [{"id": 1, "name": "HP ProBook 450 G10 (i5-1335U / 16GB / 512GB)", "cat": "Laptops", "sub": "Business", "desc": "13th-gen Core i5 business laptop with 16GB DDR4 and 512GB NVMe SSD. Aluminium build, backlit keyboard, and a 15.6\" FHD anti-glare display — a dependable daily driver for office fleets.", "price": 115000, "old": 122000, "stock": 4, "images": ["https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&q=80", "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&q=80"], "reviews": [{"name": "Sadia N.", "rating": 4, "comment": "Fast and quiet. Battery easily lasts a workday.", "at": "2026-06-02T14:30:00Z"}, {"name": "Arif Chowdhury", "rating": 5, "comment": "Bought 6 units for our office. Clean builds, genuine Windows, quick delivery.", "at": "2026-05-18T10:00:00Z"}]}, {"id": 2, "name": "Samsung 980 Pro 1TB NVMe Gen4 SSD", "cat": "Components", "sub": "SSD & Storage", "desc": "Up to 7,000 MB/s reads on PCIe 4.0. The go-to upgrade for workstations, gaming rigs, and anyone tired of waiting on disk. 5-year official warranty.", "price": 14500, "old": 0, "stock": 18, "images": ["https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80"], "reviews": [{"name": "Tanvir R.", "rating": 5, "comment": "Boot time went from 40s to 9s. Genuine unit, warranty registered fine.", "at": "2026-05-25T09:00:00Z"}]}, {"id": 3, "name": "TP-Link Archer AX73 WiFi 6 Router", "cat": "Networking", "sub": "Routers", "desc": "AX5400 dual-band WiFi 6 with 6 antennas and HomeShield security. Comfortably covers a 2,000+ sq ft office or flat with dozens of devices.", "price": 13200, "old": 14500, "stock": 9, "images": ["https://images.unsplash.com/photo-1606904825846-647eb07f5be2?w=600&q=80"], "reviews": []}, {"id": 4, "name": "Logitech MX Master 3S Wireless Mouse", "cat": "Peripherals", "sub": "Keyboard & Mouse", "desc": "8K DPI quiet-click flagship with MagSpeed scrolling and multi-device flow. The mouse serious professionals refuse to give up.", "price": 11800, "old": 0, "stock": 7, "images": ["https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=600&q=80"], "reviews": [{"name": "Nabila H.", "rating": 5, "comment": "Worth every taka. Scroll wheel alone is a productivity upgrade.", "at": "2026-06-10T11:00:00Z"}]}, {"id": 5, "name": "Dell P2422H 24\" IPS FHD Monitor", "cat": "Peripherals", "sub": "Monitors", "desc": "Business-class IPS panel with height, tilt, swivel and pivot adjustment plus a built-in USB hub. 3-year advanced exchange warranty.", "price": 21500, "old": 0, "stock": 6, "images": ["https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&q=80"], "reviews": []}, {"id": 6, "name": "APC BX650MI 650VA Line-Interactive UPS", "cat": "Power", "sub": "UPS", "desc": "Reliable backup and surge protection for a PC, router, and monitor — enough runtime to ride out load-shedding blips and shut down safely.", "price": 6800, "old": 0, "stock": 15, "images": ["https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=600&q=80"], "reviews": []}, {"id": 7, "name": "Kingston Fury Beast 16GB DDR4 3200MHz", "cat": "Components", "sub": "RAM", "desc": "Plug-and-play XMP performance memory with a low-profile heat spreader. The easiest, cheapest upgrade for a sluggish desktop.", "price": 5400, "old": 6200, "stock": 22, "images": ["https://images.unsplash.com/photo-1562976540-1502c2145186?w=600&q=80"], "reviews": []}, {"id": 8, "name": "TP-Link TL-SG1024D 24-Port Gigabit Switch", "cat": "Networking", "sub": "Switches", "desc": "Unmanaged rack-mountable gigabit switch — silent fanless design, plug-and-play, and built for always-on office backbones.", "price": 12900, "old": 0, "stock": 3, "images": ["https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80"], "reviews": []}, {"id": 9, "name": "Keychron K2 V2 Wireless Mechanical Keyboard", "cat": "Peripherals", "sub": "Keyboard & Mouse", "desc": "Hot-swappable 75% mechanical board with Bluetooth for 3 devices, Mac/Windows layouts, and RGB backlight.", "price": 9500, "old": 0, "stock": 0, "images": ["https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=600&q=80"], "reviews": []}, {"id": 10, "name": "ASUS TUF Gaming F15 (i7-12700H / RTX 4060)", "cat": "Laptops", "sub": "Gaming", "desc": "12th-gen i7 with RTX 4060, 16GB DDR5 and a 144Hz display. Military-grade chassis that doubles as a CAD/rendering workhorse.", "price": 145000, "old": 152000, "stock": 2, "images": ["https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=600&q=80"], "reviews": [{"name": "Rakib I.", "rating": 5, "comment": "Handles SolidWorks and gaming without breaking a sweat.", "at": "2026-06-14T16:00:00Z"}]}, {"id": 11, "name": "Lenovo ThinkPad E14 Gen 5 (i5-1335U / 16GB / 512GB)", "cat": "Laptops", "sub": "Business", "desc": "Legendary ThinkPad keyboard, MIL-SPEC durability, and 16GB DDR4 with a 512GB NVMe. The safe choice for managers and heavy Excel users.", "price": 112000, "old": 118000, "stock": 6, "images": ["https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&q=80", "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=600&q=80"], "reviews": [{"name": "Rashed K.", "rating": 5, "comment": "Keyboard is unbeatable. Ordered 4 for our accounts team.", "at": "2026-07-11T10:44:22Z"}]}, {"id": 12, "name": "Dell Latitude 3440 (i5-1335U / 8GB / 512GB)", "cat": "Laptops", "sub": "Business", "desc": "Corporate workhorse with 13th-gen i5, upgradeable RAM, and Dell's business support network in Bangladesh.", "price": 98500, "old": 0, "stock": 8, "images": ["https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&q=80"], "reviews": []}, {"id": 13, "name": "HP 250 G9 (i3-1215U / 8GB / 256GB)", "cat": "Laptops", "sub": "Business", "desc": "Entry business laptop for browsing, email, and office suites. The volume-purchase favourite for startups outfitting a team.", "price": 56500, "old": 59900, "stock": 12, "images": ["https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=600&q=80"], "reviews": []}, {"id": 14, "name": "Acer Nitro V 15 (i5-13420H / RTX 3050 / 16GB)", "cat": "Laptops", "sub": "Gaming", "desc": "144Hz FHD panel with RTX 3050 graphics — smooth esports and serious 1080p gaming without the flagship price.", "price": 108000, "old": 115000, "stock": 5, "images": ["https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=600&q=80", "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&q=80"], "reviews": [{"name": "Nayeem", "rating": 4, "comment": "Runs Valorant at 144fps easily. Fans audible under load but acceptable.", "at": "2026-07-11T10:44:22Z"}]}, {"id": 15, "name": "Lenovo LOQ 15 (i5-12450HX / RTX 4050 / 16GB)", "cat": "Laptops", "sub": "Gaming", "desc": "RTX 4050 with DLSS 3 in Lenovo's new budget-gaming line. Excellent thermals for long sessions.", "price": 132000, "old": 0, "stock": 3, "images": ["https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=600&q=80"], "reviews": []}, {"id": 16, "name": "WD Blue SN580 1TB NVMe Gen4 SSD", "cat": "Components", "sub": "SSD & Storage", "desc": "4,150 MB/s reads at a value price — the sensible default upgrade for any modern build. 5-year warranty.", "price": 9200, "old": 10500, "stock": 20, "images": ["https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80"], "reviews": [{"name": "Habib", "rating": 5, "comment": "Cloned Windows in 20 minutes, night and day difference.", "at": "2026-07-11T10:44:22Z"}]}, {"id": 17, "name": "Seagate Barracuda 2TB 7200rpm HDD", "cat": "Components", "sub": "SSD & Storage", "desc": "Bulk storage for archives, CCTV footage, and media libraries. Proven reliability, 2-year warranty.", "price": 6900, "old": 0, "stock": 14, "images": ["https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=600&q=80"], "reviews": []}, {"id": 18, "name": "Transcend StoreJet 25M3 1TB Portable HDD", "cat": "Components", "sub": "SSD & Storage", "desc": "Shock-resistant USB 3.1 portable drive with one-touch backup. The office favourite for moving big files.", "price": 6200, "old": 6800, "stock": 10, "images": ["https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=600&q=80"], "reviews": []}, {"id": 19, "name": "Corsair Vengeance 16GB (2×8) DDR5-5600", "cat": "Components", "sub": "RAM", "desc": "Matched dual-channel kit for 13th/14th-gen and Ryzen 7000 builds. XMP 3.0 — set and forget.", "price": 8900, "old": 0, "stock": 16, "images": ["https://images.unsplash.com/photo-1547082299-de196ea013d6?w=600&q=80"], "reviews": [{"name": "PC Builder BD", "rating": 5, "comment": "XMP enabled first try on a B760 board. Genuine Corsair.", "at": "2026-07-11T10:44:22Z"}]}, {"id": 20, "name": "TeamGroup Elite 8GB DDR4-3200", "cat": "Components", "sub": "RAM", "desc": "Plug-and-play single stick for office PC upgrades — the fastest cheap fix for a slow machine.", "price": 2650, "old": 2950, "stock": 25, "images": ["https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=600&q=80"], "reviews": []}, {"id": 21, "name": "Intel Core i5-12400F Processor", "cat": "Components", "sub": "Processors", "desc": "6 cores / 12 threads of dependable performance — the best-value gaming and productivity CPU of its generation. Needs discrete graphics.", "price": 16800, "old": 18500, "stock": 7, "images": ["https://images.unsplash.com/photo-1555617981-dac3880eac6e?w=600&q=80"], "reviews": []}, {"id": 22, "name": "AMD Ryzen 5 5600G with Radeon Graphics", "cat": "Components", "sub": "Processors", "desc": "6-core APU with capable built-in graphics — build a fast office PC or light gaming rig with no graphics card at all.", "price": 15200, "old": 0, "stock": 9, "images": ["https://images.unsplash.com/photo-1547082299-de196ea013d6?w=600&q=80"], "reviews": []}, {"id": 23, "name": "MikroTik hEX S Gigabit Router", "cat": "Networking", "sub": "Routers", "desc": "RouterOS L5 with SFP port and PoE — the ISP-grade router Bangladesh's network engineers actually use. Serious control for small offices.", "price": 7800, "old": 0, "stock": 11, "images": ["https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80"], "reviews": [{"name": "Shuvo Networks", "rating": 5, "comment": "Genuine unit with license level 5. Running PPPoE + queues flawlessly.", "at": "2026-07-11T10:44:22Z"}]}, {"id": 24, "name": "TP-Link Archer C64 AC1200 Router", "cat": "Networking", "sub": "Routers", "desc": "Reliable dual-band AC1200 with MU-MIMO for flats and small offices — the sensible budget pick.", "price": 3450, "old": 3900, "stock": 18, "images": ["https://images.unsplash.com/photo-1606904825846-647eb07f5be2?w=600&q=80"], "reviews": [{"name": "Mim A.", "rating": 4, "comment": "Covers our 1200 sqft flat fully. Setup took 10 minutes.", "at": "2026-07-11T10:44:22Z"}]}, {"id": 25, "name": "Tenda AC10 AC1200 Smart Router", "cat": "Networking", "sub": "Routers", "desc": "Four 6dBi antennas and gigabit WAN at an entry price. Easy app setup for non-technical users.", "price": 2850, "old": 0, "stock": 15, "images": ["https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&q=80"], "reviews": []}, {"id": 26, "name": "TP-Link LS1008G 8-Port Gigabit Switch", "cat": "Networking", "sub": "Switches", "desc": "Fanless desktop gigabit switch — plug in, forget it exists. Lifetime local warranty.", "price": 2250, "old": 0, "stock": 22, "images": ["https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80"], "reviews": []}, {"id": 27, "name": "MikroTik CSS610-8G-2S+ Cloud Smart Switch", "cat": "Networking", "sub": "Switches", "desc": "8 gigabit ports plus dual 10G SFP+ uplinks with SwOS — rack-ready backbone for a growing office network.", "price": 13500, "old": 14800, "stock": 4, "images": ["https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&q=80"], "reviews": []}, {"id": 28, "name": "LG 24MK430H 24\" IPS FHD Monitor", "cat": "Peripherals", "sub": "Monitors", "desc": "Color-accurate IPS with AMD FreeSync and a 3-side slim bezel — great value for office desks and dual-monitor setups.", "price": 15800, "old": 17200, "stock": 9, "images": ["https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&q=80"], "reviews": [{"name": "Farhan", "rating": 5, "comment": "Colors are noticeably better than my old TN panel. No dead pixels.", "at": "2026-07-11T10:44:22Z"}]}, {"id": 29, "name": "Samsung LS27T350 27\" FHD Monitor", "cat": "Peripherals", "sub": "Monitors", "desc": "Big 27\" IPS panel with 75Hz refresh and Eye Saver mode for long workdays.", "price": 19500, "old": 0, "stock": 6, "images": ["https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=600&q=80"], "reviews": []}, {"id": 30, "name": "Logitech K120 Wired Keyboard", "cat": "Peripherals", "sub": "Keyboard & Mouse", "desc": "The indestructible office standard — spill-resistant, quiet keys, plug and play. Buy them by the dozen.", "price": 950, "old": 0, "stock": 40, "images": ["https://images.unsplash.com/photo-1585298723682-7115561c51b7?w=600&q=80"], "reviews": [{"name": "Office Buyer", "rating": 5, "comment": "Bought 15 pieces for the office. All genuine, all working.", "at": "2026-07-11T10:44:22Z"}]}, {"id": 31, "name": "Rapoo X1800S Wireless Keyboard & Mouse Combo", "cat": "Peripherals", "sub": "Keyboard & Mouse", "desc": "Reliable 2.4GHz wireless combo with 12-month battery life — declutter any desk for under two thousand taka.", "price": 1750, "old": 1950, "stock": 17, "images": ["https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=600&q=80"], "reviews": []}, {"id": 32, "name": "HyperX Cloud Stinger 2 Gaming Headset", "cat": "Peripherals", "sub": "Headphones & Audio", "desc": "Lightweight comfort with swivel-to-mute mic and signature HyperX sound — long sessions, no fatigue.", "price": 5400, "old": 5900, "stock": 8, "images": ["https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80"], "reviews": [{"name": "Adib", "rating": 4, "comment": "Very comfortable for long Discord calls. Mic quality is decent.", "at": "2026-07-11T10:44:22Z"}]}, {"id": 33, "name": "Logitech H111 Stereo Headset", "cat": "Peripherals", "sub": "Headphones & Audio", "desc": "Simple 3.5mm stereo headset with boom mic — the call-center and online-class standard.", "price": 1250, "old": 0, "stock": 30, "images": ["https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=600&q=80"], "reviews": []}, {"id": 34, "name": "MaxGreen MG-LI-1200VA Offline UPS", "cat": "Power", "sub": "UPS", "desc": "1200VA capacity runs a PC, monitor, and router through load-shedding switchovers. Local warranty and service.", "price": 5900, "old": 6400, "stock": 13, "images": ["https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=600&q=80"], "reviews": [{"name": "Kamrul", "rating": 4, "comment": "Survives the daily load-shedding switch without a blink.", "at": "2026-07-11T10:44:22Z"}]}, {"id": 35, "name": "Prolink PRO700SFC 650VA UPS", "cat": "Power", "sub": "UPS", "desc": "Compact 650VA protection for a single workstation — AVR keeps voltage steady on rough lines.", "price": 4200, "old": 0, "stock": 0, "images": ["https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=600&q=80"], "reviews": []}], "categories": [{"name": "Laptops", "image": "", "subs": ["Business", "Gaming"]}, {"name": "Components", "image": "", "subs": ["SSD & Storage", "RAM", "Processors"]}, {"name": "Networking", "image": "", "subs": ["Routers", "Switches"]}, {"name": "Peripherals", "image": "", "subs": ["Monitors", "Keyboard & Mouse", "Headphones & Audio"]}, {"name": "Power", "image": "", "subs": ["UPS"]}], "zones": [{"id": 1, "name": "Inside Dhaka", "charge": 60}, {"id": 2, "name": "Dhaka Suburbs", "charge": 100}, {"id": 3, "name": "Outside Dhaka", "charge": 130}], "coupons": [{"id": 1, "code": "EONS10", "type": "percent", "value": 10, "min_spend": 0, "active": 1}, {"id": 2, "code": "WELCOME500", "type": "flat", "value": 500, "min_spend": 5000, "active": 1}], "settings": {"store_name": "EONS IT Solutions", "store_phone": "+880 1XXX-XXXXXX", "store_addr": "Level 4, House 18, Road 7, Banani, Dhaka", "tagline": "Genuine IT hardware for offices and power users — laptops, components, networking and power gear. Every order confirmed personally, with official warranty.", "whatsapp": "+880 1XXX-XXXXXX", "hours": "Sat–Thu, 10am–8pm"}, "banners": [{"id": 1, "image": "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=1600&q=80", "title": "Office laptops from ৳55,000", "subtitle": "Genuine units · official warranty · confirmed by a quick call", "ctaText": "Shop laptops", "ctaCat": "Laptops", "sort": 1, "active": true}, {"id": 2, "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1600&q=80", "title": "Build a serious office network", "subtitle": "MikroTik & TP-Link gear, configured advice included", "ctaText": "Shop networking", "ctaCat": "Networking", "sort": 2, "active": true}], "pages": {"about": "EONS IT Solutions supplies genuine laptops, components, and networking gear to offices and power users across Bangladesh.\n\nEvery order is confirmed with a quick phone call before dispatch, and every product carries its official local warranty. This site is a live demo of our custom-built e-commerce platform.", "delivery": "Inside Dhaka: delivery within 24-48 hours, charge ৳60.\n\nDhaka suburbs: 2-3 working days, charge ৳100.\n\nOutside Dhaka: 3-5 working days via courier, charge ৳130. All orders are cash on delivery - no advance payment required.", "return": "7-day replacement guarantee on manufacturing defects.\n\nBring or send the product with its box and invoice. Warranty claims after 7 days are handled through each brand's official service center, and we will help you through the process.", "terms": "All prices are in Bangladeshi Taka and include VAT where applicable.\n\nOrders are confirmed by phone before dispatch. Stock and pricing may change without notice. This is a demonstration store - orders placed here are not real."}, "passcode": "eons"};
+DEMO.orders = [];
+DEMO.staff = false;
+DEMO.nextOrder = 100001;
+DEMO.nextId = 10000;
+
+function demoErr(msg){ const e = new Error(msg); return Promise.reject(e); }
+function demoPhoneOk(p){ p = demoPhone(p); return /^01[3-9]\d{8}$/.test(p); }
+function demoPhone(p){
+  p = String(p||"").replace(/[\s-]/g,"");
+  if(p.startsWith("+880")) p = "0"+p.slice(4);
+  else if(p.startsWith("880")) p = "0"+p.slice(3);
+  return p;
+}
+function demoNow(){ return new Date().toISOString().replace(/\.\d+Z$/,"Z"); }
+function demoProd(id){ return DEMO.products.find(p=>p.id===+id); }
+function demoOrder(code){ return DEMO.orders.find(o=>o.id===code); }
+function demoStocks(o){ return o.items.map(i=>{ const p=demoProd(i.id); return {id:i.id, stock:p?p.stock:0}; }); }
+function demoRestore(o){ if(o._restored) return; o.items.forEach(i=>{ const p=demoProd(i.id); if(p) p.stock+=i.qty; }); o._restored=true; }
+function demoReserve(o){
+  if(!o._restored) return null;
+  for(const i of o.items){ const p=demoProd(i.id);
+    if(!p || p.stock < i.qty) return 'Not enough stock to reopen — "'+(p?p.name:"item")+'"'; }
+  o.items.forEach(i=>{ demoProd(i.id).stock-=i.qty; }); o._restored=false; return null;
+}
+function demoCouponCalc(c, sub){
+  return c.type==="percent" ? Math.round(sub*c.value/100) : Math.min(c.value, sub);
+}
+
+async function api(path, body){
+  await new Promise(r=>setTimeout(r, 120));          // a touch of realism
+  const [file, qs] = path.split("?");
+  const q = Object.fromEntries(new URLSearchParams(qs||""));
+
+  /* ---------- bootstrap ---------- */
+  if(file==="bootstrap.php"){
+    const d = {
+      products: DEMO.products, categories: DEMO.categories, zones: DEMO.zones,
+      settings: DEMO.settings, staff: DEMO.staff,
+      banners: DEMO.staff ? DEMO.banners : DEMO.banners.filter(b=>b.active),
+    };
+    if(DEMO.staff){ d.orders = DEMO.orders; d.coupons = DEMO.coupons; }
+    return d;
+  }
+
+  /* ---------- auth ---------- */
+  if(file==="auth.php"){
+    if(body===undefined) return {staff: DEMO.staff};
+    if(body.action==="logout"){ DEMO.staff=false; return {ok:true}; }
+    if(body.action==="change_pass"){
+      if(body.current!==DEMO.passcode) return demoErr("Current passcode is incorrect");
+      if(String(body.new||"").trim().length<4) return demoErr("New passcode must be at least 4 characters");
+      DEMO.passcode = String(body.new).trim(); return {ok:true};
+    }
+    if(body.passcode===DEMO.passcode){ DEMO.staff=true; return {ok:true, staff:true}; }
+    return demoErr("Incorrect passcode");
+  }
+
+  /* ---------- tracking ---------- */
+  if(file==="track.php"){
+    const o = demoOrder(String(q.id||"").toUpperCase());
+    if(!o) return demoErr("Order not found");
+    return o;
+  }
+
+  /* ---------- pages ---------- */
+  if(file==="pages.php"){
+    if(body===undefined){
+      if(!(q.key in DEMO.pages)) return demoErr("Unknown page");
+      return {key:q.key, body: DEMO.pages[q.key]||""};
+    }
+    if(!(body.key in DEMO.pages)) return demoErr("Unknown page");
+    DEMO.pages[body.key] = String(body.body||""); return {ok:true, key:body.key};
+  }
+
+  /* ---------- coupons ---------- */
+  if(file==="coupons.php"){
+    if(body && body.action==="validate"){
+      const c = DEMO.coupons.find(x=>x.code===String(body.code||"").toUpperCase() && x.active);
+      if(!c) return demoErr("That coupon code isn't valid.");
+      const sub = Math.max(0, +body.subtotal||0);
+      if(sub < c.min_spend) return demoErr(c.code+" needs a minimum order of ৳"+c.min_spend.toLocaleString()+".");
+      return {ok:true, code:c.code, type:c.type, value:c.value, min_spend:c.min_spend, discount:demoCouponCalc(c,sub)};
+    }
+    if(!DEMO.staff) return demoErr("Staff sign-in required");
+    if(body.action==="add"){
+      const code = String(body.code||"").toUpperCase().trim();
+      if(code.length<3) return demoErr("Coupon code is too short");
+      if(DEMO.coupons.some(c=>c.code===code)) return demoErr("That coupon already exists");
+      const c = {id:++DEMO.nextId, code, type:body.type==="flat"?"flat":"percent",
+        value:Math.max(1,+body.value||0), min_spend:Math.max(0,+body.minSpend||0), active:true};
+      DEMO.coupons.push(c); return {ok:true, id:c.id, code:c.code};
+    }
+    if(body.action==="toggle"){ const c=DEMO.coupons.find(x=>x.id===+body.id); if(c) c.active=!c.active; return {ok:true}; }
+    if(body.action==="delete"){ DEMO.coupons=DEMO.coupons.filter(x=>x.id!==+body.id); return {ok:true}; }
+    return demoErr("Unknown action");
+  }
+
+  /* ---------- zones ---------- */
+  if(file==="zones.php"){
+    if(body===undefined) return {zones: DEMO.zones};
+    if(!DEMO.staff) return demoErr("Staff sign-in required");
+    if(body.action==="add"){
+      const z = {id:++DEMO.nextId, name:String(body.name||"").trim(), charge:Math.max(0,+body.charge||0)};
+      if(z.name.length<2) return demoErr("Enter an area name");
+      DEMO.zones.push(z); return {ok:true, id:z.id};
+    }
+    if(body.action==="charge"){ const z=DEMO.zones.find(x=>x.id===+body.id); if(z) z.charge=Math.max(0,+body.charge||0); return {ok:true}; }
+    if(body.action==="delete"){ DEMO.zones=DEMO.zones.filter(x=>x.id!==+body.id); return {ok:true}; }
+    return demoErr("Unknown action");
+  }
+
+  /* ---------- products ---------- */
+  if(file==="products.php"){
+    if(body===undefined) return {products: DEMO.products};
+    if(!DEMO.staff) return demoErr("Staff sign-in required");
+    if(body.action==="stock"){ const p=demoProd(body.id); if(!p) return demoErr("Product not found");
+      p.stock=Math.max(0,+body.stock||0); return {ok:true}; }
+    if(body.action==="delete"){ DEMO.products=DEMO.products.filter(p=>p.id!==+body.id); return {ok:true}; }
+    // save (create/update)
+    if(body.id){ const p=demoProd(body.id); if(!p) return demoErr("Product not found");
+      Object.assign(p,{name:body.name,cat:body.cat,sub:body.sub||"",desc:body.desc,
+        price:+body.price||0,old:+body.old||0,stock:Math.max(0,+body.stock||0),images:body.images||[]});
+      return {ok:true, id:p.id};
+    }
+    const p = {id:++DEMO.nextId, name:body.name, cat:body.cat, sub:body.sub||"", desc:body.desc,
+      price:+body.price||0, old:+body.old||0, stock:Math.max(0,+body.stock||0),
+      images:body.images||[], reviews:[]};
+    DEMO.products.push(p); return {ok:true, id:p.id};
+  }
+
+  /* ---------- categories ---------- */
+  if(file==="categories.php"){
+    if(body===undefined) return {categories: DEMO.categories};
+    if(!DEMO.staff) return demoErr("Staff sign-in required");
+    const C = DEMO.categories, find = n=>C.find(c=>c.name===n);
+    switch(body.action){
+      case "addCat": if(find(body.name)) return demoErr("That menu already exists");
+        C.push({name:body.name, image:"", subs:[]}); return {ok:true};
+      case "renameCat": { const c=find(body.name); if(!c) return demoErr("Menu not found");
+        c.name=body.newName; return {ok:true}; }
+      case "delCat": DEMO.categories = C.filter(c=>c.name!==body.name); return {ok:true};
+      case "addSub": { const c=find(body.cat); if(!c) return demoErr("Menu not found");
+        c.subs.push(body.name); return {ok:true}; }
+      case "renameSub": { const c=find(body.cat); if(!c) return demoErr("Menu not found");
+        const j=c.subs.indexOf(body.name); if(j>=0) c.subs[j]=body.newName; return {ok:true}; }
+      case "delSub": { const c=find(body.cat); if(!c) return demoErr("Menu not found");
+        c.subs=c.subs.filter(s=>s!==body.name); return {ok:true}; }
+      case "catImage": { const c=find(body.name); if(!c) return demoErr("Menu not found");
+        c.image=body.image||""; return {ok:true}; }
+    }
+    return demoErr("Unknown action");
+  }
+
+  /* ---------- reviews ---------- */
+  if(file==="reviews.php"){
+    const p = demoProd(body.product_id); if(!p) return demoErr("Product not found");
+    const name=String(body.name||"").trim(), comment=String(body.comment||"").trim();
+    const rating=Math.min(5,Math.max(1,+body.rating||0));
+    if(name.length<2) return demoErr("Please enter your name");
+    if(comment.length<3) return demoErr("Please write a short comment");
+    const review={name, rating, comment, at:demoNow()};
+    return {ok:true, review};
+  }
+
+  /* ---------- settings ---------- */
+  if(file==="settings.php"){
+    if(body===undefined) return {settings: DEMO.settings};
+    if(!DEMO.staff) return demoErr("Staff sign-in required");
+    Object.assign(DEMO.settings, body); delete DEMO.settings.action;
+    return {ok:true};
+  }
+
+  /* ---------- banners ---------- */
+  if(file==="banners.php"){
+    const all = ()=>({ok:true, banners: DEMO.banners});
+    if(body===undefined) return {banners: DEMO.staff?DEMO.banners:DEMO.banners.filter(b=>b.active)};
+    if(!DEMO.staff) return demoErr("Staff sign-in required");
+    const B = DEMO.banners, bidx = id=>B.findIndex(b=>b.id===+id);
+    switch(body.action){
+      case "save": {
+        if(!body.image) return demoErr("Banner needs an image (max ~2 MB)");
+        if(body.id){ const b=B[bidx(body.id)]; if(!b) return demoErr("Banner not found");
+          Object.assign(b,{image:body.image,title:body.title||"",subtitle:body.subtitle||"",
+            ctaText:body.ctaText||"",ctaCat:body.ctaCat||"",active:!!body.active});
+          return {...all(), id:b.id};
+        }
+        const b={id:++DEMO.nextId, image:body.image, title:body.title||"", subtitle:body.subtitle||"",
+          ctaText:body.ctaText||"", ctaCat:body.ctaCat||"", sort:B.length+1, active:!!body.active};
+        B.push(b); return {...all(), id:b.id};
+      }
+      case "delete": DEMO.banners=B.filter(b=>b.id!==+body.id); return all();
+      case "toggle": { const b=B[bidx(body.id)]; if(b) b.active=!b.active; return all(); }
+      case "move": { const i=bidx(body.id); if(i<0) return demoErr("Banner not found");
+        const j=i+(body.dir<0?-1:1); if(j>=0&&j<B.length){ [B[i],B[j]]=[B[j],B[i]]; B.forEach((b,k)=>b.sort=k+1); }
+        return all(); }
+    }
+    return demoErr("Unknown action");
+  }
+
+  /* ---------- orders ---------- */
+  if(file==="orders.php"){
+    if(body===undefined){ if(!DEMO.staff) return demoErr("Staff sign-in required"); return DEMO.orders; }
+    const action = body.action||"place";
+
+    if(action==="place"){
+      const name=String(body.name||"").trim(), addr=String(body.addr||"").trim();
+      const note=String(body.note||"").trim().slice(0,500);
+      if(name.length<3) return demoErr("Please enter your full name");
+      if(!demoPhoneOk(body.phone)) return demoErr("Please enter a valid 11-digit Bangladesh mobile number");
+      if(addr.length<8) return demoErr("Please enter your full delivery address");
+      const items = Array.isArray(body.items)?body.items:[];
+      if(!items.length) return demoErr("Your bag is empty");
+      const z = DEMO.zones.find(x=>x.name===body.zone);
+      if(!z) return demoErr("Please select your delivery location");
+      let subtotal=0; const lines=[];
+      for(const ri of items){
+        const p=demoProd(ri.id); const qty=Math.max(1,Math.min(99,+ri.qty||0));
+        if(!p) return demoErr("An item in your bag is no longer available");
+        if(p.stock<qty) return demoErr('Only '+p.stock+' of "'+p.name+'" left in stock');
+        subtotal+=p.price*qty; lines.push({id:p.id,name:p.name,price:p.price,qty});
+      }
+      let discount=0, couponUsed=null;
+      const cc=String(body.coupon||"").toUpperCase().trim();
+      if(cc){
+        const c=DEMO.coupons.find(x=>x.code===cc&&x.active);
+        if(!c || subtotal<c.min_spend) return demoErr("That coupon is no longer valid — please remove it and try again");
+        discount=demoCouponCalc(c,subtotal); couponUsed=c.code;
+      }
+      const total=Math.max(0,subtotal-discount)+z.charge;
+      const o={ id:"EON"+(DEMO.nextOrder++), name:name.slice(0,120), phone:demoPhone(body.phone),
+        addr, note, items:lines, subtotal, deliveryZone:z.name, deliveryCharge:z.charge,
+        coupon:couponUsed, discount, total, status:"pending", delivery:null,
+        riderName:"", riderPhone:"", riderAssignedAt:null, settled:false, settledOutcome:null,
+        placedAt:demoNow(), approvedAt:null, cancelledAt:null, shippedAt:null, deliveredAt:null,
+        settledAt:null, _restored:false };
+      lines.forEach(l=>{ demoProd(l.id).stock-=l.qty; });
+      DEMO.orders.unshift(o);
+      return {ok:true, order:o, stocks:demoStocks(o)};
+    }
+
+    if(!DEMO.staff) return demoErr("Staff sign-in required");
+    const o = demoOrder(String(body.id||""));
+    if(!o) return demoErr("Order not found");
+    switch(action){
+      case "approve": o.status="approved"; o.approvedAt=demoNow(); o.delivery=o.delivery||"Processing"; break;
+      case "cancel": if(!o._restored) demoRestore(o); o.status="cancelled"; o.cancelledAt=demoNow(); break;
+      case "reopen": { const err=demoReserve(o); if(err) return demoErr(err);
+        o.status="pending"; o.cancelledAt=null; break; }
+      case "delivery": {
+        const val=String(body.value||"");
+        if(!["Processing","Shipped","Delivered","Returned","Cancelled","Missing"].includes(val))
+          return demoErr("Unknown delivery status");
+        if(["Returned","Cancelled"].includes(val)){ demoRestore(o); }
+        else { const err=demoReserve(o); if(err) return demoErr(err); }
+        o.delivery=val;
+        if(val==="Delivered") o.deliveredAt=demoNow();
+        if(val==="Shipped") o.shippedAt=o.shippedAt||demoNow();
+        break;
+      }
+      case "rider": {
+        const rn=String(body.name||"").trim().slice(0,100), rp=String(body.phone||"").trim();
+        if(rn===""&&rp===""){ o.riderName=""; o.riderPhone=""; break; }
+        if(rn.length<2) return demoErr("Enter the rider's name");
+        if(!demoPhoneOk(rp)) return demoErr("Enter a valid rider phone number");
+        o.riderName=rn; o.riderPhone=demoPhone(rp); o.riderAssignedAt=o.riderAssignedAt||demoNow();
+        break;
+      }
+      case "settle": {
+        const finals=["Delivered","Returned","Missing"];
+        const eligible=!o.settled && (o.status==="cancelled" || (o.status==="approved"&&finals.includes(o.delivery)));
+        if(!eligible) return demoErr("Order isn't at a final status yet");
+        o.settled=true; o.settledAt=demoNow();
+        o.settledOutcome=(o.status==="cancelled"||o.delivery==="Cancelled")?"Cancelled":o.delivery;
+        break;
+      }
+      case "reopenSettled": o.settled=false; o.settledAt=null; break;
+      default: return demoErr("Unknown action");
+    }
+    return {ok:true, order:o, stocks:demoStocks(o)};
+  }
+
+  return demoErr("Unknown endpoint: "+file);
+}
+
+/* Staff write-through: on failure, show the server's reason and re-pull
+   fresh data so the UI never drifts from the database. */
+async function syncStaff(path, body){
+  try { return await api(path, body); }
+  catch(e){ toast(e.message); bootData().catch(()=>{}); throw e; }
+}
+
+/* Replace one order + affected stocks with the server's copy, re-render. */
+function applyOrderResp(r){
+  const i = orders.findIndex(x=>x.id===r.order.id);
+  if(i>=0) orders[i]=r.order; else orders.unshift(r.order);
+  (r.stocks||[]).forEach(s=>{ const p=products.find(x=>x.id===s.id); if(p) p.stock=s.stock; });
+  renderOrders(); renderShop(); renderAdmin();
+  if(currentTrackId===r.order.id) renderTrack(r.order.id);
+}
+
 /* v3: two-level menu — each category owns its submenus */
-let categories = [
-  {name:"Laptops",     subs:["Business","Gaming"]},
-  {name:"Components",  subs:["SSD & Storage","RAM"]},
-  {name:"Networking",  subs:["Routers","Switches"]},
-  {name:"Peripherals", subs:["Monitors","Keyboard & Mouse"]},
-  {name:"Power",       subs:["UPS"]},
-];
+let categories = [];   // v4: loaded from the database
 function catNames(){ return categories.map(c=>c.name); }
 function getCat(name){ return categories.find(c=>c.name===name); }
 let activeSub = "";
 
 /* ---------- v2: delivery zones (admin-managed, charge varies by location) ---------- */
-let deliveryZones = [
-  {name:"Inside Dhaka",  charge:60},
-  {name:"Dhaka Suburbs", charge:100},
-  {name:"Outside Dhaka", charge:130},
-];
+let deliveryZones = []; // v4: loaded from the database
 
 /* ---------- v2: coupons (admin-managed; share the codes on social media) ---------- */
-let coupons = [
-  {code:"EONS10",     type:"percent", value:10,  minSpend:0,     active:true},
-  {code:"WELCOME500", type:"flat",    value:500, minSpend:5000,  active:true},
-];
-let appliedCoupon = null;   // code string of the currently applied coupon
+let coupons = [];      // v4: staff-only, loaded after sign-in
+let appliedCoupon = null;   // v4: {code,type,value,minSpend} validated by the server
 
 const money = n => "৳" + Number(n).toLocaleString("en-IN");
 const moneyTk = n => "Tk " + Number(n).toLocaleString("en-IN");   // PDF/Excel-safe (no broken glyph)
@@ -1241,19 +1803,9 @@ function toggleNavSubs(e, el){
 }
 
 function renderPills(){
+  // v4.2.1: pills retired — nav dropdowns + category tiles cover selection.
   renderNav();
-  const cats = ["All", ...catNames()];
-  let html = cats.map(c =>
-    `<button class="cat-pill ${c===activeCat?'active':''}" onclick="filterCat('${esq(c)}')">${escapeHtml(c)}</button>`).join("");
-  // v3: second row of sub-pills when the active category has submenus
-  const cat = getCat(activeCat);
-  if(cat && cat.subs.length){
-    html += `<div class="sub-pills">
-      <button class="sub-pill ${!activeSub?'active':''}" onclick="filterCat('${esq(cat.name)}')">All</button>
-      ${cat.subs.map(s=>`<button class="sub-pill ${s===activeSub?'active':''}" onclick="filterSub('${esq(cat.name)}','${esq(s)}')">${escapeHtml(s)}</button>`).join("")}
-    </div>`;
-  }
-  $("catPills").innerHTML = html;
+  renderCatTiles();          // keeps tile active-states in sync with the filter
   syncNavActive();
   renderFooterShop();
 }
@@ -1281,48 +1833,93 @@ function syncNavActive(){
   });
 }
 
+let searchQuery = "";
+function matchesSearch(p){
+  if(!searchQuery) return true;
+  const q = searchQuery.toLowerCase();
+  return (p.name||"").toLowerCase().includes(q)
+      || (p.desc||"").toLowerCase().includes(q)
+      || (p.cat ||"").toLowerCase().includes(q)
+      || (p.sub ||"").toLowerCase().includes(q);
+}
 function visibleProducts(){
   // AUTO-HIDE: only show in-stock items
   return products.filter(p => p.stock > 0
     && (activeCat==="All" || p.cat===activeCat)
-    && (!activeSub || p.sub===activeSub));
+    && (!activeSub || p.sub===activeSub)
+    && matchesSearch(p));
+}
+function toggleSearch(force){
+  const row = $("searchRow");
+  const open = (force!==undefined) ? force : !row.classList.contains("open");
+  row.classList.toggle("open", open);
+  if(open){
+    showShop(false);
+    $("searchInput").focus();
+  } else if(searchQuery){
+    searchQuery = ""; $("searchInput").value = "";
+    renderShop();
+  }
+}
+function onSearchInput(v){
+  searchQuery = v.trim();
+  showShop(false);
+  renderShop();
+  if(searchQuery) requestAnimationFrame(()=> scrollToProducts());
 }
 
 function renderShop(){
+  if(bootFailed){ const g=$("productGrid"); if(g) g.innerHTML = bootErrorHTML(); return; }
+
   renderPills();
   const list = visibleProducts();
-  $("secTitle").textContent = activeCat==="All" ? "The Catalog"
-    : (activeSub ? `${activeCat} — ${activeSub}` : activeCat);
+  $("secTitle").textContent = searchQuery ? `Results for “${searchQuery}”`
+    : (activeCat==="All" ? "The Catalog"
+    : (activeSub ? `${activeCat} — ${activeSub}` : activeCat));
   $("secCount").textContent = list.length + " item" + (list.length!==1?"s":"") + " available";
   const grid = $("productGrid");
   if(!list.length){
     grid.innerHTML = `<div class="empty"><h3 class="serif" style="font-size:1.4rem;margin-bottom:6px">Nothing here right now</h3><p>These items are currently out of stock. Please check back soon.</p></div>`;
     return;
   }
-  grid.innerHTML = list.map(p=>{
-    const low = p.stock <= LOW_STOCK;
-    const rc = (p.reviews||[]).length;
-    const av = avgRating(p);
-    const ratingHtml = rc ? `<div class="card-rating">${starsHtml(av,'sm')}<span class="card-rev-count">(${rc})</span></div>` : "";
-    const multi = productImages(p).length>1 ? `<span class="img-count">📷 ${productImages(p).length}</span>` : "";
-    return `<article class="card" onclick="openProduct(${p.id})">
-      <div class="card-img">
-        ${low?`<span class="tag low">Only ${p.stock} left</span>`:(p.old>p.price?`<span class="tag">Sale</span>`:"")}
-        ${multi}
-        <img src="${primaryImage(p)}" alt="${p.name}" loading="lazy">
+  // v4.2: the homepage ("All", no search) shows curated category rows;
+  // any filter or search shows the flat grid.
+  if(activeCat==="All" && !searchQuery){
+    grid.innerHTML = categories.map(c=>{
+      const items = list.filter(p=>p.cat===c.name);
+      if(!items.length) return "";
+      return `<div class="cat-row-head" style="grid-column:1/-1">
+          <h3>${escapeHtml(c.name)}</h3>
+          <a onclick="filterCat('${esq(c.name)}')">View all ${items.length} →</a>
+        </div>` + items.slice(0,4).map(cardHTML).join("");
+    }).join("") || `<div class="empty"><p>No products yet.</p></div>`;
+    return;
+  }
+  grid.innerHTML = list.map(cardHTML).join("");
+}
+
+function cardHTML(p){
+  const low = p.stock <= LOW_STOCK;
+  const rc = (p.reviews||[]).length;
+  const av = avgRating(p);
+  const ratingHtml = rc ? `<div class="card-rating">${starsHtml(av,'sm')}<span class="card-rev-count">(${rc})</span></div>` : "";
+  const multi = productImages(p).length>1 ? `<span class="img-count">📷 ${productImages(p).length}</span>` : "";
+  return `<article class="card" onclick="openProduct(${p.id})">
+    <div class="card-img">
+      ${low?`<span class="tag low">Only ${p.stock} left</span>`:(p.old>p.price?`<span class="tag">−${Math.round((1-p.price/p.old)*100)}%</span>`:"")}
+      ${multi}
+      <img src="${primaryImage(p)}" alt="${p.name}" loading="lazy">
+    </div>
+    <div class="card-body">
+      <div class="card-cat">${p.cat}</div>
+      <div class="card-name">${p.name}</div>
+      ${ratingHtml}
+      <div class="card-foot">
+        <div class="price">${p.old>p.price?`<small>${money(p.old)}</small>`:""}${money(p.price)}</div>
+        <button class="add-btn" onclick="event.stopPropagation();addToCart(${p.id},event)">Add</button>
       </div>
-      <div class="card-body">
-        <div class="card-cat">${p.cat}</div>
-        <div class="card-name">${p.name}</div>
-        ${ratingHtml}
-        <div class="card-desc">${p.desc}</div>
-        <div class="card-foot">
-          <div class="price">${p.old>p.price?`<small>${money(p.old)}</small>`:""}${money(p.price)}</div>
-          <button class="add-btn" onclick="event.stopPropagation();addToCart(${p.id},event)">Add</button>
-        </div>
-      </div>
-    </article>`;
-  }).join("");
+    </div>
+  </article>`;
 }
 
 /* ---------- v2: money math for bag + checkout ---------- */
@@ -1342,8 +1939,7 @@ function couponLabel(c){
 function cartTotals(zoneName){
   const items = Object.values(cart);
   const sub = items.reduce((s,i)=>s+i.price*i.qty,0);
-  const c = findCoupon(appliedCoupon);
-  if(appliedCoupon && !c) appliedCoupon = null;              // coupon was turned off by admin
+  const c = appliedCoupon;   // v4: an object validated by the server
   const discount = couponDiscount(c, sub);
   const zone = deliveryZones.find(z=>z.name===zoneName) || null;
   const delivery = zone ? zone.charge : 0;
@@ -1356,19 +1952,19 @@ function orderMoney(o){
   return {sub, discount:o.discount||0, delivery:o.deliveryCharge||0, zone:o.deliveryZone||null, coupon:o.coupon||null};
 }
 
-function applyCoupon(){
+async function applyCoupon(){
   const code = ($("couponInput")?.value||"").trim();
   if(!code) return;
-  const c = findCoupon(code);
   const sub = Object.values(cart).reduce((s,i)=>s+i.price*i.qty,0);
-  if(!c){ $("couponMsg").textContent = "That coupon code isn't valid."; renderCart(); return; }
-  if(sub < (c.minSpend||0)){
-    appliedCoupon = null; renderCart();
-    $("couponMsg").textContent = `${c.code} needs a minimum order of ${money(c.minSpend)}.`;
-    return;
+  try{
+    const r = await api("coupons.php", {action:"validate", code, subtotal: sub});
+    appliedCoupon = {code:r.code, type:r.type, value:r.value, minSpend:r.min_spend};
+    renderCart();
+  }catch(e){
+    appliedCoupon = null;
+    renderCart();
+    if($("couponMsg")) $("couponMsg").textContent = e.message;
   }
-  appliedCoupon = c.code;
-  renderCart();
 }
 function removeCoupon(){ appliedCoupon = null; renderCart(); }
 
@@ -1438,6 +2034,8 @@ function renderCart(){
   const count = items.reduce((s,i)=>s+i.qty,0);
   const cc = $("cartCount");
   cc.style.display = count?"grid":"none"; cc.textContent = count;
+  const bn = $("bnavCount");
+  if(bn){ bn.style.display = count?"grid":"none"; bn.textContent = count; }
   const body = $("cartBody");
   if(!items.length){
     body.innerHTML = `<p style="color:var(--ink-soft);text-align:center;padding:50px 10px">Your bag is empty.<br>Add something you love.</p>`;
@@ -1472,7 +2070,7 @@ function renderCart(){
   const area = $("couponArea");
   if(area){
     if(t.coupon){
-      const c = findCoupon(t.coupon);
+      const c = appliedCoupon;
       area.innerHTML = `<div class="coupon-chip"><span>Coupon <b>${c.code}</b> applied — ${c.type==="percent" ? c.value+"% off" : money(c.value)+" off"}</span><span class="x" onclick="removeCoupon()" title="Remove coupon">×</span></div>`;
     } else {
       area.innerHTML = `<div class="coupon-row">
@@ -1589,29 +2187,30 @@ function placeOrder(){
     return;
   }
 
-  const items = Object.values(cart).map(i=>({id:i.id,name:i.name,price:i.price,qty:i.qty}));
-  if(!items.length){ toast("Your bag is empty"); return; }
+  const reqItems = Object.values(cart).map(i=>({id:i.id, qty:i.qty}));
+  if(!reqItems.length){ toast("Your bag is empty"); return; }
 
-  const orderId = "EON" + Date.now().toString().slice(-6);
-  const t = cartTotals(zoneName);
-  const note = $("coNote").value.trim();
+  // ---- v4: the SERVER prices the order, checks stock, applies the coupon
+  //      and the zone charge inside a database transaction, then sends the
+  //      Telegram alert itself. The browser only says WHAT, never HOW MUCH.
+  placeOrderRemote(name, phone, addr, zoneName, reqItems);
+}
+async function placeOrderRemote(name, phone, addr, zoneName, reqItems){
+  let resp;
+  try{
+    resp = await api("orders.php", {action:"place",
+      name, phone, addr, note: $("coNote").value.trim(),
+      zone: zoneName, coupon: appliedCoupon ? appliedCoupon.code : "",
+      items: reqItems});
+  }catch(e){ toast(e.message); return; }
 
-  // Save the order as PENDING (seller approves later from Orders dashboard)
-  const order = {id:orderId,name,phone,addr,note,items,status:"pending",
-    subtotal:t.sub, deliveryZone:zoneName, deliveryCharge:t.delivery,
-    coupon:t.coupon, discount:t.discount, total:t.total,
-    placedAt:new Date().toISOString(),approvedAt:null};
+  const order = resp.order;
+  const orderId = order.id;
   orders.unshift(order);
+  (resp.stocks||[]).forEach(s=>{ const p=products.find(x=>x.id===s.id); if(p) p.stock=s.stock; });
   appliedCoupon = null;   // a coupon is consumed with the order
-
-  // Deduct stock — items hide automatically when they hit 0
-  items.forEach(i=>{
-    const p = products.find(x=>x.id===i.id);
-    if(p){ p.stock = Math.max(0, p.stock - i.qty); }
-  });
-
-  // ---- Notify the SELLER on Telegram (free, automatic, background) ----
-  notifySellerTelegram(order);
+  const t = {sub:order.subtotal, discount:order.discount, coupon:order.coupon,
+             delivery:order.deliveryCharge, total:order.total};
 
   // ---- Compact success screen (v2.1) ----
   if($("checkoutTitle")) $("checkoutTitle").textContent = "Order placed";
@@ -1639,26 +2238,8 @@ function placeOrder(){
 /* Send the seller a Telegram message in the background (no UI, no cost).
    Silently no-ops if the token/chat id aren't configured yet. */
 function notifySellerTelegram(o){
-  if(!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) return;   // not set up yet
-  let msg = `🔔 NEW ORDER — ${STORE_NAME}\n`;
-  msg += `Order #${o.id}\n\n`;
-  msg += `👤 ${o.name}\n📞 ${o.phone}\n📍 ${o.addr}\n`;
-  if(o.note) msg += `📝 ${o.note}\n`;
-  msg += `\nItems:\n`;
-  o.items.forEach(i => msg += `• ${i.name} × ${i.qty} — ${money(i.price*i.qty)}\n`);
-  const bm = orderMoney(o);
-  msg += `\nSubtotal: ${money(bm.sub)}\n`;
-  if(bm.discount) msg += `Coupon ${bm.coupon}: −${money(bm.discount)}\n`;
-  if(bm.zone) msg += `Delivery (${bm.zone}): ${money(bm.delivery)}\n`;
-  msg += `💰 Total: ${money(o.total)} (COD)\n`;
-  msg += `\n➡️ Call the customer to confirm, then approve in the Orders dashboard.`;
-
-  const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-  fetch(url, {
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: msg })
-  }).catch(()=>{ /* network/offline — order is still saved in the dashboard */ });
+  /* v4: the alert is sent by api/orders.php on the server, so the bot
+     token never reaches the browser. Configure it in api/config.php. */
 }
 
 /* ---------- Admin ---------- */
@@ -1698,10 +2279,11 @@ function renderAdmin(){
     </div>`;
   }).join("");
 }
-function updateStock(id,val){
+async function updateStock(id,val){
   const p = products.find(x=>x.id===id);
   p.stock = Math.max(0, parseInt(val)||0);
   renderAdmin(); renderShop();
+  await syncStaff("products.php", {action:"stock", id, stock:p.stock});
   toast(p.stock===0 ? `${p.name} is now hidden from shop` : `${p.name} stock updated`);
 }
 function saveProduct(){
@@ -1717,12 +2299,18 @@ function saveProduct(){
     images, img: images[0]   // keep img in sync as the primary, for any legacy reads
   };
   const eid = $("editId").value;
+  saveProductRemote(data, eid);
+}
+async function saveProductRemote(data, eid){
+  let resp;
+  try { resp = await syncStaff("products.php", eid ? {...data, id:+eid} : data); }
+  catch(e){ return; }
   if(eid){
     const prod = products.find(p=>p.id==eid);
-    Object.assign(prod, data);
+    Object.assign(prod, data);                     // reviews stay untouched
     toast("Product updated");
   } else {
-    products.push({id:nextId++, reviews:[], ...data});
+    products.push({id:resp.id, reviews:[], ...data});
     toast("Product added");
   }
   clearForm(); renderAdmin(); renderShop();
@@ -1738,7 +2326,8 @@ function editProduct(id){
   $("formTitle").textContent="Edit product"; $("saveBtn").textContent="Update product";
   window.scrollTo({top:0,behavior:"smooth"});
 }
-function deleteProduct(id){
+async function deleteProduct(id){
+  try { await syncStaff("products.php", {action:"delete", id}); } catch(e){ return; }
   products = products.filter(p=>p.id!==id);
   renderAdmin(); renderShop(); toast("Product deleted");
 }
@@ -1783,6 +2372,7 @@ function addCategory(){
   if(categories.some(c=>c.name.toLowerCase()===name.toLowerCase())){
     toast("That category already exists"); renderCatSelect(name); $("newCatRow").style.display="none"; return;
   }
+  syncStaff("categories.php", {action:"addCat", name}).catch(()=>{ throw "handled"; });
   categories.push({name, subs:[]});
   $("fNewCat").value="";
   $("newCatRow").style.display="none";
@@ -1832,6 +2422,14 @@ function renderCatList(){
       </div>
     </div>
     <div class="sub-box">
+      <div class="sb-label" style="display:flex;align-items:center;justify-content:space-between">
+        <span>Tile image</span>
+        <span style="display:flex;gap:6px">
+          ${c.image?`<img src="${c.image}" alt="" style="width:52px;height:26px;object-fit:cover;border-radius:5px;border:1px solid var(--line)">`:""}
+          <button class="cat-rename" style="margin:0" onclick="pickCatImage('${esq(c.name)}')">${c.image?"Change":"Set image"}</button>
+          ${c.image?`<button class="cat-rename" style="margin:0" onclick="clearCatImage('${esq(c.name)}')">Remove</button>`:""}
+        </span>
+      </div>
       <div class="sb-label">Submenus</div>
       ${chips || `<span class="hint-inline">No submenus yet — this menu shows without a dropdown.</span>`}
       <div class="sub-add">
@@ -1857,6 +2455,7 @@ function addSubcategory(i){
   if(c.subs.some(s=>s.toLowerCase()===name.toLowerCase())){
     toast(`"${name}" already exists in ${c.name}`); return;
   }
+  syncStaff("categories.php", {action:"addSub", cat:c.name, name}).catch(()=>{});
   c.subs.push(name);
   refreshMenus();
   toast(`Submenu "${name}" added under ${c.name}`);
@@ -1869,6 +2468,7 @@ function renameSubcategory(i, j){
   if(c.subs.some(s=>s.toLowerCase()===name.toLowerCase())){
     toast(`"${name}" already exists in ${c.name}`); return;
   }
+  syncStaff("categories.php", {action:"renameSub", cat:c.name, old:oldName, new:name}).catch(()=>{});
   c.subs[j] = name;
   products.forEach(p=>{ if(p.cat===c.name && p.sub===oldName) p.sub = name; });
   if(activeCat===c.name && activeSub===oldName) activeSub = name;
@@ -1883,6 +2483,7 @@ function deleteSubcategory(i, j){
     ? `${n} product${n!==1?'s':''} use "${sub}". They'll stay in ${c.name} without a submenu. Delete it?`
     : `Delete submenu "${sub}" from ${c.name}?`;
   if(!confirm(msg)) return;
+  syncStaff("categories.php", {action:"delSub", cat:c.name, name:sub}).catch(()=>{});
   products.forEach(p=>{ if(p.cat===c.name && p.sub===sub) p.sub = ""; });
   c.subs.splice(j,1);
   if(activeCat===c.name && activeSub===sub) activeSub = "";
@@ -1897,12 +2498,23 @@ function renameCategory(i){
   if(categories.some(x=>x.name.toLowerCase()===name.toLowerCase())){
     toast(`A menu called "${name}" already exists`); return;
   }
+  syncStaff("categories.php", {action:"renameCat", old:oldName, new:name}).catch(()=>{});
   c.name = name;
   products.forEach(p=>{ if(p.cat===oldName) p.cat = name; });
   if(activeCat===oldName) activeCat = name;
   refreshMenus();
   toast(`Menu renamed to "${name}"`);
 }
+/* v4: change the hashed staff passcode on the server */
+async function changeStaffPass(){
+  const cur = $("spCur").value, nw = $("spNew").value.trim();
+  if(nw.length < 4){ toast("New passcode must be at least 4 characters"); return; }
+  try { await api("auth.php", {action:"change_pass", current:cur, new:nw}); }
+  catch(e){ toast(e.message); return; }
+  $("spCur").value=""; $("spNew").value="";
+  toast("Staff passcode changed");
+}
+
 /* ---------- v2: delivery zone manager ---------- */
 function renderZones(){
   const el = $("zoneList"); if(!el) return;
@@ -1916,6 +2528,7 @@ function renderZones(){
 function setZoneCharge(i, val){
   const n = Math.max(0, parseInt(val,10)||0);
   deliveryZones[i].charge = n;
+  syncStaff("zones.php", {action:"charge", id:deliveryZones[i].id, charge:n}).catch(()=>{});
   toast(`${deliveryZones[i].name}: delivery charge set to ${money(n)}`);
   renderZones(); renderCart();
 }
@@ -1924,13 +2537,20 @@ function addZone(){
   const charge = Math.max(0, parseInt($("zCharge").value,10)||0);
   if(!name){ toast("Give the area a name"); $("zName").focus(); return; }
   if(deliveryZones.some(z=>z.name.toLowerCase()===name.toLowerCase())){ toast("That area already exists"); return; }
-  deliveryZones.push({name, charge});
+  addZoneRemote(name, charge);
+}
+async function addZoneRemote(name, charge){
+  let resp;
+  try { resp = await syncStaff("zones.php", {action:"add", name, charge}); }
+  catch(e){ return; }
+  deliveryZones.push({id:resp.id, name, charge});
   $("zName").value=""; $("zCharge").value="";
   renderZones(); toast(`Area "${name}" added — ${money(charge)} delivery`);
 }
 function deleteZone(i){
   const z = deliveryZones[i];
   if(!confirm(`Remove delivery area "${z.name}"?`)) return;
+  syncStaff("zones.php", {action:"delete", id:z.id}).catch(()=>{});
   deliveryZones.splice(i,1); renderZones(); toast(`"${z.name}" removed`);
 }
 
@@ -1953,18 +2573,26 @@ function addCoupon(){
   if(!value){ toast("Set the discount value"); $("cpValue").focus(); return; }
   if(type==="percent" && value>90){ toast("Percent discount can't exceed 90%"); return; }
   if(coupons.some(c=>c.code===code)){ toast("That code already exists"); return; }
-  coupons.push({code, type, value, minSpend, active:true});
+  addCouponRemote(code, type, value, minSpend);
+}
+async function addCouponRemote(code, type, value, minSpend){
+  let resp;
+  try { resp = await syncStaff("coupons.php", {action:"add", code, type, value, minSpend}); }
+  catch(e){ return; }
+  coupons.push({id:resp.id, code:resp.code, type, value, minSpend, active:true});
   $("cpCode").value=""; $("cpValue").value=""; $("cpMin").value="";
-  renderCoupons(); toast(`Coupon ${code} is live — share it!`);
+  renderCoupons(); toast(`Coupon ${resp.code} is live — share it!`);
 }
 function toggleCoupon(i){
   coupons[i].active = !coupons[i].active;
+  syncStaff("coupons.php", {action:"toggle", id:coupons[i].id}).catch(()=>{});
   renderCoupons(); renderCart();
   toast(`Coupon ${coupons[i].code} is now ${coupons[i].active?"active":"off"}`);
 }
 function deleteCoupon(i){
   const c = coupons[i];
   if(!confirm(`Delete coupon "${c.code}"?`)) return;
+  syncStaff("coupons.php", {action:"delete", id:c.id}).catch(()=>{});
   coupons.splice(i,1); renderCoupons(); renderCart(); toast(`Coupon ${c.code} deleted`);
 }
 
@@ -1975,6 +2603,7 @@ function addCategoryFromPanel(){
   if(categories.some(c=>c.name.toLowerCase()===name.toLowerCase())){
     toast("That category already exists"); input.style.borderColor="#c0564f"; return;
   }
+  syncStaff("categories.php", {action:"addCat", name}).catch(()=>{});
   categories.push({name, subs:[]});
   input.value="";
   renderCatList(); renderPills();
@@ -1988,6 +2617,7 @@ function deleteCategory(name){
     return;
   }
   if(!confirm(`Remove the category "${name}"? This can't be undone.`)) return;
+  syncStaff("categories.php", {action:"delCat", name}).catch(()=>{});
   categories = categories.filter(c=>c.name!==name);
   // if the shop is currently filtered to the removed category, reset to All
   if(activeCat===name){ activeCat="All"; activeSub=""; }
@@ -2044,6 +2674,7 @@ function addImageUrl(){
 
 /* ---------- View switching + auth ---------- */
 function hideAllViews(){
+  $("pageView").style.display="none";
   $("shopView").style.display="none";
   $("adminView").style.display="none";
   $("ordersView").style.display="none";
@@ -2059,23 +2690,27 @@ function showAdmin(){ isAdmin ? enterAdmin() : openModal("loginModal", "admin");
 function showOrders(){ isAdmin ? enterOrders() : openModal("loginModal", "orders"); }
 function showAnalytics(){ isAdmin ? enterAnalytics() : openModal("loginModal", "orders"); }
 let pendingView = "admin";
-function tryLogin(){
-  if($("adminPass").value==="eons"){
-    isAdmin=true;
-    document.body.classList.add("is-staff");   // reveal admin links for this session
-    closeModal("loginModal"); $("adminPass").value="";
-    pendingView==="orders" ? enterOrders() : enterAdmin();
-  } else toast("Incorrect passcode");
+async function tryLogin(){
+  const pass = $("adminPass").value;
+  try { await api("auth.php", {passcode: pass}); }
+  catch(e){ toast(e.message); return; }
+  isAdmin = true;
+  document.body.classList.add("is-staff");
+  closeModal("loginModal"); $("adminPass").value="";
+  try { await bootData(); } catch(e){ toast(e.message); }
+  pendingView==="orders" ? enterOrders() : enterAdmin();
 }
 // Sign out of staff mode: hide all admin links and return to the storefront.
 function staffLogout(){
+  api("auth.php", {action:"logout"}).catch(()=>{});
+  orders = []; coupons = [];
   isAdmin=false;
   document.body.classList.remove("is-staff");
   if(location.hash) history.replaceState(null,"",location.pathname);
   closeMenu(); showShop();
   toast("Signed out of staff mode");
 }
-function enterAdmin(){ hideAllViews(); $("adminView").style.display="block"; renderAdmin(); renderZones(); renderCoupons(); closeMenu(); window.scrollTo(0,0); }
+function enterAdmin(){ hideAllViews(); $("adminView").style.display="block"; renderAdmin(); renderZones(); renderCoupons(); renderBnList(); loadPageEditor(); closeMenu(); window.scrollTo(0,0); }
 function enterOrders(){ hideAllViews(); $("ordersView").style.display="block"; renderOrders(); closeMenu(); window.scrollTo(0,0); }
 function enterAnalytics(){ hideAllViews(); $("analyticsView").style.display="block"; renderAnalytics(); closeMenu(); window.scrollTo(0,0); }
 
@@ -2090,12 +2725,20 @@ function checkStaffHash(){
     openTrack(id);
     return;
   }
+  if(h==="#track"){ openTrack(""); return; }
+  if(h.startsWith("#page/")){ openPage(h.slice(6)); return; }
   if(h==="#admin" || h==="#staff"){
     if(isAdmin) enterOrders();
     else openModal("loginModal", "orders");
   }
 }
 window.addEventListener("hashchange", checkStaffHash);
+function submitTrackLookup(){
+  let v = ($("trackLookup").value||"").trim().toUpperCase().replace(/^#/,"");
+  if(/^\d+$/.test(v)) v = "EON"+v;                    // digits only → add prefix
+  if(!/^EON\d{1,10}$/.test(v)){ toast("That doesn't look like an order ID (e.g. EON100001)"); return; }
+  location.hash = "#track/"+v;                          // hashchange routes to the order
+}
 
 /* ---------- Orders dashboard ---------- */
 // Delivery outcomes a seller can set after an order is approved
@@ -2141,9 +2784,30 @@ function openTrack(id){
   renderTrack(id);
 }
 
-function renderTrack(id){
+async function renderTrack(id){
   const wrap = $("trackWrap");
-  const o = orders.find(x=>x.id===id);
+  // v4.1: no id → order lookup form (customers who lost their link)
+  if(!id){
+    wrap.innerHTML = `
+      <div class="track-card">
+        <div class="track-logo">EONS <span>IT SOLUTIONS</span></div>
+        <h2 style="text-align:center;margin-bottom:6px">Track your order</h2>
+        <p style="text-align:center;color:var(--ink-soft);font-size:.9rem;margin-bottom:16px">Enter the order ID from your confirmation call, invoice, or SMS — it looks like <b>EON100001</b>.</p>
+        <div class="search-inner" style="max-width:380px;margin:0 auto">
+          <input id="trackLookup" placeholder="EON100001" style="text-transform:uppercase"
+            onkeydown="if(event.key==='Enter')submitTrackLookup()">
+        </div>
+        <button class="checkout-btn track-cta" style="max-width:380px;margin:14px auto 0;display:block" onclick="submitTrackLookup()">Track order</button>
+        <button class="track-home" onclick="goHomeFromTrack()" style="margin-top:18px">← Back to shop</button>
+      </div>`;
+    const inp = $("trackLookup"); if(inp) inp.focus();
+    return;
+  }
+  let o = orders.find(x=>x.id===id);
+  if(!o){
+    wrap.innerHTML = `<div class="track-card"><div class="track-logo">EONS <span>IT SOLUTIONS</span></div><p style="text-align:center;color:var(--ink-soft)">Looking up your order…</p></div>`;
+    try { o = await api("track.php?id=" + encodeURIComponent(id)); } catch(e){ o = null; }
+  }
   if(!o){
     wrap.innerHTML = `
       <div class="track-card track-missing">
@@ -2293,7 +2957,7 @@ function renderProduct(){
     <div class="pd-grid">
       <div class="pd-gallery">
         <div class="pd-main-img">
-          ${onSale?`<span class="tag">Sale</span>`:""}
+          ${onSale?`<span class="tag">−${Math.round((1-p.price/p.old)*100)}%</span>`:""}
           <img src="${imgs[pdGalleryIndex]}" alt="${p.name}" id="pdMainImg">
         </div>
         ${thumbs}
@@ -2365,8 +3029,15 @@ function submitReview(){
   const comment = (textEl.value||"").trim();
   if(pdReviewStars<1){ toast("Please pick a star rating"); return; }
   if(name.length<2){ toast("Please enter your name"); nameEl.style.borderColor="#c0564f"; nameEl.focus(); return; }
+  if(comment.length<3){ toast("Please write a short review"); textEl.focus(); return; }
+  postReview(p, name, comment);
+}
+async function postReview(p, name, comment){
+  let resp;
+  try { resp = await api("reviews.php", {product_id:p.id, name, rating:pdReviewStars, comment}); }
+  catch(e){ toast(e.message); return; }
   if(!p.reviews) p.reviews=[];
-  p.reviews.push({ name, rating:pdReviewStars, comment, at:new Date().toISOString() });
+  p.reviews.unshift(resp.review);
   pdReviewStars=0;
   renderProduct();
   renderShop();   // update the card rating badge
@@ -2380,24 +3051,8 @@ function escapeHtml(str){
   return String(str||"").replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
-/* Restore the stock that an order had reserved (used on cancel / return). */
-function restoreStock(o){
-  if(o.stockRestored) return;        // guard against double-restore
-  o.items.forEach(i=>{
-    const p = products.find(x=>x.id===i.id);
-    if(p) p.stock += i.qty;
-  });
-  o.stockRestored = true;
-}
-/* Re-deduct stock if an order is reopened after being cancelled. */
-function reserveStock(o){
-  if(!o.stockRestored) return;
-  o.items.forEach(i=>{
-    const p = products.find(x=>x.id===i.id);
-    if(p) p.stock = Math.max(0, p.stock - i.qty);
-  });
-  o.stockRestored = false;
-}
+/* v4: stock is owned by the server — restore/reserve happen in api/orders.php
+   inside transactions; responses carry fresh {stocks} that applyOrderResp applies. */
 let orderFilter = "all";
 function setOrderFilter(f){
   orderFilter=f;
@@ -2497,18 +3152,14 @@ function renderOrders(){
   }).join("");
 }
 
-function setDelivery(id, val){
-  const o = orders.find(x=>x.id===id); if(!o) return;
-  o.delivery = val;
-  o.deliveredAt = (val==="Delivered") ? new Date().toISOString() : o.deliveredAt;
-  if(val==="Shipped") o.shippedAt = o.shippedAt || new Date().toISOString();
-  // Goods come back to inventory when an approved order is returned or cancelled
-  if(val==="Returned" || val==="Cancelled") restoreStock(o);
-  else reserveStock(o);   // any other status means the goods are out again
-  renderOrders(); renderShop(); renderAdmin();
-  // If the customer is currently viewing this order's tracking page, refresh it live
-  if(currentTrackId===id) renderTrack(id);
-  toast(`Order #${id} marked ${val}`);
+async function setDelivery(id, val){
+  // v4: the server updates the status, restores/re-reserves stock inside a
+  // transaction, and returns the fresh order + stocks (applyOrderResp applies both).
+  try{
+    const r = await syncStaff("orders.php", {action:"delivery", id, value:val});
+    applyOrderResp(r);
+    toast(`Order #${id} marked ${val}`);
+  }catch(e){}
 }
 
 // An order has reached a FINAL outcome and is ready to be settled (closed for the books)
@@ -2526,20 +3177,21 @@ function finalOutcome(o){
   return null;   // not yet at a final outcome
 }
 
-function settleOrder(id){
+async function settleOrder(id){
   const o = orders.find(x=>x.id===id); if(!o) return;
   if(!canSettle(o)){ toast("Order isn't at a final status yet"); return; }
-  o.settled = true;
-  o.settledAt = new Date().toISOString();
-  o.settledOutcome = finalOutcome(o);   // lock in the outcome at settle time
-  renderOrders();
-  toast(`Order #${id} settled (${o.settledOutcome})`);
+  try{
+    const r = await syncStaff("orders.php", {action:"settle", id});
+    applyOrderResp(r);
+    toast(`Order #${id} settled (${r.order.settledOutcome})`);
+  }catch(e){}
 }
-function reopenSettled(id){
-  const o = orders.find(x=>x.id===id); if(!o) return;
-  o.settled = false; o.settledAt = null;
-  renderOrders();
-  toast(`Order #${id} reopened`);
+async function reopenSettled(id){
+  try{
+    const r = await syncStaff("orders.php", {action:"reopenSettled", id});
+    applyOrderResp(r);
+    toast(`Order #${id} reopened`);
+  }catch(e){}
 }
 
 /* ---------- Analytics ---------- */
@@ -2687,10 +3339,9 @@ function assignRider(id){
 
   // Allow clearing the rider entirely (both fields empty)
   if(!name && !phoneRaw){
-    o.riderName = ""; o.riderPhone = "";
-    renderOrders();
-    if(currentTrackId===id) renderTrack(id);
-    toast(`Rider cleared for #${id}`);
+    syncStaff("orders.php", {action:"rider", id, name:"", phone:""})
+      .then(r=>{ applyOrderResp(r); toast(`Rider cleared for #${id}`); })
+      .catch(()=>{});
     return;
   }
 
@@ -2708,12 +3359,9 @@ function assignRider(id){
     return;
   }
 
-  o.riderName = name;
-  o.riderPhone = phone;                 // store the normalized 01XXXXXXXXX form
-  o.riderAssignedAt = o.riderAssignedAt || new Date().toISOString();
-  renderOrders();
-  if(currentTrackId===id) renderTrack(id);
-  toast(`Rider "${name}" assigned to #${id}`);
+  syncStaff("orders.php", {action:"rider", id, name, phone})
+    .then(r=>{ applyOrderResp(r); toast(`Rider "${name}" assigned to #${id}`); })
+    .catch(()=>{});
 }
 
 // Build the public tracking URL for an order (uses the order id as the code)
@@ -2728,32 +3376,31 @@ function copyTrackLink(id){
   );
 }
 
-function approveOrder(id){
-  const o = orders.find(x=>x.id===id);
-  if(!o) return;
-  o.status="approved"; o.approvedAt=new Date().toISOString();
-  o.delivery = o.delivery || "Processing";
-  renderOrders();
-  toast(`Order #${id} approved — invoice ready`, true);
+async function approveOrder(id){
+  try{
+    const r = await syncStaff("orders.php", {action:"approve", id});
+    applyOrderResp(r);
+    toast(`Order #${id} approved — invoice ready`, true);
+  }catch(e){}
 }
 
 /* Cancel a pending order: mark cancelled and return its stock to the shop. */
-function cancelOrder(id){
-  const o = orders.find(x=>x.id===id); if(!o) return;
+async function cancelOrder(id){
   if(!confirm(`Cancel order #${id}? The reserved stock will be returned to the shop.`)) return;
-  o.status="cancelled"; o.cancelledAt=new Date().toISOString();
-  restoreStock(o);
-  renderOrders(); renderShop(); renderAdmin();
-  toast(`Order #${id} cancelled — stock restored`);
+  try{
+    const r = await syncStaff("orders.php", {action:"cancel", id});
+    applyOrderResp(r);
+    toast(`Order #${id} cancelled — stock restored`);
+  }catch(e){}
 }
 
 /* Reopen a cancelled order back to pending (re-reserves stock). */
-function reopenOrder(id){
-  const o = orders.find(x=>x.id===id); if(!o) return;
-  o.status="pending"; o.cancelledAt=null;
-  reserveStock(o);
-  renderOrders(); renderShop(); renderAdmin();
-  toast(`Order #${id} reopened as pending`);
+async function reopenOrder(id){
+  try{
+    const r = await syncStaff("orders.php", {action:"reopen", id});
+    applyOrderResp(r);
+    toast(`Order #${id} reopened as pending`);
+  }catch(e){}
 }
 
 /* ---------- Excel export (all orders, full details) ---------- */
@@ -3100,32 +3747,305 @@ function toast(msg, wa){
   clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.className="toast",2600);
 }
 
-/* ---------- Init ---------- */
-// Sample orders so the dashboard & Excel export show variety in the demo
-orders.push(
-  {id:"EON100245", name:"Nusrat Jahan", phone:"01712345678",
-   addr:"Flat 4B, House 9, Road 11, Dhanmondi, Dhaka", note:"Please call before 6pm",
-   items:[{id:2,name:"Samsung 980 Pro 1TB NVMe Gen4 SSD",price:14500,qty:1},{id:7,name:"Kingston Fury Beast 16GB DDR4 3200MHz",price:5400,qty:2}],
-   subtotal:25300, deliveryZone:"Inside Dhaka", deliveryCharge:60, coupon:null, discount:0,
-   total:25360, status:"pending", placedAt:new Date(Date.now()-3600000).toISOString(), approvedAt:null},
-  {id:"EON100231", name:"Rafiq Hasan", phone:"01819988776",
-   addr:"House 22, Sector 7, Uttara, Dhaka", note:"",
-   items:[{id:3,name:"TP-Link Archer AX73 WiFi 6 Router",price:13200,qty:1}],
-   subtotal:13200, deliveryZone:"Inside Dhaka", deliveryCharge:60, coupon:"EONS10", discount:1320,
-   total:11940, status:"approved", delivery:"Delivered",
-   placedAt:new Date(Date.now()-86400000*2).toISOString(),
-   approvedAt:new Date(Date.now()-86400000*2+3600000).toISOString(),
-   deliveredAt:new Date(Date.now()-86400000).toISOString()},
-  {id:"EON100218", name:"Tania Akter", phone:"01655443322",
-   addr:"Flat 2A, Road 3, Mirpur DOHS, Dhaka", note:"Need official invoice",
-   items:[{id:4,name:"Logitech MX Master 3S Wireless Mouse",price:11800,qty:1},{id:6,name:"APC BX650MI 650VA Line-Interactive UPS",price:6800,qty:1}],
-   subtotal:18600, deliveryZone:"Outside Dhaka", deliveryCharge:130, coupon:null, discount:0,
-   total:18730, status:"approved", delivery:"Returned",
-   placedAt:new Date(Date.now()-86400000*4).toISOString(),
-   approvedAt:new Date(Date.now()-86400000*4+3600000).toISOString()}
-);
-renderShop(); renderCart(); renderStoreInfo();
-checkStaffHash();   // open staff login if URL has #admin / #staff
+/* ---------- v4.2: homepage banner slider ---------- */
+let banners = [];
+let slideIdx = 0, slideTimer = null;
+function activeBanners(){ return banners.filter(b=>b.active); }
+function renderBanners(){
+  const wrap = $("bannerSlider"), hero = $("staticHero");
+  const list = activeBanners();
+  if(!wrap) return;
+  if(!list.length){ wrap.style.display="none"; if(hero) hero.style.display=""; stopSlider(); return; }
+  if(hero) hero.style.display="none";
+  wrap.style.display="block";
+  wrap.innerHTML = `<div class="slider" onmouseenter="stopSlider()" onmouseleave="startSlider()"
+      ontouchstart="sliderTouch(event)" ontouchend="sliderTouchEnd(event)">
+    ${list.map((b,i)=>`<div class="slide ${i===slideIdx?'on':''}">
+      <img src="${b.image}" alt="${escapeHtml(b.title||'Banner')}" ${i?'loading="lazy"':''}>
+      ${(b.title||b.subtitle||b.ctaText)?`<div class="slide-text">
+        ${b.title?`<h2>${escapeHtml(b.title)}</h2>`:""}
+        ${b.subtitle?`<p>${escapeHtml(b.subtitle)}</p>`:""}
+        ${b.ctaText?`<a class="slide-cta" onclick="${b.ctaCat?`filterCat('${esq(b.ctaCat)}')`:`scrollToProducts()`}">${escapeHtml(b.ctaText)}</a>`:""}
+      </div>`:""}
+    </div>`).join("")}
+    ${list.length>1?`
+      <button class="slider-arrow prev" onclick="stepSlide(-1)" aria-label="Previous">‹</button>
+      <button class="slider-arrow next" onclick="stepSlide(1)" aria-label="Next">›</button>
+      <div class="slider-dots">${list.map((_,i)=>`<button class="${i===slideIdx?'on':''}" onclick="goSlide(${i})" aria-label="Banner ${i+1}"></button>`).join("")}</div>`:""}
+  </div>`;
+  startSlider();
+}
+function goSlide(i){
+  const list = activeBanners(); if(!list.length) return;
+  slideIdx = ((i % list.length) + list.length) % list.length;
+  const slides = document.querySelectorAll("#bannerSlider .slide");
+  const dots = document.querySelectorAll("#bannerSlider .slider-dots button");
+  slides.forEach((s,k)=>s.classList.toggle("on", k===slideIdx));
+  dots.forEach((d,k)=>d.classList.toggle("on", k===slideIdx));
+}
+function stepSlide(d){ goSlide(slideIdx+d); startSlider(); }
+function startSlider(){
+  stopSlider();
+  if(activeBanners().length<2) return;
+  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  slideTimer = setInterval(()=>goSlide(slideIdx+1), 5500);
+}
+function stopSlider(){ if(slideTimer){ clearInterval(slideTimer); slideTimer=null; } }
+let touchX0 = null;
+function sliderTouch(e){ touchX0 = e.touches[0].clientX; stopSlider(); }
+function sliderTouchEnd(e){
+  if(touchX0===null) return;
+  const dx = e.changedTouches[0].clientX - touchX0; touchX0 = null;
+  if(Math.abs(dx) > 40) goSlide(slideIdx + (dx<0?1:-1));
+  startSlider();
+}
+
+/* ---------- v4.2: shop-by-category tiles ---------- */
+/* v4.2.2: match a professional icon to the category name (fallback: initial letter) */
+function catIcon(name){
+  const n = (name||"").toLowerCase();
+  const S = 'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"';
+  if(/laptop|notebook|computer|pc\b|desktop/.test(n))
+    return `<svg ${S}><rect x="4" y="5" width="16" height="10.5" rx="1.4"/><path d="M2.5 18.5h19l-1.4-2.4H3.9Z"/></svg>`;
+  if(/component|ram|ssd|processor|cpu|gpu|motherboard|part|hardware/.test(n))
+    return `<svg ${S}><rect x="7" y="7" width="10" height="10" rx="1.5"/><rect x="10" y="10" width="4" height="4"/><path d="M9 7V4M12 7V4M15 7V4M9 20v-3M12 20v-3M15 20v-3M7 9H4M7 12H4M7 15H4M20 9h-3M20 12h-3M20 15h-3"/></svg>`;
+  if(/network|router|switch|wifi|internet|lan/.test(n))
+    return `<svg ${S}><path d="M4.5 10.5a11 11 0 0 1 15 0M7.3 13.6a7 7 0 0 1 9.4 0M10.1 16.6a3 3 0 0 1 3.8 0"/><circle cx="12" cy="19.3" r="1" fill="currentColor"/></svg>`;
+  if(/peripheral|mouse|keyboard|monitor|display|accessor|headphone|webcam/.test(n))
+    return `<svg ${S}><rect x="8.5" y="3.5" width="7" height="13" rx="3.5"/><path d="M12 7v3"/></svg>`;
+  if(/power|ups|battery|charger|adapter|surge/.test(n))
+    return `<svg ${S}><path d="M13 2.5 5 13.5h6l-1 8 8-11h-6Z"/></svg>`;
+  if(/phone|mobile|tablet/.test(n))
+    return `<svg ${S}><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 17.5h2"/></svg>`;
+  if(/storage|drive|disk|hdd|nas/.test(n))
+    return `<svg ${S}><rect x="4" y="8" width="16" height="8" rx="2"/><circle cx="16.5" cy="12" r="1" fill="currentColor"/><path d="M7 12h4"/></svg>`;
+  if(/printer|scanner/.test(n))
+    return `<svg ${S}><path d="M7 8V4h10v4"/><rect x="4" y="8" width="16" height="8" rx="1.6"/><rect x="7" y="14" width="10" height="6"/></svg>`;
+  if(/camera|cctv|security/.test(n))
+    return `<svg ${S}><rect x="3" y="7" width="18" height="12" rx="2"/><circle cx="12" cy="13" r="3.6"/><path d="M8 7l1.2-2h5.6L16 7"/></svg>`;
+  if(/server|rack/.test(n))
+    return `<svg ${S}><rect x="4" y="4" width="16" height="7" rx="1.4"/><rect x="4" y="13" width="16" height="7" rx="1.4"/><path d="M8 7.5h.01M8 16.5h.01"/></svg>`;
+  return "";
+}
+
+function renderCatTiles(){
+  const wrap = $("catTilesWrap"), grid = $("catTiles");
+  if(!wrap || !grid) return;
+  if(!categories.length){ wrap.style.display="none"; return; }
+  wrap.style.display="";
+  const allTile = `
+    <div class="cat-tile ${activeCat==="All"?'on':''}" onclick="filterCat('All')" role="button" aria-label="Show all products">
+      <div class="ct-img"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.6"/></svg></div>
+      <span>All</span>
+    </div>`;
+  grid.innerHTML = allTile + categories.map(c=>`
+    <div class="cat-tile ${activeCat===c.name?'on':''}" onclick="filterCat('${esq(c.name)}')" role="button" aria-label="Shop ${escapeHtml(c.name)}">
+      <div class="ct-img">${c.image?`<img src="${c.image}" alt="${escapeHtml(c.name)}" loading="lazy">`
+               :`<div class="ct-ph">${catIcon(c.name)||`<span class="ct-letter">${escapeHtml((c.name||"?").charAt(0).toUpperCase())}</span>`}</div>`}</div>
+      <span>${escapeHtml(c.name)}</span>
+    </div>`).join("");
+}
+
+/* ---------- v4.2: content pages ---------- */
+const PAGE_TITLES = {about:"About Us", delivery:"Delivery Rules", return:"Return Policy", terms:"Terms & Conditions"};
+const pagesCache = {};
+async function openPage(key){
+  if(!PAGE_TITLES[key]) return;
+  hideAllViews();
+  $("pageView").style.display="block";
+  closeCart(); closeMenu(); window.scrollTo(0,0);
+  $("pageTitle").textContent = PAGE_TITLES[key];
+  const body = $("pageBody");
+  body.innerHTML = `<p style="color:var(--ink-soft)">Loading…</p>`;
+  let text = pagesCache[key];
+  if(text === undefined){
+    try { const r = await api("pages.php?key="+key); text = r.body||""; pagesCache[key] = text; }
+    catch(e){ text = ""; }
+  }
+  body.innerHTML = text.trim()
+    ? text.trim().split(/\n{2,}/).map(p=>`<p>${escapeHtml(p).replace(/\n/g,"<br>")}</p>`).join("")
+    : `<p class="page-empty">This page hasn't been written yet. Please check back soon, or contact us with any questions.</p>`;
+}
+
+/* ---------- v4.2: banner manager (admin) ---------- */
+let bnImage = "", bnEditId = 0;
+function renderBnList(){
+  const el = $("bnList"); if(!el) return;
+  renderBnCatSel();
+  if(!banners.length){ el.innerHTML = `<p class="hint" style="margin:4px 0 0">No banners yet — the standard hero is showing. Add your first below.</p>`; return; }
+  el.innerHTML = banners.map((b,i)=>`
+    <div class="bn-item ${b.active?'':'bn-off'}">
+      <img src="${b.image}" alt="">
+      <div class="bn-meta">
+        <div class="bn-title">${escapeHtml(b.title||"(no headline)")}</div>
+        <div class="bn-sub">${b.ctaText?`Button: ${escapeHtml(b.ctaText)} → ${escapeHtml(b.ctaCat||"catalog")}`:"No button"} · ${b.active?"Active":"Hidden"}</div>
+      </div>
+      <div class="bn-actions">
+        <button onclick="moveBanner(${b.id},-1)" ${i===0?"disabled":""} title="Move up">↑</button>
+        <button onclick="moveBanner(${b.id},1)" ${i===banners.length-1?"disabled":""} title="Move down">↓</button>
+        <button onclick="toggleBanner(${b.id})">${b.active?"Hide":"Show"}</button>
+        <button onclick="editBanner(${b.id})">Edit</button>
+        <button class="bn-del" onclick="deleteBanner(${b.id})">Delete</button>
+      </div>
+    </div>`).join("");
+}
+function renderBnCatSel(){
+  const sel = $("bnCatSel"); if(!sel) return;
+  const cur = sel.value;
+  sel.innerHTML = `<option value="">The catalog (scroll down)</option>`
+    + catNames().map(c=>`<option value="${escapeHtml(c)}">Category: ${escapeHtml(c)}</option>`).join("");
+  if(cur) sel.value = cur;
+}
+function bnPickImage(files){
+  const file = files && files[0]; if(!file) return;
+  if(!/^image\/(png|jpe?g|webp)$/.test(file.type)){ toast("Use a PNG, JPG, or WebP image"); return; }
+  if(file.size > 2*1024*1024){ toast("Banner image is over 2 MB — please compress it"); return; }
+  const reader = new FileReader();
+  reader.onload = e=>{
+    bnImage = e.target.result;
+    const pv = $("bnPrev"); pv.src = bnImage; pv.style.display = "block";
+  };
+  reader.readAsDataURL(file);
+  $("bnFile").value = "";
+}
+async function saveBanner(){
+  if(!bnImage){ toast("Choose a banner image first"); return; }
+  try{
+    const r = await syncStaff("banners.php", {action:"save", id:bnEditId||undefined,
+      image:bnImage, title:$("bnTitle").value, subtitle:$("bnSubtitle").value,
+      ctaText:$("bnCta").value, ctaCat:$("bnCatSel").value, active:$("bnActive").checked});
+    banners = r.banners;
+    resetBannerForm(); renderBnList(); renderBanners();
+    toast(bnEditId ? "Banner updated" : "Banner added", true);
+  }catch(e){}
+}
+function editBanner(id){
+  const b = banners.find(x=>x.id===id); if(!b) return;
+  bnEditId = id; bnImage = b.image;
+  $("bnFormTitle").textContent = "Edit banner";
+  $("bnTitle").value = b.title; $("bnSubtitle").value = b.subtitle;
+  $("bnCta").value = b.ctaText; renderBnCatSel(); $("bnCatSel").value = b.ctaCat||"";
+  $("bnActive").checked = !!b.active;
+  const pv = $("bnPrev"); pv.src = b.image; pv.style.display = "block";
+  $("bnCancel").style.display = "";
+  $("bnFormTitle").scrollIntoView({behavior:"smooth", block:"center"});
+}
+function resetBannerForm(){
+  bnEditId = 0; bnImage = "";
+  $("bnFormTitle").textContent = "Add a banner";
+  ["bnTitle","bnSubtitle","bnCta"].forEach(id=>$(id).value="");
+  $("bnCatSel").value = ""; $("bnActive").checked = true;
+  const pv = $("bnPrev"); pv.src = ""; pv.style.display = "none";
+  $("bnCancel").style.display = "none";
+}
+async function deleteBanner(id){
+  if(!confirm("Delete this banner?")) return;
+  try{
+    const r = await syncStaff("banners.php", {action:"delete", id});
+    banners = r.banners; if(bnEditId===id) resetBannerForm();
+    renderBnList(); renderBanners(); toast("Banner deleted");
+  }catch(e){}
+}
+async function toggleBanner(id){
+  try{
+    const r = await syncStaff("banners.php", {action:"toggle", id});
+    banners = r.banners; renderBnList(); renderBanners();
+  }catch(e){}
+}
+async function moveBanner(id, dir){
+  try{
+    const r = await syncStaff("banners.php", {action:"move", id, dir});
+    banners = r.banners; renderBnList(); renderBanners();
+  }catch(e){}
+}
+
+/* ---------- v4.2: category tile images (admin) ---------- */
+let catImgTarget = "";
+function pickCatImage(name){ catImgTarget = name; $("catImgFile").click(); }
+function onCatImageFile(files){
+  const file = files && files[0]; $("catImgFile").value = "";
+  if(!file || !catImgTarget) return;
+  if(!/^image\/(png|jpe?g|webp)$/.test(file.type)){ toast("Use a PNG, JPG, or WebP image"); return; }
+  if(file.size > 1024*1024){ toast("Category image is over 1 MB — please compress it"); return; }
+  const reader = new FileReader();
+  reader.onload = async e=>{
+    try{
+      await syncStaff("categories.php", {action:"catImage", name:catImgTarget, image:e.target.result});
+      const c = getCat(catImgTarget); if(c) c.image = e.target.result;
+      renderCatList(); renderCatTiles(); toast("Category image set", true);
+    }catch(err){}
+  };
+  reader.readAsDataURL(file);
+}
+async function clearCatImage(name){
+  try{
+    await syncStaff("categories.php", {action:"catImage", name, image:""});
+    const c = getCat(name); if(c) c.image = "";
+    renderCatList(); renderCatTiles(); toast("Category image removed");
+  }catch(e){}
+}
+
+/* ---------- v4.2: pages editor (admin) ---------- */
+async function loadPageEditor(){
+  const key = $("pgKey").value;
+  $("pgBody").value = "Loading…"; $("pgBody").disabled = true;
+  try{
+    const r = await api("pages.php?key="+key);
+    $("pgBody").value = r.body||"";
+  }catch(e){ $("pgBody").value = ""; }
+  $("pgBody").disabled = false;
+}
+async function savePage(){
+  const key = $("pgKey").value;
+  try{
+    await syncStaff("pages.php", {action:"save", key, body:$("pgBody").value});
+    pagesCache[key] = $("pgBody").value;
+    toast(`"${PAGE_TITLES[key]}" saved`, true);
+  }catch(e){}
+}
+
+/* ---------- Init (v4: everything loads from the database) ---------- */
+let bootFailed = false;   // when true, the catalog shows setup help instead of "out of stock"
+function bootErrorHTML(){
+  if(location.protocol === "file:")
+    return `<div class="empty" style="max-width:560px;margin:0 auto;text-align:left">
+      <h3 class="serif" style="font-size:1.35rem;margin-bottom:10px;text-align:center">This version needs a PHP server</h3>
+      <p style="margin-bottom:10px">You opened <b>index.html</b> directly from disk, so the store can't reach its database API. v4.0 is a client-server app — run it on any PHP host:</p>
+      <p style="line-height:1.9"><b>Local (XAMPP):</b> copy this folder into <code>htdocs</code>, import <code>schema.sql</code> in phpMyAdmin, edit <code>api/config.php</code>, then open <code>http://localhost/eons-store-v4/</code><br>
+      <b>Hosting (cPanel):</b> follow <code>docs/DEPLOYMENT.md</code> — create DB, import schema, upload, done.</p>
+    </div>`;
+  return `<div class="empty"><h3 class="serif" style="font-size:1.3rem;margin-bottom:6px">Can't load the store</h3><p>The database API isn't responding. Check <code>api/config.php</code> credentials and that <code>schema.sql</code> was imported. See <code>docs/DEPLOYMENT.md</code>.</p></div>`;
+}
+async function bootData(){
+  const d = await api("bootstrap.php");
+  products = d.products;
+  categories = d.categories;
+  deliveryZones = d.zones.map(z=>({id:+z.id, name:z.name, charge:+z.charge}));
+  storeInfo = { tagline:d.settings.tagline, whatsapp:d.settings.whatsapp, hours:d.settings.hours };
+  if(d.staff){
+    isAdmin = true;
+    document.body.classList.add("is-staff");
+    orders = d.orders;
+    coupons = d.coupons.map(c=>({id:+c.id, code:c.code, type:c.type,
+      value:+c.value, minSpend:+c.min_spend, active: !!+c.active}));
+  }
+  banners = d.banners || [];
+  renderShop(); renderCart(); renderStoreInfo();
+  renderBanners(); renderCatTiles();
+  if(isAdmin){ renderOrders(); renderAdmin(); renderZones(); renderCoupons(); renderBnList(); }
+}
+
+(async ()=>{
+  const grid = $("productGrid");
+  if(grid) grid.innerHTML = `<div class="empty"><p>Loading the catalog…</p></div>`;
+  try { await bootData(); }
+  catch(e){
+    bootFailed = true;
+    if(grid) grid.innerHTML = bootErrorHTML();
+    return;
+  }
+  checkStaffHash();   // open staff login / tracking if the URL asks for it
+})();
 </script>
 </body>
 </html>
